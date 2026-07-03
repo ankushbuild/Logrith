@@ -3,14 +3,6 @@
    ========================================================================== */
 
 /* ---------- Mobile nav toggle ---------- */
-function initNav() {
-  const burger = document.querySelector(".nav-burger");
-  const panel = document.querySelector(".nav-mobile-panel");
-  if (!burger || !panel) return;
-  burger.addEventListener("click", () => {
-    panel.classList.toggle("open");
-  });
-}
 
 /* ---------- FAQ accordion ---------- */
 function initFaqAccordion(root = document) {
