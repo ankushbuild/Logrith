@@ -82,6 +82,5 @@ function relatedStripItemHTML(p, basePath = "") {
 
 /* ---------- Render grids on load (index & listing pages use these hooks) ---------- */
 document.addEventListener("DOMContentLoaded", () => {
-  initNav();
   initFaqAccordion();
 });
