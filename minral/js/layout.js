@@ -35,6 +35,7 @@ function renderNavbar(activePage, navCta) {
   <nav class="navbar">
     <a href="${base}index.html" class="nav-logo-link" aria-label="MINRAL home">
       <img src="${base}assets/logo/logo.png" alt="MINRAL" class="nav-logo-img" />
+      <span class="nav-logo-text">minral</span>
     </a>
     <div class="nav-links">
       ${navLinksHTML}
@@ -64,6 +65,7 @@ function renderFooter() {
       <div class="footer-brand">
         <a href="${base}index.html" class="nav-logo-link" aria-label="MINRAL home">
           <img src="${base}assets/logo/logo.png" alt="MINRAL" class="footer-logo-img" />
+          <span class="nav-logo-text">minral</span>
         </a>
         <p>Premium digital products for builders, founders, and creators. A Logrith store.</p>
       </div>
