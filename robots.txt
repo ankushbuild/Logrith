@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://logrith.in/sitemap.xml
