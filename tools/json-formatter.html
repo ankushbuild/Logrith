@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free JSON Formatter & Validator Online — Beautify & Minify JSON | Logrith Legacy</title>
+  <meta name="description" content="Format, validate, beautify and minify JSON online for free. Instant JSON syntax checker with error highlighting. No install required.">
+  <link rel="canonical" href="https://logrith.in/tools/json-formatter">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Legacy">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/json-formatter">
+  <meta property="og:site_name" content="Logrith Legacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free JSON Formatter & Validator Online — Beautify & Minify JSON">
+  <meta name="twitter:description" content="Format, validate, beautify and minify JSON online for free. Instant JSON syntax checker with error highlighting. No install required.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .editor-wrap { position: relative; }
+    #json-input, #json-output { width:100%; min-height:280px; padding:16px; border:1.5px solid var(--gray-200); border-radius:var(--radius); font-family:'Courier New',monospace; font-size:.84rem; line-height:1.7; color:var(--gray-900); background:var(--gray-50); resize:vertical; outline:none; transition:var(--transition); }
+    #json-input:focus, #json-output:focus { border-color:var(--primary); background:var(--white); }
+    #json-output { background:#f0fdf4; border-color:#a7f3d0; color:#065f46; }
+    #json-output.error { background:#fef2f2; border-color:#fecaca; color:#991b1b; }
+    .error-line { background: rgba(239,68,68,0.08); }
+    .json-stats { display:flex; gap:10px; flex-wrap:wrap; }
+    .json-stat { padding:4px 12px; background:var(--gray-100); border-radius:20px; font-size:.78rem; color:var(--gray-700); }
+    .json-stat strong { color:var(--primary); }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    @media(max-width:700px){ .two-col { grid-template-columns:1fr; } }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-BPJ4332XJH');
+ </script>
+ 
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/developer-tools">Dev Tools</a> › JSON Formatter</div>
+  <h1>{ } Free JSON Formatter &amp; Validator</h1>
+  <p>Instantly format, beautify, validate, and minify JSON. Detects errors with line numbers. Works completely offline in your browser.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">⚡ Real-time</span><span class="tool-tag">🔍 Validates JSON</span><span class="tool-tag">📋 Copy Output</span></div>
+</div></div>
+
+<div class="tool-workspace" style="max-width:960px;">
+  <div class="tool-card">
+    <h2>JSON Input &amp; Output</h2>
+    <div class="btn-group" style="margin-bottom:14px;">
+      <button class="btn btn-primary" id="format-btn">✨ Format / Beautify</button>
+      <button class="btn btn-secondary" id="minify-btn">⚡ Minify</button>
+      <button class="btn btn-secondary" id="validate-btn">✅ Validate Only</button>
+      <button class="btn btn-secondary" id="clear-btn">✕ Clear</button>
+      <button class="btn btn-secondary" id="sample-btn">📋 Load Sample</button>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <label style="font-size:.84rem;font-weight:600;color:var(--gray-700);display:block;margin-bottom:6px;">Input JSON</label>
+        <div class="editor-wrap">
+          <textarea id="json-input" spellcheck="false" placeholder='Paste your JSON here...&#10;&#10;{"name":"Logrith Legacy","tools":160,"free":true}'></textarea>
+        </div>
+      </div>
+      <div>
+        <label style="font-size:.84rem;font-weight:600;color:var(--gray-700);display:block;margin-bottom:6px;">Output</label>
+        <div class="editor-wrap" style="position:relative;">
+          <textarea id="json-output" spellcheck="false" readonly placeholder="Formatted JSON will appear here..."></textarea>
+          <button class="copy-btn" id="copy-btn">📋 Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-msg" id="status-msg" style="margin-top:12px;"></div>
+    <div class="json-stats mt-12" id="json-stats"></div>
+  </div>
+
+  <div class="tool-card">
+    <h2>Indentation &amp; Options</h2>
+    <div class="controls-grid">
+      <div class="control-group">
+        <label>Indent Style</label>
+        <select id="indent-style">
+          <option value="2">2 Spaces</option>
+          <option value="4">4 Spaces</option>
+          <option value="tab">Tab</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Sort Keys</label>
+        <select id="sort-keys">
+          <option value="no">No</option>
+          <option value="asc">A → Z</option>
+          <option value="desc">Z → A</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="related-tools">
+  <h2>Related Dev Tools</h2>
+  <div class="related-grid">
+    <a href="base64" class="tool-item"><div class="ti-icon">🔐</div><div class="ti-text"><h4>Base64 Encode/Decode</h4><p>Encode text or files to Base64</p></div></a>
+    <a href="url-encoder" class="tool-item"><div class="ti-icon">🔗</div><div class="ti-text"><h4>URL Encoder</h4><p>Encode/decode URLs</p></div></a>
+    <a href="hash-generator" class="tool-item"><div class="ti-icon">#</div><div class="ti-text"><h4>Hash Generator</h4><p>MD5, SHA1, SHA256</p></div></a>
+    <a href="password-generator" class="tool-item"><div class="ti-icon">🔑</div><div class="ti-text"><h4>Password Generator</h4><p>Strong random passwords</p></div></a>
+  </div>
+</div>
+
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><div class="faq-q">What is JSON formatting?</div><div class="faq-a">JSON formatting (beautifying) adds proper indentation and line breaks to make compact JSON human-readable. Minifying does the reverse — removes all whitespace to reduce file size.</div></div>
+  <div class="faq-item"><div class="faq-q">How does the JSON validator work?</div><div class="faq-a">The tool uses JavaScript's built-in JSON.parse() to validate your JSON. If there's a syntax error, it shows the exact error message including the character position where parsing failed.</div></div>
+  <div class="faq-item"><div class="faq-q">Is my JSON data safe?</div><div class="faq-a">Completely safe. All processing is done in your browser using JavaScript. No data is sent to any server.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I sort JSON keys alphabetically?</div><div class="faq-a">Yes! Use the "Sort Keys" option to sort all keys in the JSON object alphabetically in ascending (A→Z) or descending (Z→A) order.</div></div>
+</div>
+
+<div id="footer"></div>
+
+<script src="/load-components.js"></script>
+
+<script src="/assets/js/main.js" defer></script>
+<script>
+const jsonInput = document.getElementById('json-input');
+const jsonOutput = document.getElementById('json-output');
+const statusMsg = document.getElementById('status-msg');
+const statsEl = document.getElementById('json-stats');
+
+const SAMPLE = `{
+  "name": "Logrith Legacy",
+  "version": "1.0.0",
+  "tools": 160,
+  "categories": ["Image", "PDF", "Developer", "Text", "Utility"],
+  "free": true,
+  "url": "https://logrith.in",
+  "features": {
+    "login_required": false,
+    "server_upload": false,
+    "mobile_friendly": true
+  }
+}`;
+
+function getIndent() {
+  const v = document.getElementById('indent-style').value;
+  return v === 'tab' ? '\t' : parseInt(v);
+}
+
+function sortObj(obj, dir) {
+  if (Array.isArray(obj)) return obj.map(v => sortObj(v, dir));
+  if (obj !== null && typeof obj === 'object') {
+    const keys = Object.keys(obj).sort((a,b) => dir==='asc' ? a.localeCompare(b) : b.localeCompare(a));
+    const res = {};
+    keys.forEach(k => res[k] = sortObj(obj[k], dir));
+    return res;
+  }
+  return obj;
+}
+
+function updateStats(parsed, raw) {
+  const keys = JSON.stringify(parsed).match(/"[^"]+"\s*:/g);
+  const size = new TextEncoder().encode(raw).length;
+  statsEl.innerHTML = `
+    <span class="json-stat">Size: <strong>${formatSize ? formatSize(size) : size + ' B'}</strong></span>
+    <span class="json-stat">Keys: <strong>${keys ? keys.length : 0}</strong></span>
+    <span class="json-stat">Type: <strong>${Array.isArray(parsed) ? 'Array' : typeof parsed}</strong></span>`;
+}
+
+document.getElementById('format-btn').addEventListener('click', () => {
+  const raw = jsonInput.value.trim();
+  if (!raw) return;
+  try {
+    let parsed = JSON.parse(raw);
+    const sort = document.getElementById('sort-keys').value;
+    if (sort !== 'no') parsed = sortObj(parsed, sort);
+    const formatted = JSON.stringify(parsed, null, getIndent());
+    jsonOutput.value = formatted;
+    jsonOutput.className = '';
+    showStatus(statusMsg, 'success', '✅ Valid JSON — formatted successfully!');
+    updateStats(parsed, formatted);
+  } catch(e) {
+    jsonOutput.value = '❌ Error: ' + e.message;
+    jsonOutput.className = 'error';
+    showStatus(statusMsg, 'error', e.message);
+    statsEl.innerHTML = '';
+  }
+});
+
+document.getElementById('minify-btn').addEventListener('click', () => {
+  const raw = jsonInput.value.trim();
+  if (!raw) return;
+  try {
+    const parsed = JSON.parse(raw);
+    const minified = JSON.stringify(parsed);
+    jsonOutput.value = minified;
+    jsonOutput.className = '';
+    showStatus(statusMsg, 'success', `Minified! ${raw.length} → ${minified.length} chars`);
+    updateStats(parsed, minified);
+  } catch(e) {
+    jsonOutput.value = '❌ Error: ' + e.message;
+    jsonOutput.className = 'error';
+    showStatus(statusMsg, 'error', e.message);
+  }
+});
+
+document.getElementById('validate-btn').addEventListener('click', () => {
+  const raw = jsonInput.value.trim();
+  if (!raw) return;
+  try {
+    const parsed = JSON.parse(raw);
+    jsonOutput.value = '✅ Valid JSON!';
+    jsonOutput.className = '';
+    showStatus(statusMsg, 'success', 'JSON is valid!');
+    updateStats(parsed, raw);
+  } catch(e) {
+    jsonOutput.value = '❌ Invalid JSON\n\n' + e.message;
+    jsonOutput.className = 'error';
+    showStatus(statusMsg, 'error', e.message);
+  }
+});
+
+document.getElementById('clear-btn').addEventListener('click', () => { jsonInput.value = ''; jsonOutput.value = ''; jsonOutput.className = ''; statsEl.innerHTML = ''; statusMsg.style.display='none'; });
+document.getElementById('sample-btn').addEventListener('click', () => { jsonInput.value = SAMPLE; });
+document.getElementById('copy-btn').addEventListener('click', function() { if(jsonOutput.value) copyText(jsonOutput.value, this); });
+
+// Real-time auto-format on paste
+jsonInput.addEventListener('paste', () => {
+  setTimeout(() => {
+    const raw = jsonInput.value.trim();
+    if (!raw) return;
+    try {
+      const parsed = JSON.parse(raw);
+      jsonOutput.value = JSON.stringify(parsed, null, getIndent());
+      jsonOutput.className = '';
+      updateStats(parsed, jsonOutput.value);
+    } catch(e) { /* don't format if invalid */ }
+  }, 50);
+});
+</script>
+</body></html>

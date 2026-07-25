@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Image Rotate & Flip Online — Rotate 90°, 180°, Flip | Logrith Legacy</title>
+  <meta name="description" content="Rotate images 90°, 180°, 270° or flip horizontally/vertically online for free. No upload to server. Works with JPG, PNG, WEBP.">
+  <link rel="canonical" href="https://logrith.in/tools/image-rotate">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Legacy">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/image-rotate">
+  <meta property="og:site_name" content="Logrith Legacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Image Rotate & Flip Online — Rotate 90°, 180°, Flip">
+  <meta name="twitter:description" content="Rotate images 90°, 180°, 270° or flip horizontally/vertically online for free. No upload to server. Works with JPG, PNG, WEBP.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-BPJ4332XJH');
+ </script>
+ 
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/utilities">Image Tools</a> › Rotate &amp; Flip</div>
+  <h1>🔃 Free Image Rotate &amp; Flip Online</h1>
+  <p>Rotate images 90°, 180°, or 270° clockwise/counterclockwise, or flip horizontally and vertically. Instant results, no server upload.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">↩️ Rotate 90/180/270°</span><span class="tool-tag">↔️ Flip H/V</span><span class="tool-tag">🔒 No Upload</span></div>
+</div></div>
+
+<div class="tool-workspace">
+  <div class="tool-card">
+    <h2>Upload Image</h2>
+    <div class="upload-zone" id="upload-zone">
+      <input type="file" id="file-input" accept="image/*">
+      <div class="upload-icon">🔃</div>
+      <h3>Drop your image here or click to browse</h3>
+      <p>JPG, PNG, WEBP, BMP — Max 20MB</p>
+    </div>
+  </div>
+
+  <div class="tool-card" id="controls-card" style="display:none;">
+    <h2>Transform Options</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
+      <button class="btn btn-secondary" id="rot-ccw">↺ Rotate 90° Left</button>
+      <button class="btn btn-secondary" id="rot-cw">↻ Rotate 90° Right</button>
+      <button class="btn btn-secondary" id="rot-180">🔄 Rotate 180°</button>
+      <button class="btn btn-secondary" id="flip-h">↔️ Flip Horizontal</button>
+      <button class="btn btn-secondary" id="flip-v">↕️ Flip Vertical</button>
+    </div>
+
+    <div style="background:var(--gray-50);border-radius:var(--radius);padding:16px;text-align:center;margin-bottom:16px;">
+      <canvas id="preview-canvas" style="max-width:100%;max-height:350px;border-radius:8px;display:block;margin:0 auto;"></canvas>
+    </div>
+
+    <div class="stats-row" id="transform-info"></div>
+
+    <div class="btn-group mt-16">
+      <button class="btn btn-success btn-lg" id="download-btn">⬇️ Download Image</button>
+      <button class="btn btn-secondary" id="reset-transforms">↩ Reset All</button>
+      <button class="btn btn-secondary" id="upload-another">+ New Image</button>
+    </div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><div class="faq-q">How do I rotate an image 90 degrees?</div><div class="faq-a">Upload your image, then click "Rotate 90° Right" or "Rotate 90° Left". The preview updates instantly. Apply as many rotations as needed then download.</div></div>
+  <div class="faq-item"><div class="faq-q">What's the difference between flip and rotate?</div><div class="faq-a">Rotating turns the image clockwise or counterclockwise. Flipping mirrors it — Flip Horizontal mirrors left-to-right (like seeing it in a mirror), Flip Vertical mirrors top-to-bottom.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I combine rotate and flip?</div><div class="faq-a">Yes! You can apply multiple transforms. The preview updates after each operation. Click Reset All to undo all transforms and start fresh.</div></div>
+</div>
+
+<div id="footer"></div>
+
+<script src="/load-components.js"></script>
+
+<script src="/assets/js/main.js" defer></script>
+<script>
+let currentCanvas = null, origFile = null;
+
+function handleFile(file) {
+  if (!file.type.startsWith('image/')) return;
+  if (file.size > 20*1024*1024) { alert('Max 20MB'); return; }
+  origFile = file;
+  const img = new Image();
+  const url = URL.createObjectURL(file);
+  img.onload = () => {
+    currentCanvas = document.createElement('canvas');
+    currentCanvas.width = img.naturalWidth; currentCanvas.height = img.naturalHeight;
+    currentCanvas.getContext('2d').drawImage(img, 0, 0);
+    URL.revokeObjectURL(url);
+    updatePreview();
+    document.getElementById('controls-card').style.display = 'block';
+  };
+  img.src = url;
+}
+document.getElementById('file-input').addEventListener('change', e => handleFile(e.target.files[0]));
+initDragDrop(document.getElementById('upload-zone'), files => handleFile(files[0]));
+
+function updatePreview() {
+  const preview = document.getElementById('preview-canvas');
+  preview.width = currentCanvas.width; preview.height = currentCanvas.height;
+  preview.getContext('2d').drawImage(currentCanvas, 0, 0);
+  document.getElementById('transform-info').innerHTML = `<span class="stat-chip">Size: <strong>${currentCanvas.width} × ${currentCanvas.height}px</strong></span>`;
+}
+
+function applyTransform(type) {
+  const src = currentCanvas;
+  const c = document.createElement('canvas');
+  let w = src.width, h = src.height;
+  if (type === 'rot90' || type === 'rot270') { c.width = h; c.height = w; }
+  else { c.width = w; c.height = h; }
+  const ctx = c.getContext('2d');
+  ctx.save();
+  if (type === 'rot90') { ctx.translate(h, 0); ctx.rotate(Math.PI / 2); }
+  else if (type === 'rot180') { ctx.translate(w, h); ctx.rotate(Math.PI); }
+  else if (type === 'rot270') { ctx.translate(0, w); ctx.rotate(-Math.PI / 2); }
+  else if (type === 'flipH') { ctx.translate(w, 0); ctx.scale(-1, 1); }
+  else if (type === 'flipV') { ctx.translate(0, h); ctx.scale(1, -1); }
+  ctx.drawImage(src, 0, 0);
+  ctx.restore();
+  currentCanvas = c;
+  updatePreview();
+}
+
+document.getElementById('rot-cw').addEventListener('click', () => applyTransform('rot90'));
+document.getElementById('rot-ccw').addEventListener('click', () => applyTransform('rot270'));
+document.getElementById('rot-180').addEventListener('click', () => applyTransform('rot180'));
+document.getElementById('flip-h').addEventListener('click', () => applyTransform('flipH'));
+document.getElementById('flip-v').addEventListener('click', () => applyTransform('flipV'));
+
+document.getElementById('reset-transforms').addEventListener('click', () => handleFile(origFile));
+document.getElementById('upload-another').addEventListener('click', () => { document.getElementById('controls-card').style.display='none'; document.getElementById('file-input').value=''; document.getElementById('file-input').click(); });
+
+document.getElementById('download-btn').addEventListener('click', () => {
+  if (!currentCanvas) return;
+  currentCanvas.toBlob(blob => {
+    downloadBlob(blob, origFile.name.replace(/\.[^.]+$/, '') + '_transformed.png');
+  }, 'image/png');
+});
+</script>
+</body></html>

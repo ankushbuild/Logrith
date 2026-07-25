@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free JWT Decoder Online — Decode JSON Web Tokens | Logrith Legacy</title>
+  <meta name="description" content="Decode JWT tokens online for free. View header and payload claims instantly, right in your browser. No signup, no server upload.">
+  <meta name="keywords" content="jwt decoder, jwt decoder online, decode json web token, jwt debugger free, jwt token decoder">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Legacy">
+  <link rel="canonical" href="https://logrith.in/tools/jwt-decoder">
+  <meta property="og:title" content="Free JWT Decoder Online | Logrith Legacy">
+  <meta property="og:description" content="Decode JWT header and payload instantly. Free and browser-based.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/jwt-decoder">
+  <meta property="og:site_name" content="Logrith Legacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free JWT Decoder | Logrith Legacy">
+  <meta name="twitter:description" content="Decode JWT tokens instantly, free and private.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://logrith.in/#organization","name":"Logrith Legacy","url":"https://logrith.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"JWT Decoder","url":"https://logrith.in/tools/jwt-decoder","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Free online JWT decoder for viewing header and payload claims without signature verification.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://logrith.in/#organization"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://logrith.in/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://logrith.in/categories/developer-tools"},{"@type":"ListItem","position":3,"name":"JWT Decoder","item":"https://logrith.in/tools/jwt-decoder"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Does this tool verify the JWT signature?","acceptedAnswer":{"@type":"Answer","text":"No, this tool only decodes and displays the header and payload — it does not verify the signature, since that requires the secret key or public key used to sign the token."}},
+    {"@type":"Question","name":"Is it safe to paste a JWT here?","acceptedAnswer":{"@type":"Answer","text":"Decoding happens entirely in your browser and the token is never sent to a server, but you should still avoid pasting tokens containing highly sensitive production secrets into any tool as a general precaution."}}
+  ]}
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/developer-tools">Developer Tools</a> › JWT Decoder</div>
+  <h1>Free JWT Decoder</h1>
+  <p>Paste a JSON Web Token to instantly view its decoded header and payload claims — entirely in your browser.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">🔍 Header & Payload</span><span class="tool-tag">⚡ Instant</span></div>
+</div></div>
+
+<div class="tool-workspace" style="max-width:900px;">
+  <div class="tool-card">
+    <h2>Paste JWT Token</h2>
+    <textarea class="tool-textarea mono" id="jwt-input" rows="5" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."></textarea>
+    <div class="btn-group mt-12">
+      <button class="btn btn-primary btn-lg" id="decode-btn">🔍 Decode</button>
+      <button class="btn btn-secondary" id="clear-btn">✕ Clear</button>
+    </div>
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+
+  <div class="tool-card" id="result-card" style="display:none;">
+    <h2>Decoded Header</h2>
+    <textarea class="tool-textarea mono" id="header-output" rows="4" readonly></textarea>
+
+    <h2 class="mt-16">Decoded Payload</h2>
+    <textarea class="tool-textarea mono" id="payload-output" rows="8" readonly></textarea>
+
+    <div class="insight-box mt-16">
+      ⚠️ This tool only decodes the token — it does <strong>not verify the signature</strong>. A decoded, readable payload does not mean the token is authentic or untampered.
+    </div>
+  </div>
+</div>
+
+<div class="content-card faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item-box"><h3>Does this verify the JWT signature?</h3><p>No, this tool only decodes and displays the header and payload — it doesn't verify the signature, which requires the secret or public key used to sign the token.</p></div>
+    <div class="faq-item-box"><h3>Is it safe to paste a JWT here?</h3><p>Decoding happens entirely in your browser and the token is never sent to a server, but as a general precaution avoid pasting tokens with highly sensitive production data into any tool.</p></div>
+    <div class="faq-item-box"><h3>Why can anyone read a JWT's payload?</h3><p>JWTs are Base64-URL encoded, not encrypted — this is by design, since JWTs are meant to be readable but tamper-evident via their signature, not confidential.</p></div>
+  </div>
+</div>
+
+<section class="article-section">
+  <h2>Decode JWT Tokens Online</h2>
+  <p>This tool decodes a JSON Web Token (JWT) and displays its header and payload as readable JSON, entirely in your browser. It's useful for debugging authentication issues, inspecting token claims, and understanding what data a JWT actually contains.</p>
+
+  <h3>JWT Structure</h3>
+  <p>A JWT consists of three parts separated by dots: a header, a payload, and a signature. The header typically specifies the signing algorithm and token type. The payload contains the actual claims — data like user ID, expiration time, and any custom fields the issuer included. The signature is a cryptographic hash that lets the receiving system verify the token hasn't been tampered with, provided they have the correct secret or public key.</p>
+
+  <h3>Why JWTs Are Readable But Not Confidential</h3>
+  <p>A common misconception is that JWTs are encrypted. They're not — the header and payload are simply Base64-URL encoded, which is a reversible text encoding, not encryption. Anyone who has a JWT can decode its header and payload instantly, exactly as this tool demonstrates. This is by design: JWTs are meant to be tamper-evident (via the signature) rather than confidential. Sensitive data that shouldn't be readable by anyone holding the token should never be placed in a JWT payload.</p>
+
+  <h3>Why This Tool Doesn't Verify Signatures</h3>
+  <p>Verifying a JWT's signature requires the same secret key (for HMAC algorithms like HS256) or the corresponding public key (for RSA/ECDSA algorithms like RS256) that was used to sign it — information that only the issuing server should have. Since this tool has no access to that secret, and receiving it would defeat the purpose of keeping it secret, this tool intentionally only decodes and displays the token's contents without claiming to verify its authenticity.</p>
+
+  <h3>Privacy and Local Processing</h3>
+  <p>All decoding happens directly in your browser using JavaScript's built-in Base64 decoding — your token is never sent to a server.</p>
+</section>
+
+<div class="content-card related-tools">
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="/tools/base64" class="tool-item"><div class="ti-text"><h4>Base64 Encode/Decode</h4><p>Encode and decode Base64 text and files.</p></div></a>
+    <a href="/tools/json-formatter" class="tool-item"><div class="ti-text"><h4>JSON Formatter</h4><p>Format and validate JSON data.</p></div></a>
+    <a href="/tools/hash-generator" class="tool-item"><div class="ti-text"><h4>Hash Generator</h4><p>Generate SHA-1, SHA-256, and other hashes.</p></div></a>
+    <a href="/tools/uuid-generator" class="tool-item"><div class="ti-text"><h4>UUID Generator</h4><p>Generate unique IDs for development use.</p></div></a>
+  </div>
+</div>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card keyword-section">
+      <h2>Popular Searches</h2>
+      <div class="keyword-box">
+        <span class="keyword-tag">jwt decoder</span>
+        <span class="keyword-tag">jwt decoder online</span>
+        <span class="keyword-tag">decode json web token</span>
+        <span class="keyword-tag">jwt debugger</span>
+        <span class="keyword-tag">jwt token decoder</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+<script>
+function base64UrlDecode(str) {
+  let s = str.replace(/-/g, '+').replace(/_/g, '/');
+  while (s.length % 4 !== 0) s += '=';
+  return decodeURIComponent(escape(atob(s)));
+}
+
+document.getElementById('decode-btn').addEventListener('click', () => {
+  const statusEl = document.getElementById('status-msg');
+  const token = document.getElementById('jwt-input').value.trim();
+
+  if (!token) { showStatus(statusEl, 'error', 'Please paste a JWT token.'); return; }
+
+  const parts = token.split('.');
+  if (parts.length !== 3) {
+    showStatus(statusEl, 'error', 'Invalid JWT format. A JWT should have 3 parts separated by dots.');
+    return;
+  }
+
+  try {
+    const header = JSON.parse(base64UrlDecode(parts[0]));
+    const payload = JSON.parse(base64UrlDecode(parts[1]));
+
+    document.getElementById('header-output').value = JSON.stringify(header, null, 2);
+    document.getElementById('payload-output').value = JSON.stringify(payload, null, 2);
+    document.getElementById('result-card').style.display = 'block';
+    showStatus(statusEl, 'success', 'Decoded successfully!');
+  } catch (e) {
+    showStatus(statusEl, 'error', 'Could not decode this token. It may not be a valid JWT.');
+  }
+});
+
+document.getElementById('clear-btn').addEventListener('click', () => {
+  document.getElementById('jwt-input').value = '';
+  document.getElementById('result-card').style.display = 'none';
+  document.getElementById('status-msg').style.display = 'none';
+});
+</script>
+</body>
+</html>

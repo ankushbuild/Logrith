@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Image Resize Online — Resize JPG, PNG to Any Size | Logrith Legacy</title>
+  <meta name="description" content="Resize images online free. Set custom width and height, maintain aspect ratio. Works with JPG, PNG, WEBP. No upload to server.">
+  <link rel="canonical" href="https://logrith.in/tools/image-resize">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Legacy">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/image-resize">
+  <meta property="og:site_name" content="Logrith Legacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Image Resize Online — Resize JPG, PNG to Any Size">
+  <meta name="twitter:description" content="Resize images online free. Set custom width and height, maintain aspect ratio. Works with JPG, PNG, WEBP. No upload to server.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-BPJ4332XJH');
+ </script>
+ 
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/utilities">Image Tools</a> › Image Resize</div>
+  <h1>↔️ Free Image Resize Online</h1>
+  <p>Resize any image to exact pixel dimensions. Maintain aspect ratio or set custom width &amp; height. Instant, free, and 100% in-browser.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">🔒 No Upload</span><span class="tool-tag">📐 Custom Dimensions</span><span class="tool-tag">🔗 Aspect Ratio Lock</span></div>
+</div></div>
+
+<div class="tool-workspace">
+  <div class="tool-card">
+    <h2>Upload Image</h2>
+    <div class="upload-zone" id="upload-zone">
+      <input type="file" id="file-input" accept="image/*">
+      <div class="upload-icon">↔️</div>
+      <h3>Drop your image here or click to browse</h3>
+      <p>Supports JPG, PNG, WEBP, BMP, GIF — Max 20MB</p>
+    </div>
+    <div id="orig-info" class="stats-row mt-12"></div>
+  </div>
+
+  <div class="tool-card" id="settings-card" style="display:none;">
+    <h2>Resize Settings</h2>
+
+    <!-- Presets -->
+    <div style="margin-bottom:16px;">
+      <label style="font-size:.84rem;font-weight:500;color:var(--gray-700);display:block;margin-bottom:8px;">Quick Presets</label>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <button class="btn btn-sm btn-secondary preset-btn" data-w="1920" data-h="1080">HD 1920×1080</button>
+        <button class="btn btn-sm btn-secondary preset-btn" data-w="1280" data-h="720">720p 1280×720</button>
+        <button class="btn btn-sm btn-secondary preset-btn" data-w="800" data-h="600">800×600</button>
+        <button class="btn btn-sm btn-secondary preset-btn" data-w="400" data-h="400">Square 400×400</button>
+        <button class="btn btn-sm btn-secondary preset-btn" data-w="1200" data-h="630">OG Image</button>
+        <button class="btn btn-sm btn-secondary preset-btn" data-w="150" data-h="150">Thumbnail</button>
+      </div>
+    </div>
+
+    <div class="controls-grid">
+      <div class="control-group">
+        <label>Width (px)</label>
+        <input type="number" id="width-input" min="1" max="8000" placeholder="e.g. 800">
+      </div>
+      <div class="control-group">
+        <label>Height (px)</label>
+        <input type="number" id="height-input" min="1" max="8000" placeholder="e.g. 600">
+      </div>
+      <div class="control-group">
+        <label>Output Format</label>
+        <select id="out-format">
+          <option value="image/jpeg">JPG</option>
+          <option value="image/png">PNG</option>
+          <option value="image/webp">WEBP</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Quality: <span class="range-value" id="quality-val">90%</span></label>
+        <input type="range" id="quality" min="10" max="100" value="90">
+      </div>
+    </div>
+    <div style="margin-top:12px;display:flex;align-items:center;gap:8px;">
+      <input type="checkbox" id="lock-ratio" checked style="width:16px;height:16px;cursor:pointer;">
+      <label for="lock-ratio" style="font-size:.88rem;font-weight:500;color:var(--gray-700);cursor:pointer;">🔗 Lock Aspect Ratio</label>
+    </div>
+
+    <div class="mt-16 btn-group">
+      <button class="btn btn-primary btn-lg" id="resize-btn">↔️ Resize Image</button>
+      <button class="btn btn-secondary" id="reset-btn">✕ Reset</button>
+    </div>
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+
+  <div class="tool-card" id="output-card" style="display:none;">
+    <h2>Resized Image</h2>
+    <div class="output-preview"><img id="output-img" src="" alt="Resized image" style="max-width:100%;max-height:400px;border-radius:8px;"></div>
+    <div class="stats-row mt-12" id="output-stats"></div>
+    <div class="btn-group mt-16">
+      <button class="btn btn-success" id="download-btn">⬇️ Download Resized Image</button>
+      <button class="btn btn-secondary" id="resize-another">+ Resize Another</button>
+    </div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><div class="faq-q">How do I resize an image to specific dimensions?</div><div class="faq-a">Upload your image, enter the desired width and height in pixels, then click Resize. If aspect ratio lock is on, changing one dimension auto-adjusts the other to maintain proportions.</div></div>
+  <div class="faq-item"><div class="faq-q">What does "Lock Aspect Ratio" mean?</div><div class="faq-a">Aspect ratio is the proportional relationship between width and height. When locked, if you change width, height auto-adjusts so the image doesn't look stretched or squished.</div></div>
+  <div class="faq-item"><div class="faq-q">What are good image sizes for websites?</div><div class="faq-a">Hero images: 1920×1080. Blog images: 1200×800. Thumbnails: 300×200 or 400×400. Social media OG images: 1200×630. Profile pictures: 400×400.</div></div>
+  <div class="faq-item"><div class="faq-q">Will resizing reduce file size?</div><div class="faq-a">Yes — reducing pixel dimensions directly reduces file size since there are fewer pixels to store. A 1920×1080 image resized to 800×450 will be significantly smaller.</div></div>
+</div>
+
+<div id="footer"></div>
+
+<script src="/load-components.js"></script>
+<script src="/assets/js/main.js" defer></script>
+<script>
+let origImg = null, origFile = null, origW = 0, origH = 0;
+const wInput = document.getElementById('width-input');
+const hInput = document.getElementById('height-input');
+const lockRatio = document.getElementById('lock-ratio');
+const qualitySlider = document.getElementById('quality');
+const qualityVal = document.getElementById('quality-val');
+
+qualitySlider.addEventListener('input', () => qualityVal.textContent = qualitySlider.value + '%');
+
+wInput.addEventListener('input', () => {
+  if (lockRatio.checked && origW) hInput.value = Math.round(parseInt(wInput.value) * origH / origW) || '';
+});
+hInput.addEventListener('input', () => {
+  if (lockRatio.checked && origH) wInput.value = Math.round(parseInt(hInput.value) * origW / origH) || '';
+});
+
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    wInput.value = btn.dataset.w;
+    hInput.value = btn.dataset.h;
+  });
+});
+
+function handleFile(file) {
+  if (!file.type.startsWith('image/')) return;
+  if (file.size > 20*1024*1024) { alert('Max 20MB'); return; }
+  origFile = file;
+  const url = URL.createObjectURL(file);
+  origImg = new Image();
+  origImg.onload = () => {
+    origW = origImg.naturalWidth; origH = origImg.naturalHeight;
+    document.getElementById('orig-info').innerHTML = `
+      <span class="stat-chip">Original: <strong>${origW} × ${origH}px</strong></span>
+      <span class="stat-chip">Size: <strong>${formatSize(file.size)}</strong></span>
+      <span class="stat-chip">Name: <strong>${file.name}</strong></span>`;
+    wInput.value = origW; hInput.value = origH;
+    document.getElementById('settings-card').style.display = 'block';
+    document.getElementById('output-card').style.display = 'none';
+  };
+  origImg.src = url;
+}
+document.getElementById('file-input').addEventListener('change', e => handleFile(e.target.files[0]));
+initDragDrop(document.getElementById('upload-zone'), files => handleFile(files[0]));
+
+document.getElementById('resize-btn').addEventListener('click', () => {
+  const w = parseInt(wInput.value), h = parseInt(hInput.value);
+  if (!w || !h || !origImg) { showStatus(document.getElementById('status-msg'), 'error', 'Enter valid dimensions.'); return; }
+  if (w > 8000 || h > 8000) { showStatus(document.getElementById('status-msg'), 'error', 'Max 8000px per dimension.'); return; }
+
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  const mime = document.getElementById('out-format').value;
+  if (mime === 'image/jpeg') { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h); }
+  ctx.drawImage(origImg, 0, 0, w, h);
+
+  const q = parseInt(qualitySlider.value) / 100;
+  canvas.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    document.getElementById('output-img').src = url;
+    document.getElementById('output-stats').innerHTML = `
+      <span class="stat-chip">New size: <strong>${w} × ${h}px</strong></span>
+      <span class="stat-chip">File size: <strong>${formatSize(blob.size)}</strong></span>`;
+    document.getElementById('output-card').style.display = 'block';
+    showStatus(document.getElementById('status-msg'), 'success', 'Image resized!');
+    const ext = mime.split('/')[1];
+    document.getElementById('download-btn').onclick = () => downloadBlob(blob, origFile.name.replace(/\.[^.]+$/, '') + `_${w}x${h}.${ext}`);
+  }, mime, q);
+});
+document.getElementById('reset-btn').addEventListener('click', () => { origImg=null; origFile=null; document.getElementById('orig-info').innerHTML=''; document.getElementById('settings-card').style.display='none'; document.getElementById('output-card').style.display='none'; document.getElementById('file-input').value=''; });
+document.getElementById('resize-another').addEventListener('click', () => { document.getElementById('output-card').style.display='none'; document.getElementById('file-input').click(); });
+</script>
+</body></html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Image Crop Online — Crop JPG, PNG, WEBP | Logrith Legacy</title>
+  <meta name="description" content="Crop images online for free. Set exact crop dimensions or use interactive drag to crop. Supports JPG, PNG, WEBP. No upload required.">
+  <link rel="canonical" href="https://logrith.in/tools/image-crop">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Legacy">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/image-crop">
+  <meta property="og:site_name" content="Logrith Legacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Image Crop Online — Crop JPG, PNG, WEBP">
+  <meta name="twitter:description" content="Crop images online for free. Set exact crop dimensions or use interactive drag to crop. Supports JPG, PNG, WEBP. No upload required.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    #crop-container { position:relative; display:inline-block; max-width:100%; cursor:crosshair; user-select:none; }
+    #crop-img { max-width:100%; max-height:400px; display:block; }
+    #crop-overlay { position:absolute; border:2px solid var(--primary); background:rgba(0,87,255,0.08); pointer-events:none; display:none; }
+    #crop-wrap { text-align:center; background:var(--gray-50); border:1.5px solid var(--gray-200); border-radius:var(--radius); padding:16px; overflow:auto; }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-BPJ4332XJH');
+ </script>
+ 
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/utilities">Image Tools</a> › Image Crop</div>
+  <h1>✂️ Free Image Crop Online</h1>
+  <p>Crop images with an interactive drag tool or enter exact pixel coordinates. Download your cropped image instantly — no server upload.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">🖱️ Drag to Crop</span><span class="tool-tag">📐 Exact Pixels</span><span class="tool-tag">🔒 Private</span></div>
+</div></div>
+
+<div class="tool-workspace">
+  <div class="tool-card">
+    <h2>Upload Image</h2>
+    <div class="upload-zone" id="upload-zone">
+      <input type="file" id="file-input" accept="image/*">
+      <div class="upload-icon">✂️</div>
+      <h3>Drop your image here or click to browse</h3>
+      <p>JPG, PNG, WEBP, BMP — Max 20MB</p>
+    </div>
+  </div>
+
+  <div class="tool-card" id="crop-card" style="display:none;">
+    <h2>Crop Image — Drag to Select Area</h2>
+    <div id="crop-wrap">
+      <div id="crop-container">
+        <img id="crop-img" src="" alt="Image to crop" draggable="false">
+        <div id="crop-overlay"></div>
+      </div>
+    </div>
+    <div class="controls-grid mt-16">
+      <div class="control-group"><label>X (left px)</label><input type="number" id="cx" min="0" value="0"></div>
+      <div class="control-group"><label>Y (top px)</label><input type="number" id="cy" min="0" value="0"></div>
+      <div class="control-group"><label>Width (px)</label><input type="number" id="cw" min="1" value=""></div>
+      <div class="control-group"><label>Height (px)</label><input type="number" id="ch" min="1" value=""></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+      <button class="btn btn-sm btn-secondary" data-ratio="1:1">1:1 Square</button>
+      <button class="btn btn-sm btn-secondary" data-ratio="16:9">16:9 Landscape</button>
+      <button class="btn btn-sm btn-secondary" data-ratio="4:3">4:3</button>
+      <button class="btn btn-sm btn-secondary" data-ratio="9:16">9:16 Portrait</button>
+      <button class="btn btn-sm btn-secondary" id="crop-full">Full Image</button>
+    </div>
+    <div class="stats-row mt-12" id="crop-info"></div>
+    <div class="mt-16 btn-group">
+      <button class="btn btn-primary btn-lg" id="crop-btn">✂️ Crop Image</button>
+      <button class="btn btn-secondary" id="reset-btn">✕ Reset</button>
+    </div>
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+
+  <div class="tool-card" id="output-card" style="display:none;">
+    <h2>Cropped Result</h2>
+    <div class="output-preview"><img id="output-img" src="" alt="Cropped image" style="max-width:100%;max-height:400px;border-radius:8px;"></div>
+    <div class="stats-row mt-12" id="output-stats"></div>
+    <div class="btn-group mt-16">
+      <button class="btn btn-success" id="download-btn">⬇️ Download Cropped Image</button>
+      <button class="btn btn-secondary" id="crop-another">✂️ Crop Again</button>
+    </div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><div class="faq-q">How do I crop an image online?</div><div class="faq-a">Upload your image, then drag on the preview to select the crop area. You can also type exact pixel coordinates in the X, Y, Width, Height fields. Click Crop Image to apply.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I crop to a specific aspect ratio?</div><div class="faq-a">Yes! Use the preset buttons (1:1, 16:9, 4:3, 9:16) to automatically set a crop area with the correct proportions centered on the image.</div></div>
+  <div class="faq-item"><div class="faq-q">Will cropping affect image quality?</div><div class="faq-a">No, cropping only removes the parts outside your selection. The remaining area retains its full original quality.</div></div>
+</div>
+
+<div id="footer"></div>
+
+<script src="/load-components.js"></script>
+<script src="/assets/js/main.js" defer></script>
+<script>
+let origImg = null, origFile = null;
+let isDragging = false, startX, startY, selX, selY, selW, selH;
+let scale = 1;
+const container = document.getElementById('crop-container');
+const overlay = document.getElementById('crop-overlay');
+const cropImg = document.getElementById('crop-img');
+const cx = document.getElementById('cx'), cy = document.getElementById('cy');
+const cw = document.getElementById('cw'), ch = document.getElementById('ch');
+const cropInfo = document.getElementById('crop-info');
+
+function updateInfo() {
+  if (origImg) cropInfo.innerHTML = `<span class="stat-chip">Image: <strong>${origImg.naturalWidth} × ${origImg.naturalHeight}px</strong></span><span class="stat-chip">Selection: <strong>${cw.value||0} × ${ch.value||0}px</strong></span>`;
+}
+
+// Drag to select
+container.addEventListener('mousedown', e => {
+  const rect = cropImg.getBoundingClientRect();
+  scale = origImg ? origImg.naturalWidth / cropImg.offsetWidth : 1;
+  startX = e.clientX - rect.left; startY = e.clientY - rect.top;
+  isDragging = true;
+  overlay.style.display = 'block';
+  e.preventDefault();
+});
+document.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  const rect = cropImg.getBoundingClientRect();
+  let curX = e.clientX - rect.left, curY = e.clientY - rect.top;
+  selX = Math.max(0, Math.min(startX, curX));
+  selY = Math.max(0, Math.min(startY, curY));
+  selW = Math.abs(curX - startX); selH = Math.abs(curY - startY);
+  overlay.style.left = selX + 'px'; overlay.style.top = selY + 'px';
+  overlay.style.width = selW + 'px'; overlay.style.height = selH + 'px';
+  cx.value = Math.round(selX * scale); cy.value = Math.round(selY * scale);
+  cw.value = Math.round(selW * scale); ch.value = Math.round(selH * scale);
+  updateInfo();
+});
+document.addEventListener('mouseup', () => { isDragging = false; });
+
+// Touch support
+container.addEventListener('touchstart', e => {
+  const t = e.touches[0]; const rect = cropImg.getBoundingClientRect();
+  scale = origImg ? origImg.naturalWidth / cropImg.offsetWidth : 1;
+  startX = t.clientX - rect.left; startY = t.clientY - rect.top;
+  isDragging = true; overlay.style.display = 'block'; e.preventDefault();
+}, { passive: false });
+document.addEventListener('touchmove', e => {
+  if (!isDragging) return;
+  const t = e.touches[0]; const rect = cropImg.getBoundingClientRect();
+  let curX = t.clientX - rect.left, curY = t.clientY - rect.top;
+  selX = Math.max(0, Math.min(startX, curX)); selY = Math.max(0, Math.min(startY, curY));
+  selW = Math.abs(curX - startX); selH = Math.abs(curY - startY);
+  overlay.style.left = selX+'px'; overlay.style.top = selY+'px'; overlay.style.width = selW+'px'; overlay.style.height = selH+'px';
+  cx.value = Math.round(selX * scale); cy.value = Math.round(selY * scale);
+  cw.value = Math.round(selW * scale); ch.value = Math.round(selH * scale);
+  updateInfo();
+}, { passive: true });
+document.addEventListener('touchend', () => { isDragging = false; });
+
+// Ratio presets
+document.querySelectorAll('[data-ratio]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (!origImg) return;
+    const [rw, rh] = btn.dataset.ratio.split(':').map(Number);
+    const imgW = origImg.naturalWidth, imgH = origImg.naturalHeight;
+    let w = imgW, h = Math.round(w * rh / rw);
+    if (h > imgH) { h = imgH; w = Math.round(h * rw / rh); }
+    const x = Math.round((imgW - w) / 2), y = Math.round((imgH - h) / 2);
+    cx.value = x; cy.value = y; cw.value = w; ch.value = h;
+    const dispScale = cropImg.offsetWidth / imgW;
+    overlay.style.left = (x * dispScale) + 'px'; overlay.style.top = (y * dispScale) + 'px';
+    overlay.style.width = (w * dispScale) + 'px'; overlay.style.height = (h * dispScale) + 'px';
+    overlay.style.display = 'block'; updateInfo();
+  });
+});
+
+document.getElementById('crop-full').addEventListener('click', () => {
+  if (!origImg) return;
+  cx.value = 0; cy.value = 0; cw.value = origImg.naturalWidth; ch.value = origImg.naturalHeight;
+  overlay.style.display = 'none'; updateInfo();
+});
+
+function handleFile(file) {
+  if (!file.type.startsWith('image/')) return;
+  if (file.size > 20*1024*1024) { alert('Max 20MB'); return; }
+  origFile = file;
+  const url = URL.createObjectURL(file);
+  origImg = new Image();
+  origImg.onload = () => {
+    cropImg.src = url;
+    cw.value = origImg.naturalWidth; ch.value = origImg.naturalHeight;
+    document.getElementById('crop-card').style.display = 'block';
+    document.getElementById('output-card').style.display = 'none';
+    updateInfo();
+  };
+  origImg.src = url;
+}
+document.getElementById('file-input').addEventListener('change', e => handleFile(e.target.files[0]));
+initDragDrop(document.getElementById('upload-zone'), files => handleFile(files[0]));
+
+document.getElementById('crop-btn').addEventListener('click', () => {
+  const x = parseInt(cx.value)||0, y = parseInt(cy.value)||0;
+  const w = parseInt(cw.value), h = parseInt(ch.value);
+  if (!w || !h || !origImg) { showStatus(document.getElementById('status-msg'), 'error', 'Set crop dimensions first.'); return; }
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(origImg, x, y, w, h, 0, 0, w, h);
+  canvas.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    document.getElementById('output-img').src = url;
+    document.getElementById('output-stats').innerHTML = `<span class="stat-chip">Cropped: <strong>${w} × ${h}px</strong></span><span class="stat-chip">Size: <strong>${formatSize(blob.size)}</strong></span>`;
+    document.getElementById('output-card').style.display = 'block';
+    showStatus(document.getElementById('status-msg'), 'success', 'Image cropped!');
+    document.getElementById('download-btn').onclick = () => downloadBlob(blob, origFile.name.replace(/\.[^.]+$/, '') + '_cropped.png');
+  }, 'image/png');
+});
+
+document.getElementById('reset-btn').addEventListener('click', () => { document.getElementById('crop-card').style.display='none'; document.getElementById('output-card').style.display='none'; document.getElementById('file-input').value=''; origImg=null; });
+document.getElementById('crop-another').addEventListener('click', () => { document.getElementById('output-card').style.display='none'; });
+</script>
+</body></html>

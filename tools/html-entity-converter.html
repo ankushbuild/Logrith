@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free HTML Entity Encoder & Decoder Online — Convert Special Characters | Logrith Legacy</title>
+  <meta name="description" content="Encode or decode HTML entities online for free. Convert special characters like &, <, >, quotes into safe HTML entities, or decode them back. No signup required.">
+  <meta name="keywords" content="html entity converter, html entity encoder, html entity decoder, encode html entities online, decode html entities free">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Legacy">
+  <link rel="canonical" href="https://logrith.in/tools/html-entity-converter">
+  <meta property="og:title" content="Free HTML Entity Encoder & Decoder | Logrith Legacy">
+  <meta property="og:description" content="Encode or decode HTML entities instantly. Free and browser-based.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/html-entity-converter">
+  <meta property="og:site_name" content="Logrith Legacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free HTML Entity Converter | Logrith Legacy">
+  <meta name="twitter:description" content="Encode or decode HTML entities instantly, free and private.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://logrith.in/#organization","name":"Logrith Legacy","url":"https://logrith.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"HTML Entity Converter","url":"https://logrith.in/tools/html-entity-converter","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Free online HTML entity encoder and decoder.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://logrith.in/#organization"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://logrith.in/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://logrith.in/categories/developer-tools"},{"@type":"ListItem","position":3,"name":"HTML Entity Converter","item":"https://logrith.in/tools/html-entity-converter"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Why encode special characters as HTML entities?","acceptedAnswer":{"@type":"Answer","text":"Characters like <, >, and & have special meaning in HTML markup. Encoding them as entities lets you display these characters as literal text instead of being interpreted as HTML syntax."}},
+    {"@type":"Question","name":"What is XSS and how does entity encoding relate to it?","acceptedAnswer":{"@type":"Answer","text":"Cross-site scripting (XSS) is a security vulnerability where malicious HTML/JavaScript is injected into a page. Encoding user-supplied text as HTML entities before displaying it is a standard defense against this class of attack."}}
+  ]}
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/developer-tools">Developer Tools</a> › HTML Entity Converter</div>
+  <h1>Free HTML Entity Encoder & Decoder</h1>
+  <p>Convert special characters into safe HTML entities, or decode HTML entities back into readable text.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">🔄 Encode & Decode</span><span class="tool-tag">⚡ Instant</span></div>
+</div></div>
+
+<div class="tool-workspace" style="max-width:820px;">
+  <div class="tool-card">
+    <h2>Input Text</h2>
+    <textarea class="tool-textarea" id="input-text" rows="8" placeholder="Enter text or HTML with special characters...">&lt;div class="box"&gt;Tom & Jerry's "Adventure"&lt;/div&gt;</textarea>
+    <div class="btn-group mt-12">
+      <button class="btn btn-primary" id="encode-btn">🔒 Encode Entities</button>
+      <button class="btn btn-primary" id="decode-btn">🔓 Decode Entities</button>
+      <button class="btn btn-secondary" id="clear-btn">✕ Clear</button>
+    </div>
+    <div class="control-group mt-16" style="position:relative;">
+      <label>Output</label>
+      <textarea class="tool-textarea" id="output-text" rows="8" readonly></textarea>
+      <button class="copy-btn" id="copy-btn">📋 Copy</button>
+    </div>
+  </div>
+
+  <div class="tool-card">
+    <h2>Common HTML Entities Reference</h2>
+    <div class="preview-grid" id="entity-ref" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));"></div>
+  </div>
+</div>
+
+<div class="content-card faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item-box"><h3>Why encode special characters as HTML entities?</h3><p>Characters like &lt;, &gt;, and & have special meaning in HTML markup. Encoding them as entities displays them as literal text instead of being interpreted as HTML syntax.</p></div>
+    <div class="faq-item-box"><h3>What is XSS and how does this relate?</h3><p>Cross-site scripting (XSS) is a security vulnerability from injected malicious HTML/JavaScript. Encoding user-supplied text as entities before display is a standard defense against this class of attack.</p></div>
+    <div class="faq-item-box"><h3>Can this decode named entities like &amp;copy;?</h3><p>Yes, the decoder handles both numeric entities (&amp;#39;) and common named entities (&amp;amp;, &amp;copy;, &amp;trade;, and more).</p></div>
+  </div>
+</div>
+
+<section class="article-section">
+  <h2>HTML Entity Encoder and Decoder</h2>
+  <p>This tool converts special characters into their HTML entity equivalents (encoding), or converts HTML entities back into their original characters (decoding). It's essential for safely displaying text that contains characters with special meaning in HTML markup.</p>
+
+  <h3>Why HTML Entities Exist</h3>
+  <p>Certain characters — particularly <code>&lt;</code>, <code>&gt;</code>, and <code>&amp;</code> — are reserved in HTML because they're used to define tags and entities themselves. If you want to display a literal "&lt;" character in a webpage's text content rather than having it interpreted as the start of a tag, you need to encode it as <code>&amp;lt;</code>. HTML entities provide this escape mechanism for reserved characters, as well as a way to represent characters that might not be easily typed (like curly quotes, em dashes, or trademark symbols).</p>
+
+  <h3>Encoding as an XSS Defense</h3>
+  <p>Beyond just correct rendering, encoding is a critical security practice. If a website displays user-submitted text without encoding it first, and that text happens to contain HTML or JavaScript, the browser will interpret and potentially execute it — this is the basis of cross-site scripting (XSS) attacks. Encoding special characters before inserting user-supplied content into a page is one of the most fundamental defenses against this vulnerability, ensuring that user input is always treated as plain text, never as executable markup.</p>
+
+  <h3>Common HTML Entities</h3>
+  <ul class="feature-list">
+    <li><strong>&amp;amp;</strong> renders as & (ampersand)</li>
+    <li><strong>&amp;lt;</strong> renders as &lt; (less than)</li>
+    <li><strong>&amp;gt;</strong> renders as &gt; (greater than)</li>
+    <li><strong>&amp;quot;</strong> renders as " (double quote)</li>
+    <li><strong>&amp;#39;</strong> renders as ' (single quote/apostrophe)</li>
+    <li><strong>&amp;nbsp;</strong> renders as a non-breaking space</li>
+    <li><strong>&amp;copy;</strong> renders as © (copyright symbol)</li>
+  </ul>
+
+  <h3>Privacy and Local Processing</h3>
+  <p>All encoding and decoding happens directly in your browser — your text is never sent to a server.</p>
+</section>
+
+<div class="content-card related-tools">
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="/tools/url-encoder" class="tool-item"><div class="ti-text"><h4>URL Encoder/Decoder</h4><p>Encode and decode URLs for safe transmission.</p></div></a>
+    <a href="/tools/base64" class="tool-item"><div class="ti-text"><h4>Base64 Encode/Decode</h4><p>Encode and decode Base64 text and files.</p></div></a>
+    <a href="/tools/html-minifier" class="tool-item"><div class="ti-text"><h4>HTML Minifier</h4><p>Minify or beautify HTML code.</p></div></a>
+    <a href="/tools/json-formatter" class="tool-item"><div class="ti-text"><h4>JSON Formatter</h4><p>Format and validate JSON data.</p></div></a>
+  </div>
+</div>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card keyword-section">
+      <h2>Popular Searches</h2>
+      <div class="keyword-box">
+        <span class="keyword-tag">html entity converter</span>
+        <span class="keyword-tag">html entity encoder</span>
+        <span class="keyword-tag">html entity decoder</span>
+        <span class="keyword-tag">encode html entities online</span>
+        <span class="keyword-tag">decode html entities free</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+<script>
+const ENTITY_MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+
+function encodeHTMLEntities(str) {
+  return str.replace(/[&<>"']/g, ch => ENTITY_MAP[ch]);
+}
+
+function decodeHTMLEntities(str) {
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = str;
+  return textarea.value;
+}
+
+document.getElementById('encode-btn').addEventListener('click', () => {
+  const input = document.getElementById('input-text').value;
+  document.getElementById('output-text').value = encodeHTMLEntities(input);
+});
+
+document.getElementById('decode-btn').addEventListener('click', () => {
+  const input = document.getElementById('input-text').value;
+  document.getElementById('output-text').value = decodeHTMLEntities(input);
+});
+
+document.getElementById('clear-btn').addEventListener('click', () => {
+  document.getElementById('input-text').value = '';
+  document.getElementById('output-text').value = '';
+});
+
+document.getElementById('copy-btn').addEventListener('click', function() {
+  const v = document.getElementById('output-text').value;
+  if (v) copyText(v, this);
+});
+
+const REF_ENTITIES = [
+  ['&amp;', '&'], ['&lt;', '<'], ['&gt;', '>'], ['&quot;', '"'], ['&#39;', "'"],
+  ['&nbsp;', 'space'], ['&copy;', '©'], ['&reg;', '®'], ['&trade;', '™'],
+  ['&mdash;', '—'], ['&hellip;', '…'], ['&euro;', '€']
+];
+document.getElementById('entity-ref').innerHTML = REF_ENTITIES.map(([code, rendered]) =>
+  `<div class="preview-card" style="text-align:center;padding:12px;"><div class="mono" style="font-size:.85rem;color:var(--primary);font-weight:700;">${code.replace('&','&amp;')}</div><div style="margin-top:4px;color:var(--gray-600);">${rendered}</div></div>`
+).join('');
+</script>
+</body>
+</html>

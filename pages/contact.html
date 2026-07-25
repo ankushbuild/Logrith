@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Logrith Legacy — Get in Touch</title>
+  <meta name="description" content="Contact Logrith Legacy for general inquiries, tool suggestions, bug reports or business partnerships. We respond within 24 hours.">
+  <meta name="keywords" content="contact logrith, logrith help, logrith inquiry, logrith support">
+  <link rel="canonical" href="https://logrith.in/pages/contact">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#000000">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    /* ── PAGE SWITCH TABS ── */
+    .page-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 16px 24px;
+      background: var(--white);
+      border-bottom: 1.5px solid var(--gray-200);
+    }
+    .page-tab {
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--gray-50);
+      font-size: .84rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .page-tab:hover { border-color: var(--primary); color: var(--primary); background: var(--white); }
+    .page-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    /* ── HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8f7f5 100%);
+      padding: 56px 24px 44px;
+      text-align: center;
+      border-bottom: 1.5px solid var(--gray-200);
+    }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,5vw,2.6rem); font-weight: 800; color: var(--gray-900); margin-bottom: 10px; }
+    .page-hero h1 span { color: var(--primary); }
+    .page-hero p { font-size: .96rem; color: var(--gray-600); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+    .breadcrumb { display:flex; align-items:center; gap:6px; font-size:.8rem; color:var(--gray-400); justify-content:center; margin-bottom:14px; }
+    .breadcrumb a { color:var(--primary); text-decoration:none; }
+
+    /* ── LAYOUT ── */
+    .contact-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ── LEFT INFO CARDS ── */
+    .contact-info h2 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--gray-900); margin-bottom: 18px; }
+    .contact-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: var(--transition);
+    }
+    .contact-card:hover { border-color: var(--gray-300); box-shadow: var(--shadow-sm); }
+    .cc-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+    .contact-card h3 { font-family: var(--font-display); font-size: .88rem; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+    .contact-card p { font-size: .82rem; color: var(--gray-600); line-height: 1.55; margin: 0; }
+    .contact-card a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .info-note {
+      background: var(--gray-50);
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+      padding: 14px 16px;
+      font-size: .8rem;
+      color: var(--gray-500);
+      line-height: 1.65;
+      margin-top: 6px;
+    }
+    .page-links { margin-top: 20px; }
+    .page-links p { font-size: .82rem; color: var(--gray-500); margin-bottom: 8px; }
+    .page-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: var(--transition);
+    }
+    .page-links a:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+    }
+    .form-card h2 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 24px; }
+    .cf-group { margin-bottom: 16px; }
+    .cf-group label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 6px;
+    }
+    .cf-group label .req { color: var(--primary); margin-left: 2px; }
+    .cf-group input,
+    .cf-group select,
+    .cf-group textarea {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-size: .88rem;
+      font-family: var(--font-main);
+      color: var(--gray-900);
+      background: var(--white);
+      outline: none;
+      transition: var(--transition);
+      box-sizing: border-box;
+    }
+    .cf-group input:focus,
+    .cf-group select:focus,
+    .cf-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0,87,255,.08); }
+    .cf-group input.error,
+    .cf-group select.error,
+    .cf-group textarea.error { border-color: #ef4444; }
+    .cf-group textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+    .field-error { font-size: .75rem; color: #ef4444; margin-top: 4px; display: none; }
+    .field-error.show { display: block; }
+    .char-count { font-size: .74rem; color: var(--gray-400); text-align: right; margin-top: 4px; }
+
+    .contact-card { background:var(--white); border:1.5px solid var(--gray-200); border-radius:var(--radius-lg); padding:16px 18px; margin-bottom:12px; display:flex; align-items:flex-start; gap:14px; transition:var(--transition); }
+    .contact-card:hover { border-color:var(--gray-300); box-shadow:var(--shadow-sm); }
+    .cc-icon { font-size:1.3rem; flex-shrink:0; margin-top:1px; }
+    .contact-card h3 { font-family:var(--font-display); font-size:.88rem; font-weight:700; color:var(--gray-900); margin-bottom:4px; }
+    .contact-card p { font-size:.82rem; color:var(--gray-600); line-height:1.55; margin:0; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light, #3b82f6) 100%);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-size: .94rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 14px rgba(0,87,255,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .submit-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,87,255,.35); }
+    .submit-btn:disabled { opacity: .7; cursor: not-allowed; transform: none; }
+    .form-footer { font-size: .74rem; color: var(--gray-400); text-align: center; margin-top: 12px; }
+    .form-footer a { color: var(--primary); }
+
+    /* ── SUCCESS / ERROR STATES ── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px 24px;
+      background: #f0fdf4;
+      border-radius: var(--radius-lg);
+      border: 1.5px solid #a7f3d0;
+    }
+    .form-success .fs-icon { font-size: 2.8rem; display: block; margin-bottom: 14px; }
+    .form-success h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #065f46; margin-bottom: 8px; }
+    .form-success p { font-size: .86rem; color: #047857; line-height: 1.6; }
+    .form-success .reset-btn {
+      margin-top: 18px;
+      padding: 8px 20px;
+      background: white;
+      border: 1.5px solid #a7f3d0;
+      border-radius: 20px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: #059669;
+      cursor: pointer;
+      font-family: var(--font-display);
+    }
+    .msg-error {
+      display: none;
+      padding: 12px 16px;
+      background: #fef2f2;
+      border: 1.5px solid #fecaca;
+      border-radius: var(--radius);
+      font-size: .84rem;
+      color: #dc2626;
+      margin-bottom: 16px;
+    }
+    .msg-error.show { display: block; }
+
+    @media (max-width: 768px) {
+      .contact-wrap { grid-template-columns: 1fr; gap: 28px; padding: 28px 16px 60px; }
+      .form-card { padding: 22px 18px; }
+      .page-tabs { top: 44px; overflow-x: auto; justify-content: flex-start; padding: 12px 16px; }
+      .page-tab { white-space: nowrap; padding: 7px 16px; font-size: .8rem; }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BPJ4332XJH');</script>
+ 
+</head>
+<body>
+<div id="navbar"></div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="breadcrumb"><a href="/">Home</a> › Contact</div>
+  <h1>Get in <span>Touch</span></h1>
+  <p>Have a question, found a bug, or want to suggest a new tool? We read every message and respond within 24 hours.</p>
+</div>
+
+<!-- PAGE TABS -->
+<div class="page-tabs">
+  <a href="contact" class="page-tab active">✉️ Contact</a>
+  <a href="support" class="page-tab">🛠️ Support</a>
+  <a href="business" class="page-tab">🤝 Business</a>
+</div>
+
+<div class="contact-wrap">
+
+  <!-- LEFT -->
+  <div class="contact-info">
+    <h2>How can we help?</h2>
+
+    <div class="contact-card">
+      <span class="cc-icon"><svg class="icon"><use href="/assets/svg/icons.svg#bug"></use></svg></span>
+      <div>
+        <h3>Report a Bug</h3>
+        <p>Tool not working? Tell us which one, what happened, and what you expected. Fixed within 48 hours.</p>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <span class="cc-icon"><svg class="icon"><use href="/assets/svg/icons.svg#tool"></use></svg></span>
+      <div>
+        <h3>Suggest a Tool</h3>
+        <p>Have an idea? We build the most requested tools first. Your suggestion matters.</p>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <span class="cc-icon"><svg class="icon"><use href="/assets/svg/icons.svg#users"></use></svg></span>
+      <div>
+        <h3>Business Inquiries</h3>
+        <p>Advertising, partnerships or integrations? Reach us at <a href="mailto:contact@logrith.in">contact@logrith.in</a></p>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <span class="cc-icon"><svg class="icon"><use href="/assets/svg/icons.svg#clock"></use></svg></span>
+      <div>
+        <h3>Response Time</h3>
+        <p>We typically reply within <strong>24 hours</strong> on business days.</p>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <span class="cc-icon">📧</span>
+      <div>
+        <h3>Direct Email</h3>
+        <p>email us at <a href="mailto:hello@logrith.in" style="color:var(--primary);font-weight:600;">hello@logrith.in</a></p>
+      </div>
+    </div>
+
+    <div class="page-links">
+      <p>Looking for something specific?</p>
+      <a href="support"><svg class="icon"><use href="/assets/svg/icons.svg#bug"></use></svg> Report a technical issue →</a>
+      <a href="business"><svg class="icon"><use href="/assets/svg/icons.svg#users"></use></svg> Business &amp; partnerships →</a>
+    </div>
+  </div>
+
+  <!-- RIGHT FORM -->
+  <div class="form-card">
+    <h2>Send a Message</h2>
+    <div class="msg-error" id="msg-error"></div>
+
+    <div id="contact-form">
+      <div class="cf-group">
+        <label>Name <span class="req">*</span></label>
+        <input type="text" id="cf-name" placeholder="Your full name" autocomplete="name">
+        <div class="field-error" id="err-name">Please enter your name.</div>
+      </div>
+
+      <div class="cf-group">
+        <label>Email <span class="req">*</span></label>
+        <input type="email" id="cf-email" placeholder="you@example.com" autocomplete="email">
+        <div class="field-error" id="err-email">Please enter a valid email address.</div>
+      </div>
+
+      <div class="cf-group">
+        <label>Subject</label>
+        <select id="cf-subject">
+          <option value="general">General Inquiry</option>
+          <option value="bug">🐛 Bug Report</option>
+          <option value="suggestion">💡 Tool Suggestion</option>
+          <option value="business">🤝 Business / Partnership</option>
+          <option value="other">📝 Other</option>
+        </select>
+      </div>
+
+      <div class="cf-group">
+        <label>Message <span class="req">*</span></label>
+        <textarea id="cf-message" placeholder="Describe your question, suggestion, or issue in detail..." oninput="updateCharCount(this, 'cc-msg', 20, 2000)"></textarea>
+        <div class="char-count" id="cc-msg">0 / 2000</div>
+        <div class="field-error" id="err-message">Message must be at least 20 characters.</div>
+      </div>
+
+      <button class="submit-btn" id="cf-submit" onclick="submitForm('contact')">
+        <span id="btn-text">Send Message</span>
+        <span id="btn-arrow">→</span>
+      </button>
+      <p class="form-footer">We never share your email. See our <a href="privacy">Privacy Policy</a>.</p>
+    </div>
+
+    <div class="form-success" id="form-success">
+      <span class="fs-icon">✅</span>
+      <h3>Message Sent!</h3>
+      <p>Thank you for reaching out. We'll get back to you within 24 hours at the email address you provided.</p>
+      <button class="reset-btn" onclick="resetForm()">Send another message</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="footer"></div>
+<script src="/load-components.js"></script>
+<script src="/assets/js/main.js" defer></script>
+<script>
+/* ── SHARED FORM UTILITIES ── */
+function updateCharCount(el, countId, min, max) {
+  var len = el.value.length;
+  var el2 = document.getElementById(countId);
+  if (el2) el2.textContent = len + ' / ' + max;
+  if (len > max) el.value = el.value.slice(0, max);
+}
+
+function showFieldError(fieldId, errId, show) {
+  var f = document.getElementById(fieldId);
+  var e = document.getElementById(errId);
+  if (!f || !e) return;
+  if (show) { f.classList.add('error'); e.classList.add('show'); }
+  else { f.classList.remove('error'); e.classList.remove('show'); }
+}
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function submitForm(page) {
+  var name    = (document.getElementById('cf-name')    || {}).value || '';
+  var email   = (document.getElementById('cf-email')   || {}).value || '';
+  var message = (document.getElementById('cf-message') || {}).value || '';
+  var subject = (document.getElementById('cf-subject') ||
+                 document.getElementById('cf-issue')   ||
+                 document.getElementById('cf-inquiry') || {}).value || '';
+
+  // Clear previous errors
+  showFieldError('cf-name',    'err-name',    false);
+  showFieldError('cf-email',   'err-email',   false);
+  showFieldError('cf-message', 'err-message', false);
+  var errBox = document.getElementById('msg-error');
+  if (errBox) { errBox.textContent = ''; errBox.classList.remove('show'); }
+
+  // Validate
+  var valid = true;
+  if (!name.trim())              { showFieldError('cf-name',    'err-name',    true); valid = false; }
+  if (!validateEmail(email))     { showFieldError('cf-email',   'err-email',   true); valid = false; }
+  if (message.trim().length < 20){ showFieldError('cf-message', 'err-message', true); valid = false; }
+  if (!valid) return;
+
+  // Spam check
+  if (name.trim().length < 2) {
+    showFieldError('cf-name', 'err-name', true);
+    document.getElementById('err-name').textContent = 'Name too short.';
+    return;
+  }
+
+  // Routing logic
+  var to = 'hello@logrith.in';
+  if (page === 'contact') {
+    if (subject === 'bug')      to = 'support@logrith.in';
+    if (subject === 'business') to = 'contact@logrith.in';
+  } else if (page === 'support') {
+    to = 'support@logrith.in';
+  } else if (page === 'business') {
+    to = 'contact@logrith.in';
+  }
+
+  // Loading state
+  var btn = document.getElementById('cf-submit');
+  var btnText = document.getElementById('btn-text');
+  var btnArrow = document.getElementById('btn-arrow');
+  if (btn) btn.disabled = true;
+  if (btnText) btnText.textContent = 'Sending...';
+  if (btnArrow) btnArrow.textContent = '⟳';
+
+  // Extra fields
+  var toolName    = (document.getElementById('cf-tool')    || {}).value || '';
+  var companyName = (document.getElementById('cf-company') || {}).value || '';
+
+  // POST to backend
+  fetch('https://about.ankushmaur4.workers.dev', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: name.trim(),
+      email: email.trim(),
+      subject: subject,
+      message: message.trim(),
+      page: page,
+      to: to,
+      toolName: toolName.trim(),
+      companyName: companyName.trim()
+    })
+  })
+  .then(function(res) {
+    if (!res.ok) throw new Error('Server error ' + res.status);
+    return res.json();
+  })
+  .then(function() {
+    // Success
+    var form = document.getElementById('contact-form');
+    var success = document.getElementById('form-success');
+    if (form) form.style.display = 'none';
+    if (success) success.style.display = 'block';
+  })
+  .catch(function(err) {
+    // Error
+    if (btn) btn.disabled = false;
+    if (btnText) btnText.textContent = 'Send Message';
+    if (btnArrow) btnArrow.textContent = '→';
+    if (errBox) {
+      errBox.textContent = 'Something went wrong. Please try again or email us directly at hello@logrith.in';
+      errBox.classList.add('show');
+    }
+  });
+}
+
+function resetForm() {
+  var form = document.getElementById('contact-form');
+  var success = document.getElementById('form-success');
+  if (form) { form.style.display = ''; form.reset ? form.reset() : null; }
+  if (success) success.style.display = 'none';
+  // Reset all inputs manually
+  ['cf-name','cf-email','cf-message','cf-subject','cf-tool','cf-company','cf-issue','cf-inquiry'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.value = el.tagName === 'SELECT' ? el.options[0].value : '';
+  });
+  var btn = document.getElementById('cf-submit');
+  var btnText = document.getElementById('btn-text');
+  var btnArrow = document.getElementById('btn-arrow');
+  if (btn) btn.disabled = false;
+  if (btnText) btnText.textContent = 'Send Message';
+  if (btnArrow) btnArrow.textContent = '→';
+}
+</script>
+</body>
+</html>

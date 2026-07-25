@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Image Watermark Tool Online — Add Text Watermark | Logrith Legacy</title>
+  <meta name="description" content="Add a text watermark to your images online for free. Control position, opacity, font size, and color, then download instantly. No signup required.">
+  <meta name="keywords" content="image watermark tool, add watermark to image online, text watermark generator, photo watermark free, watermark maker online">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Legacy">
+  <link rel="canonical" href="https://logrith.in/tools/image-watermark">
+  <meta property="og:title" content="Free Image Watermark Tool Online | Logrith Legacy">
+  <meta property="og:description" content="Add a text watermark to images instantly. Free, browser-based, with position and opacity control.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/image-watermark">
+  <meta property="og:site_name" content="Logrith Legacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Image Watermark Tool | Logrith Legacy">
+  <meta name="twitter:description" content="Add a text watermark to any image instantly, free and private.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://logrith.in/#organization","name":"Logrith Legacy","url":"https://logrith.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Image Watermark Tool","url":"https://logrith.in/tools/image-watermark","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","description":"Free online tool to add a customizable text watermark to images.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://logrith.in/#organization"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://logrith.in/"},{"@type":"ListItem","position":2,"name":"Image & PDF Tools","item":"https://logrith.in/categories/image-pdf-tools"},{"@type":"ListItem","position":3,"name":"Image Watermark","item":"https://logrith.in/tools/image-watermark"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Why add a watermark to an image?","acceptedAnswer":{"@type":"Answer","text":"Watermarks help protect ownership of photos and graphics shared online, discourage unauthorized use, and add branding to shared images."}},
+    {"@type":"Question","name":"Will the watermark reduce image quality?","acceptedAnswer":{"@type":"Answer","text":"No, the watermark is drawn on top of the original image at full resolution, so the underlying image quality is unaffected."}}
+  ]}
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/image-pdf-tools">Image & PDF Tools</a> › Image Watermark</div>
+  <h1>Free Image Watermark Tool</h1>
+  <p>Add a custom text watermark to your images — control position, size, color, and opacity — then download instantly.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">🎨 Full Control</span><span class="tool-tag">⚡ Instant</span></div>
+</div></div>
+
+<div class="tool-workspace" style="max-width:900px;">
+  <div class="tool-card">
+    <h2>Upload Image</h2>
+    <div class="upload-zone" id="upload-zone">
+      <input type="file" id="file-input" accept="image/*">
+      <div class="upload-icon">🖼️</div>
+      <h3>Drop an image here or click to browse</h3>
+      <p>PNG, JPG, WEBP — max 10MB</p>
+    </div>
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+
+  <div class="tool-card" id="controls-card" style="display:none;">
+    <h2>Watermark Settings</h2>
+    <div class="control-group">
+      <label>Watermark Text</label>
+      <input type="text" id="wm-text" value="© Logrith Legacy" class="field-input">
+    </div>
+    <div class="controls-grid mt-12">
+      <div class="control-group">
+        <label>Position</label>
+        <select id="wm-position">
+          <option value="bottom-right">Bottom Right</option>
+          <option value="bottom-left">Bottom Left</option>
+          <option value="top-right">Top Right</option>
+          <option value="top-left">Top Left</option>
+          <option value="center">Center</option>
+          <option value="tile">Tiled (repeat)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Font Size: <span id="size-val">32</span>px</label>
+        <input type="range" id="wm-size" min="12" max="120" value="32">
+      </div>
+      <div class="control-group">
+        <label>Opacity: <span id="opacity-val">50</span>%</label>
+        <input type="range" id="wm-opacity" min="5" max="100" value="50">
+      </div>
+      <div class="control-group">
+        <label>Color</label>
+        <input type="color" id="wm-color" value="#ffffff" style="width:100%;height:42px;border-radius:8px;border:1.5px solid var(--gray-200);cursor:pointer;">
+      </div>
+    </div>
+    <div class="btn-group mt-16">
+      <button class="btn btn-primary" id="apply-btn">✨ Apply Watermark</button>
+    </div>
+  </div>
+
+  <div class="tool-card" id="result-card" style="display:none;">
+    <h2>Result</h2>
+    <canvas id="output-canvas" style="max-width:100%;border-radius:10px;border:1.5px solid var(--gray-200);"></canvas>
+    <div class="btn-group mt-16">
+      <a href="#" id="download-btn" class="btn btn-primary" download="watermarked-image.png">⬇️ Download Image</a>
+    </div>
+  </div>
+</div>
+
+<div class="content-card faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item-box"><h3>Why add a watermark to an image?</h3><p>Watermarks help protect ownership of photos and graphics shared online, discourage unauthorized reuse, and add branding to shared images.</p></div>
+    <div class="faq-item-box"><h3>Will the watermark reduce image quality?</h3><p>No. The watermark text is drawn on top of the original image at full resolution — the underlying photo quality is unaffected.</p></div>
+    <div class="faq-item-box"><h3>Can I tile the watermark across the whole image?</h3><p>Yes. Select "Tiled" as the position to repeat the watermark text in a grid pattern, which makes it much harder to crop out.</p></div>
+    <div class="faq-item-box"><h3>Is my image uploaded to a server?</h3><p>No, everything is processed locally using the Canvas API — your image never leaves your browser.</p></div>
+  </div>
+</div>
+
+<section class="article-section">
+  <h2>Free Text Watermark Tool for Images</h2>
+  <p>This tool lets you add a customizable text watermark to any image directly in your browser — no software, no signup, and no uploads to a server. You control the watermark text, position, font size, color, and opacity, then download the result as a full-resolution PNG.</p>
+
+  <h3>Why Watermark Your Images?</h3>
+  <p>Watermarking is a simple, low-effort way to protect creative work shared publicly online. Photographers, designers, and content creators commonly add a subtle watermark — a name, logo text, or website URL — to portfolio previews, social media posts, and stock samples, making it harder for others to claim the work as their own or use it without permission. A watermark doesn't prevent copying outright, but it does make casual misuse more visible and less appealing, and it reinforces attribution wherever the image circulates.</p>
+
+  <h3>Choosing the Right Watermark Settings</h3>
+  <ul class="feature-list">
+    <li><strong>Position:</strong> corner placements (bottom-right is most common) keep the watermark unobtrusive while still visible; center placement is bolder and harder to crop out.</li>
+    <li><strong>Tiled mode:</strong> repeats the watermark across the entire image in a grid, making it very difficult to remove by cropping — useful for preview images you don't want reused at all.</li>
+    <li><strong>Opacity:</strong> lower opacity (20–40%) keeps the watermark subtle and less distracting from the image itself; higher opacity makes it more prominent and harder to ignore or edit out.</li>
+    <li><strong>Font size:</strong> scale relative to your image dimensions — a watermark that's too small is easy to crop away, while one that's too large distracts from the image content.</li>
+  </ul>
+
+  <h3>How This Tool Works</h3>
+  <p>Once you upload an image, it's drawn onto an HTML canvas at its original resolution. Your watermark text is then rendered on top using the settings you choose — position, size, color, and opacity — using the canvas's native text and transparency rendering. The final combined image is exported as a PNG file you can download immediately, with the watermark permanently baked into the pixel data.</p>
+
+  <h3>Privacy and Local Processing</h3>
+  <p>All watermarking happens locally in your browser using the Canvas API. Your original image is never uploaded to a server, keeping unpublished photos and designs completely private until you choose to share them.</p>
+</section>
+
+<div class="content-card related-tools">
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="/tools/meme-generator" class="tool-item"><div class="ti-text"><h4>Meme Generator</h4><p>Add classic top/bottom text captions to any image.</p></div></a>
+    <a href="/tools/image-compressor" class="tool-item"><div class="ti-text"><h4>Image Compressor</h4><p>Reduce file size after watermarking for faster sharing.</p></div></a>
+    <a href="/tools/image-resize" class="tool-item"><div class="ti-text"><h4>Image Resize</h4><p>Resize images before or after watermarking.</p></div></a>
+    <a href="/tools/image-crop" class="tool-item"><div class="ti-text"><h4>Image Crop</h4><p>Crop images to the exact area you need.</p></div></a>
+  </div>
+</div>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card keyword-section">
+      <h2>Popular Searches</h2>
+      <div class="keyword-box">
+        <span class="keyword-tag">image watermark tool</span>
+        <span class="keyword-tag">add watermark to image online</span>
+        <span class="keyword-tag">text watermark generator</span>
+        <span class="keyword-tag">photo watermark free</span>
+        <span class="keyword-tag">watermark maker online</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+<script>
+const uploadZone = document.getElementById('upload-zone');
+const fileInput = document.getElementById('file-input');
+let uploadedImg = null;
+
+document.getElementById('wm-size').addEventListener('input', e => document.getElementById('size-val').textContent = e.target.value);
+document.getElementById('wm-opacity').addEventListener('input', e => document.getElementById('opacity-val').textContent = e.target.value);
+
+function handleFile(file) {
+  const statusEl = document.getElementById('status-msg');
+  if (!file || !file.type.startsWith('image/')) { showStatus(statusEl,'error','Please select a valid image file.'); return; }
+  if (file.size > 10*1024*1024) { showStatus(statusEl,'error','File too large. Max 10MB.'); return; }
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      uploadedImg = img;
+      document.getElementById('controls-card').style.display = 'block';
+      showStatus(statusEl, 'success', 'Image loaded. Adjust settings and apply.');
+      applyWatermark();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function applyWatermark() {
+  if (!uploadedImg) return;
+  const canvas = document.getElementById('output-canvas');
+  canvas.width = uploadedImg.width;
+  canvas.height = uploadedImg.height;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(uploadedImg, 0, 0);
+
+  const text = document.getElementById('wm-text').value || 'Watermark';
+  const size = parseInt(document.getElementById('wm-size').value);
+  const opacity = parseInt(document.getElementById('wm-opacity').value) / 100;
+  const color = document.getElementById('wm-color').value;
+  const position = document.getElementById('wm-position').value;
+
+  ctx.font = `bold ${size}px sans-serif`;
+  ctx.fillStyle = color;
+  ctx.globalAlpha = opacity;
+  ctx.textBaseline = 'alphabetic';
+
+  const metrics = ctx.measureText(text);
+  const textW = metrics.width;
+  const pad = size * 0.6;
+
+  if (position === 'tile') {
+    ctx.textAlign = 'left';
+    const stepX = textW + pad * 3;
+    const stepY = size + pad * 2;
+    for (let y = size; y < canvas.height + stepY; y += stepY) {
+      for (let x = -stepX; x < canvas.width + stepX; x += stepX) {
+        ctx.fillText(text, x, y);
+      }
+    }
+  } else {
+    let x, y;
+    ctx.textAlign = 'left';
+    switch (position) {
+      case 'bottom-right': x = canvas.width - textW - pad; y = canvas.height - pad; break;
+      case 'bottom-left': x = pad; y = canvas.height - pad; break;
+      case 'top-right': x = canvas.width - textW - pad; y = size + pad; break;
+      case 'top-left': x = pad; y = size + pad; break;
+      case 'center': x = (canvas.width - textW) / 2; y = (canvas.height + size / 2) / 2; break;
+      default: x = canvas.width - textW - pad; y = canvas.height - pad;
+    }
+    ctx.fillText(text, x, y);
+  }
+
+  ctx.globalAlpha = 1;
+  document.getElementById('result-card').style.display = 'block';
+  document.getElementById('download-btn').href = canvas.toDataURL('image/png');
+}
+
+['wm-text','wm-position','wm-size','wm-opacity','wm-color'].forEach(id => {
+  document.getElementById(id).addEventListener('input', applyWatermark);
+});
+document.getElementById('apply-btn').addEventListener('click', applyWatermark);
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+uploadZone.addEventListener('drop', e => { e.preventDefault(); uploadZone.classList.remove('dragover'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
+</script>
+</body>
+</html>

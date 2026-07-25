@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>License — Logrith Legacy</title>
+  <meta name="description" content="Logrith Legacy open source licenses — credits for PDF-Lib, PDF.js, QRCode.js and other libraries used to build free browser-based tools.">
+  <link rel="canonical" href="https://logrith.in/pages/license">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    /* ── HERO ── */
+    .lic-hero {
+      padding: 56px 24px 44px;
+      text-align: center;
+      border-bottom: 1.5px solid var(--gray-200);
+      background: var(--gray-50);
+    }
+    .lic-hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .76rem; font-weight: 700;
+      font-family: var(--font-display);
+      color: var(--primary);
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 20px;
+      padding: 4px 14px;
+      margin-bottom: 16px;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .lic-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: var(--gray-900);
+      margin-bottom: 10px;
+      letter-spacing: -.3px;
+    }
+    .lic-hero p {
+      font-size: .92rem;
+      color: var(--gray-500);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 6px;
+      font-size: .8rem; color: var(--gray-400);
+      justify-content: center; margin-bottom: 14px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ── LAYOUT ── */
+    .lic-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+    }
+
+    /* ── OWN LICENSE BLOCK ── */
+    .own-license {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: var(--radius-xl);
+      padding: 36px 40px;
+      margin-bottom: 52px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .own-license::before {
+      content: '©';
+      position: absolute;
+      right: 32px; top: 16px;
+      font-size: 8rem;
+      font-weight: 900;
+      color: rgba(255,255,255,.04);
+      font-family: var(--font-display);
+      line-height: 1;
+    }
+    .own-license .ol-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: .72rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      color: rgba(255,255,255,.7);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .own-license h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 10px;
+    }
+    .own-license p {
+      font-size: .88rem;
+      color: rgba(255,255,255,.6);
+      line-height: 1.75;
+      max-width: 580px;
+    }
+    .own-license .year {
+      margin-top: 20px;
+      font-size: .8rem;
+      color: rgba(255,255,255,.35);
+      font-family: var(--font-display);
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-label {
+      font-family: var(--font-display);
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gray-200);
+    }
+
+    /* ── LIBRARY CARDS ── */
+    .lib-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--gray-200);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .lib-card {
+      background: var(--white);
+      padding: 22px 24px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: start;
+      transition: background .12s;
+    }
+    .lib-card:hover { background: var(--gray-50); }
+
+    .lib-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .lib-body {color:auto}
+    .lib-name {
+      font-family: var(--font-display);
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 3px;
+    }
+    .lib-desc {
+      font-size: .82rem;
+      color: var(--gray-500);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .lib-author {
+      font-size: .78rem;
+      color: var(--gray-400);
+    }
+    .lib-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .lib-badge {
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: .72rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      white-space: nowrap;
+    }
+    .badge-mit { background: #ecfdf5; color: #059669; }
+    .badge-apache { background: #eff6ff; color: #2563eb; }
+    .badge-bsd { background: #fdf4ff; color: #9333ea; }
+    .lib-link {
+      font-size: .76rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 3px;
+    }
+    .lib-link:hover { text-decoration: underline; }
+
+    /* ── MIT TEXT ── */
+    .mit-block {
+      background: var(--gray-50);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    .mit-block h3 {
+      font-family: var(--font-display);
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--gray-700);
+      margin-bottom: 14px;
+    }
+    .mit-block pre {
+      font-family: 'Courier New', monospace;
+      font-size: .78rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .own-license { padding: 24px 20px; }
+      .lib-card { grid-template-columns: auto 1fr; }
+      .lib-meta { flex-direction: row; grid-column: 1 / -1; align-items: center; }
+      .lic-wrap { padding: 32px 16px 60px; }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BPJ4332XJH');</script>
+ 
+</head>
+<body>
+<div id="navbar"></div>
+
+<!-- HERO -->
+<div class="lic-hero">
+  <div class="breadcrumb">
+    <a href="/">Home</a> › Legal › License
+  </div>
+  <div class="eyebrow">⚖️ Open Source</div>
+  <h1>License</h1>
+  <p>Logrith Legacy is built on the shoulders of amazing open source projects. Here's everything we use and credit.</p>
+</div>
+
+<div class="lic-wrap">
+
+  <!-- OWN LICENSE -->
+  <div class="own-license">
+    <div class="ol-badge">Logrith Legacy Platform</div>
+    <h2>© 2026 Logrith Legacy. All rights reserved.</h2>
+    <p>The Logrith Legacy name, logo, brand assets, UI design, and original source code are proprietary and may not be copied, redistributed, or used without explicit written permission. The tools on this platform are free to use but not to replicate commercially.</p>
+    <div class="year">logrith.in · Est. 2026</div>
+  </div>
+
+  <!-- THIRD PARTY LIBRARIES -->
+  <div class="section-label">Third-party open source libraries</div>
+
+  <div class="lib-grid">
+
+    <div class="lib-card">
+      <div class="lib-icon" ><svg class="icon" style="width: 25px; height: 25px;"><use href="/assets/svg/icons.svg#page"></use></svg></div>
+      <div class="lib-body">
+        <div class="lib-name">PDF-Lib</div>
+        <div class="lib-desc">Create and modify PDF documents in any JavaScript environment. Used for PDF merge, split, rotate, and page manipulation on Logrith Legacy.</div>
+        <div class="lib-author">by Andrew Dillon · github.com/Hopding/pdf-lib</div>
+      </div>
+      <div class="lib-meta">
+        <span class="lib-badge badge-mit">MIT License</span>
+        <a href="https://github.com/Hopding/pdf-lib/blob/master/LICENSE.md" target="_blank" rel="noopener" class="lib-link">View ↗</a>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon" ><svg class="icon" style="width: 25px; height: 25px;"><use href="/assets/svg/icons.svg#search"></use></svg></div>
+      <div class="lib-body">
+        <div class="lib-name">PDF.js</div>
+        <div class="lib-desc">A JavaScript-based PDF viewer built by Mozilla. Used on Logrith Legacy for rendering PDF pages as images (PDF to JPG conversion).</div>
+        <div class="lib-author">by Mozilla Foundation · github.com/mozilla/pdf.js</div>
+      </div>
+      <div class="lib-meta">
+        <span class="lib-badge badge-apache">Apache 2.0</span>
+        <a href="https://github.com/mozilla/pdf.js/blob/master/LICENSE" target="_blank" rel="noopener" class="lib-link">View ↗</a>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon" ><svg class="icon" style="width: 25px; height: 25px;"><use href="/assets/svg/icons.svg#qr-code"></use></svg></div>
+      <div class="lib-body">
+        <div class="lib-name">QRCode.js</div>
+        <div class="lib-desc">A cross-browser QR code generator using HTML5 Canvas and table DOM. Used for QR code generation on Logrith Legacy.</div>
+        <div class="lib-author">by davidshimjs · github.com/davidshimjs/qrcodejs</div>
+      </div>
+      <div class="lib-meta">
+        <span class="lib-badge badge-mit">MIT License</span>
+        <a href="https://github.com/davidshimjs/qrcodejs/blob/master/LICENSE" target="_blank" rel="noopener" class="lib-link">View ↗</a>
+      </div>
+    </div>
+
+    <div class="lib-card">
+      <div class="lib-icon" ><svg class="icon" style="width: 25px; height: 25px;"><use href="/assets/svg/icons.svg#font-size"></use></svg></div>
+      <div class="lib-body">
+        <div class="lib-name">Sora & DM Sans</div>
+        <div class="lib-desc">Typography used throughout the Logrith Legacy interface. Served via Google Fonts CDN under the SIL Open Font License.</div>
+        <div class="lib-author">by Google Fonts · fonts.google.com</div>
+      </div>
+      <div class="lib-meta">
+        <span class="lib-badge badge-bsd">OFL 1.1</span>
+        <a href="https://fonts.google.com" target="_blank" rel="noopener" class="lib-link">View ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MIT LICENSE TEXT -->
+  <div class="section-label">MIT License text</div>
+  <div class="mit-block">
+    <h3>Standard MIT License (applies to PDF-Lib, QRCode.js)</h3>
+    <pre>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</pre>
+  </div>
+
+</div>
+
+<div id="footer"></div>
+<script src="/load-components.js"></script>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Text Diff Checker Online — Compare Two Texts | Logrith Legacy</title>
+  <meta name="description" content="Compare two texts and highlight differences online free. Word-level and character-level diff. Instant, no login required.">
+  <link rel="canonical" href="https://logrith.in/tools/text-diff">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Legacy">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/text-diff">
+  <meta property="og:site_name" content="Logrith Legacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Text Diff Checker Online — Compare Two Texts">
+  <meta name="twitter:description" content="Compare two texts and highlight differences online free. Word-level and character-level diff. Instant, no login required.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .diff-container { font-family:'Courier New',monospace; font-size:.86rem; line-height:1.8; background:var(--gray-50); border:1.5px solid var(--gray-200); border-radius:var(--radius); padding:16px; white-space:pre-wrap; word-break:break-word; max-height:450px; overflow-y:auto; }
+    .diff-added { background:#bbf7d0; color:#166534; border-radius:3px; padding:1px 3px; }
+    .diff-removed { background:#fecaca; color:#991b1b; text-decoration:line-through; border-radius:3px; padding:1px 3px; }
+    .diff-equal { color:var(--gray-700); }
+    .diff-line-added { background:#f0fdf4; border-left:3px solid var(--success); padding-left:12px; display:block; }
+    .diff-line-removed { background:#fef2f2; border-left:3px solid var(--error); padding-left:12px; display:block; }
+    .diff-line-equal { border-left:3px solid transparent; padding-left:12px; display:block; color:var(--gray-700); }
+    .diff-stats { display:flex; gap:12px; flex-wrap:wrap; }
+    .diff-stat { padding:4px 12px; border-radius:20px; font-size:.78rem; font-weight:600; }
+    .diff-stat.added { background:#dcfce7; color:#166534; }
+    .diff-stat.removed { background:#fee2e2; color:#991b1b; }
+    .diff-stat.equal { background:var(--gray-100); color:var(--gray-700); }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-BPJ4332XJH');
+ </script>
+ 
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/text-generators">Text Tools</a> › Text Diff</div>
+  <h1>🔍 Free Text Diff Checker</h1>
+  <p>Compare two blocks of text and highlight exactly what's different. Line-by-line and word-level diff modes. Fast, free, no login.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">⚡ Instant</span><span class="tool-tag">🔤 Word-level</span><span class="tool-tag">📄 Line-level</span></div>
+</div></div>
+
+<div class="tool-workspace" style="max-width:1000px;">
+  <div class="tool-card">
+    <h2>Enter Texts to Compare</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div>
+        <label style="font-size:.84rem;font-weight:600;color:var(--gray-700);display:block;margin-bottom:6px;">Original Text (A)</label>
+        <textarea class="tool-textarea" id="text-a" rows="10" placeholder="Paste original text here..."></textarea>
+      </div>
+      <div>
+        <label style="font-size:.84rem;font-weight:600;color:var(--gray-700);display:block;margin-bottom:6px;">Modified Text (B)</label>
+        <textarea class="tool-textarea" id="text-b" rows="10" placeholder="Paste modified text here..."></textarea>
+      </div>
+    </div>
+    <div class="controls-grid mt-12">
+      <div class="control-group">
+        <label>Diff Mode</label>
+        <select id="diff-mode">
+          <option value="line">Line by Line</option>
+          <option value="word">Word by Word</option>
+          <option value="char">Character by Character</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Case Sensitive</label>
+        <select id="case-sensitive">
+          <option value="yes">Yes</option>
+          <option value="no">No (ignore case)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Ignore Whitespace</label>
+        <select id="ignore-ws">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+    </div>
+    <div class="btn-group mt-16">
+      <button class="btn btn-primary btn-lg" id="compare-btn">🔍 Compare Texts</button>
+      <button class="btn btn-secondary" id="swap-btn">⇄ Swap A/B</button>
+      <button class="btn btn-secondary" id="clear-btn">✕ Clear</button>
+      <button class="btn btn-secondary" id="sample-btn">📋 Load Sample</button>
+    </div>
+  </div>
+
+  <div class="tool-card" id="result-card" style="display:none;">
+    <h2>Diff Result</h2>
+    <div class="diff-stats mb-12" id="diff-stats"></div>
+    <div class="diff-container" id="diff-output"></div>
+    <div class="btn-group mt-12">
+      <button class="btn btn-secondary" id="copy-diff-btn">📋 Copy Diff</button>
+    </div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><div class="faq-q">How does the text diff tool work?</div><div class="faq-a">The tool uses a longest common subsequence (LCS) algorithm to find what is common between the two texts. Lines/words unique to text A are highlighted in red (removed), lines/words unique to text B are in green (added).</div></div>
+  <div class="faq-item"><div class="faq-q">What's the difference between line diff and word diff?</div><div class="faq-a">Line diff shows which entire lines were added, removed, or changed. Word diff breaks each line into words and shows which specific words changed. Character diff is the most granular — it shows individual characters that changed.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I compare code with this tool?</div><div class="faq-a">Yes! The diff tool works well for comparing code. Use "Line by Line" mode for code comparisons. For code, you may want to keep "Case Sensitive" set to Yes.</div></div>
+</div>
+
+<div id="footer"></div>
+
+<script src="/load-components.js"></script>
+
+<script src="/assets/js/main.js" defer></script>
+<script>
+// LCS-based diff algorithm
+function lcsMatrix(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({length:m+1}, () => new Array(n+1).fill(0));
+  for (let i=1;i<=m;i++) for (let j=1;j<=n;j++) {
+    if (a[i-1]===b[j-1]) dp[i][j]=dp[i-1][j-1]+1;
+    else dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]);
+  }
+  return dp;
+}
+
+function getDiff(a, b) {
+  const dp = lcsMatrix(a, b);
+  const result = [];
+  let i=a.length, j=b.length;
+  while (i>0 || j>0) {
+    if (i>0&&j>0&&a[i-1]===b[j-1]) { result.unshift({type:'equal',val:a[i-1]}); i--;j--; }
+    else if (j>0&&(i===0||dp[i][j-1]>=dp[i-1][j])) { result.unshift({type:'added',val:b[j-1]}); j--; }
+    else { result.unshift({type:'removed',val:a[i-1]}); i--; }
+  }
+  return result;
+}
+
+function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+document.getElementById('compare-btn').addEventListener('click', () => {
+  let a = document.getElementById('text-a').value;
+  let b = document.getElementById('text-b').value;
+  const mode = document.getElementById('diff-mode').value;
+  const caseSens = document.getElementById('case-sensitive').value === 'yes';
+  const ignoreWS = document.getElementById('ignore-ws').value === 'yes';
+
+  if (!a && !b) return;
+
+  if (!caseSens) { a = a.toLowerCase(); b = b.toLowerCase(); }
+  if (ignoreWS) { a = a.replace(/\s+/g,' ').trim(); b = b.replace(/\s+/g,' ').trim(); }
+
+  let tokens_a, tokens_b, sep;
+  if (mode === 'line') { tokens_a = a.split('\n'); tokens_b = b.split('\n'); sep = '\n'; }
+  else if (mode === 'word') { tokens_a = a.split(/(\s+)/); tokens_b = b.split(/(\s+)/); sep = ''; }
+  else { tokens_a = a.split(''); tokens_b = b.split(''); sep = ''; }
+
+  const diff = getDiff(tokens_a, tokens_b);
+
+  let added=0, removed=0, equal=0;
+  let html = '';
+
+  if (mode === 'line') {
+    diff.forEach(d => {
+      const escaped = escapeHtml(d.val);
+      if (d.type==='added') { html+=`<span class="diff-line-added">+ ${escaped}</span>`; added++; }
+      else if (d.type==='removed') { html+=`<span class="diff-line-removed">- ${escaped}</span>`; removed++; }
+      else { html+=`<span class="diff-line-equal">  ${escaped}</span>`; equal++; }
+    });
+  } else {
+    diff.forEach(d => {
+      const escaped = escapeHtml(d.val);
+      if (d.type==='added') { html+=`<span class="diff-added">${escaped}</span>`; added++; }
+      else if (d.type==='removed') { html+=`<span class="diff-removed">${escaped}</span>`; removed++; }
+      else { html+=`<span class="diff-equal">${escaped}</span>`; equal++; }
+    });
+  }
+
+  document.getElementById('diff-output').innerHTML = html || '<span style="color:var(--gray-500);">No differences found — texts are identical.</span>';
+  document.getElementById('diff-stats').innerHTML = `
+    <span class="diff-stat equal">= ${equal} equal ${mode==='line'?'lines':'tokens'}</span>
+    <span class="diff-stat added">+ ${added} added</span>
+    <span class="diff-stat removed">− ${removed} removed</span>`;
+  document.getElementById('result-card').style.display='block';
+});
+
+document.getElementById('swap-btn').addEventListener('click', () => { const t=document.getElementById('text-a').value; document.getElementById('text-a').value=document.getElementById('text-b').value; document.getElementById('text-b').value=t; });
+document.getElementById('clear-btn').addEventListener('click', () => { document.getElementById('text-a').value=''; document.getElementById('text-b').value=''; document.getElementById('result-card').style.display='none'; });
+document.getElementById('sample-btn').addEventListener('click', () => {
+  document.getElementById('text-a').value='The quick brown fox jumps over the lazy dog.\nThis is the original text.\nSome lines are the same.';
+  document.getElementById('text-b').value='The quick brown fox leaps over the lazy cat.\nThis is the modified text.\nSome lines are the same.';
+});
+document.getElementById('copy-diff-btn').addEventListener('click', function() {
+  const text = document.getElementById('diff-output').textContent;
+  copyText(text, this);
+});
+</script>
+</body></html>

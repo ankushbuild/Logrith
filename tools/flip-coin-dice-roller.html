@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Coin Flip & Dice Roller Online — Random Coin Toss and Dice | Logrith Legacy</title>
+  <meta name="description" content="Flip a coin or roll dice online for free with a full history log. Multiple dice support, heads or tails, instant results. No signup required.">
+  <meta name="keywords" content="coin flip online, dice roller online, flip a coin free, roll dice online, random coin toss tool">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Legacy">
+  <link rel="canonical" href="https://logrith.in/tools/flip-coin-dice-roller">
+  <meta property="og:title" content="Free Coin Flip & Dice Roller | Logrith Legacy">
+  <meta property="og:description" content="Flip a coin or roll dice instantly with history log. Free and browser-based.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/flip-coin-dice-roller">
+  <meta property="og:site_name" content="Logrith Legacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Coin Flip & Dice Roller | Logrith Legacy">
+  <meta name="twitter:description" content="Flip a coin or roll dice instantly, free and private.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    #coin-display, .dice-face { display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;background:var(--white);border:3px solid var(--primary);border-radius:50%; }
+    #coin-display { width:120px;height:120px;font-size:1.3rem;color:var(--primary); }
+    .dice-face { width:70px;height:70px;border-radius:14px;font-size:1.8rem;color:var(--gray-900); }
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://logrith.in/#organization","name":"Logrith Legacy","url":"https://logrith.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Coin Flip & Dice Roller","url":"https://logrith.in/tools/flip-coin-dice-roller","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","description":"Free online coin flip and dice roller with history log.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://logrith.in/#organization"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://logrith.in/"},{"@type":"ListItem","position":2,"name":"Utilities","item":"https://logrith.in/categories/utilities"},{"@type":"ListItem","position":3,"name":"Coin Flip & Dice Roller","item":"https://logrith.in/tools/flip-coin-dice-roller"}]}
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/utilities">Utilities</a> › Coin Flip & Dice Roller</div>
+  <h1>Free Coin Flip & Dice Roller</h1>
+  <p>Flip a coin or roll one or more dice instantly — with a running history log of your results.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">🎲 Multiple Dice</span><span class="tool-tag">📋 History Log</span></div>
+</div></div>
+
+<div class="tool-workspace" style="max-width:700px;">
+  <div class="tool-card">
+    <h2>Coin Flip</h2>
+    <div style="text-align:center;padding:16px;">
+      <div id="coin-display">TAILS</div>
+    </div>
+    <div class="btn-group" style="justify-content:center;">
+      <button class="btn btn-primary btn-lg" id="flip-btn">🪙 Flip Coin</button>
+    </div>
+  </div>
+
+  <div class="tool-card">
+    <h2>Dice Roller</h2>
+    <div class="control-group">
+      <label>Number of Dice: <span id="dice-count-val">2</span></label>
+      <input type="range" id="dice-count" min="1" max="6" value="2">
+    </div>
+    <div id="dice-display" style="display:flex;gap:12px;justify-content:center;padding:16px;flex-wrap:wrap;"></div>
+    <div class="btn-group" style="justify-content:center;">
+      <button class="btn btn-primary btn-lg" id="roll-btn">🎲 Roll Dice</button>
+    </div>
+    <div class="mini-note mt-8" style="text-align:center;" id="dice-total"></div>
+  </div>
+
+  <div class="tool-card" id="history-card" style="display:none;">
+    <h2>History</h2>
+    <div id="history-list" style="display:flex;flex-direction:column;gap:6px;max-height:240px;overflow-y:auto;"></div>
+    <div class="btn-group mt-12">
+      <button class="btn btn-secondary btn-sm" id="clear-history-btn">✕ Clear History</button>
+    </div>
+  </div>
+</div>
+
+<div class="content-card faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item-box"><h3>Is the coin flip truly random?</h3><p>It uses JavaScript's random number generator, giving each side an equal 50/50 chance, suitable for games, decisions, and general randomization needs.</p></div>
+    <div class="faq-item-box"><h3>How many dice can I roll at once?</h3><p>Roll between 1 and 6 standard six-sided dice simultaneously.</p></div>
+    <div class="faq-item-box"><h3>Does this keep a history of results?</h3><p>Yes, both coin flips and dice rolls are logged in a history list so you can review previous results.</p></div>
+  </div>
+</div>
+
+<section class="article-section">
+  <h2>Free Coin Flip and Dice Roller</h2>
+  <p>This tool provides both a simple coin flip (heads or tails) and a multi-dice roller (1-6 standard six-sided dice), each with a running history log so you can track previous results. Useful for games, decision-making, tabletop gaming, or settling friendly disputes.</p>
+
+  <h3>Common Uses</h3>
+  <ul class="feature-list">
+    <li><strong>Making quick decisions</strong> — using a coin flip to choose between two options.</li>
+    <li><strong>Tabletop and board games</strong> — rolling dice for games that need randomization without physical dice.</li>
+    <li><strong>Teaching probability</strong> — demonstrating randomness and probability concepts with visible results and history.</li>
+    <li><strong>Icebreakers and group activities</strong> — randomly selecting turn order or assignments.</li>
+  </ul>
+
+  <h3>How Randomness Works Here</h3>
+  <p>Both the coin flip and dice roll use JavaScript's built-in random number generator, which produces a uniformly distributed random value each time — meaning heads and tails are equally likely, and each die face (1 through 6) has an equal chance of appearing on every roll, matching the behavior of a fair physical coin or die.</p>
+
+  <h3>Privacy and Local Processing</h3>
+  <p>All randomization happens directly in your browser — nothing is sent to a server, and your history log exists only in your current browser session.</p>
+</section>
+
+<div class="content-card related-tools">
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="/tools/random-number-generator" class="tool-item"><div class="ti-text"><h4>Random Number Generator</h4><p>Generate random numbers with custom range.</p></div></a>
+    <a href="/tools/random-team-generator" class="tool-item"><div class="ti-text"><h4>Random Team Generator</h4><p>Split a list of names into random teams.</p></div></a>
+    <a href="/tools/random-name-generator" class="tool-item"><div class="ti-text"><h4>Random Name Generator</h4><p>Generate random names for games or testing.</p></div></a>
+    <a href="/tools/random-quote-generator" class="tool-item"><div class="ti-text"><h4>Random Quote Generator</h4><p>Get inspiring quotes by category.</p></div></a>
+  </div>
+</div>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card keyword-section">
+      <h2>Popular Searches</h2>
+      <div class="keyword-box">
+        <span class="keyword-tag">coin flip online</span>
+        <span class="keyword-tag">dice roller online</span>
+        <span class="keyword-tag">flip a coin free</span>
+        <span class="keyword-tag">roll dice online</span>
+        <span class="keyword-tag">random coin toss</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+<script>
+let history = [];
+
+function addHistory(entry) {
+  history.unshift(entry);
+  history = history.slice(0, 30);
+  document.getElementById('history-card').style.display = 'block';
+  document.getElementById('history-list').innerHTML = history.map(h =>
+    `<div class="stat-chip" style="display:flex;justify-content:space-between;">${h}</div>`
+  ).join('');
+}
+
+document.getElementById('flip-btn').addEventListener('click', () => {
+  const result = Math.random() < 0.5 ? 'HEADS' : 'TAILS';
+  document.getElementById('coin-display').textContent = result;
+  addHistory(`🪙 Coin Flip: <strong>${result}</strong>`);
+});
+
+document.getElementById('dice-count').addEventListener('input', e => {
+  document.getElementById('dice-count-val').textContent = e.target.value;
+});
+
+const DICE_FACES = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+
+document.getElementById('roll-btn').addEventListener('click', () => {
+  const count = parseInt(document.getElementById('dice-count').value);
+  const rolls = Array.from({length: count}, () => Math.floor(Math.random() * 6) + 1);
+
+  document.getElementById('dice-display').innerHTML = rolls.map(r =>
+    `<div class="dice-face">${DICE_FACES[r-1]}</div>`
+  ).join('');
+
+  const total = rolls.reduce((a,b) => a+b, 0);
+  document.getElementById('dice-total').textContent = `Total: ${total} (${rolls.join(' + ')})`;
+  addHistory(`🎲 Dice Roll (${count}): <strong>${rolls.join(', ')}</strong> = ${total}`);
+});
+
+document.getElementById('clear-history-btn').addEventListener('click', () => {
+  history = [];
+  document.getElementById('history-list').innerHTML = '';
+  document.getElementById('history-card').style.display = 'none';
+});
+
+document.getElementById('roll-btn').click();
+</script>
+</body>
+</html>

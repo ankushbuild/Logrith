@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Free Image Converter Online — JPG PNG WEBP BMP GIF | Logrith Legacy</title>
+  <meta name="description" content="Free image converter online for JPG, PNG, WEBP, BMP and GIF. Convert images instantly in your browser with no upload, no login, local processing and batch support.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://logrith.in/tools/image-converter">
+
+  <meta property="og:title" content="Free Image Converter Online — JPG PNG WEBP BMP GIF | Logrith Legacy">
+  <meta property="og:description" content="Convert JPG, PNG, WEBP, BMP and GIF online for free. Browser-based image converter with local processing, privacy and instant downloads.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/image-converter">
+  <meta property="og:site_name" content="Logrith Legacy">
+  
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Image Converter Online | Logrith Legacy">
+  <meta name="twitter:description" content="Convert images between JPG, PNG, WEBP, BMP and GIF online for free with local browser processing.">
+  
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Logrith Legacy Image Converter",
+    "url":"https://logrith.in/tools/image-converter",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"Web Browser",
+    "description":"Free online image converter for JPG, PNG, WEBP, BMP and GIF. Convert images locally in your browser with no upload, no login and instant download.",
+    "offers":{
+      "@type":"Offer",
+      "price":"0",
+      "priceCurrency":"USD"
+    },
+    "featureList":[
+      "Convert JPG to PNG",
+      "Convert PNG to JPG",
+      "Convert PNG to WEBP",
+      "Convert WEBP to JPG",
+      "Convert BMP images online",
+      "Convert GIF images online",
+      "Batch image conversion",
+      "Local browser-based processing"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"How do I convert JPG to PNG online for free?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Upload your JPG image, choose PNG as the output format, and click Convert Image. The tool processes the file in your browser and gives you an instant download."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Is my image safe when using this image converter?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes. The conversion runs locally in your browser, so your image is not uploaded to a remote server."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Which image format should I choose?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"JPG is great for photos, PNG is useful for transparency and sharp graphics, and WEBP is a modern web format that often offers smaller file sizes."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Can I convert multiple images at once?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes. You can upload multiple image files together and convert them in one go, then download each converted image."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<div class="tool-hero">
+  <div class="tool-hero-inner">
+    <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/#image-tools">Image Tools</a> › Image Converter</div>
+    <h1>Free Image Converter Online</h1>
+    <p>Convert images between JPG, PNG, WEBP, BMP and GIF formats instantly. No upload to server — all processing is done in your browser for faster and more private image conversion.</p>
+    <div class="tool-tags">
+      <span class="tool-tag">✅ Free</span>
+      <span class="tool-tag">🔒 Private</span>
+      <span class="tool-tag">⚡ Instant</span>
+      <span class="tool-tag">📱 Mobile Ready</span>
+      <span class="tool-tag">🚫 No Login</span>
+    </div>
+  </div>
+</div>
+
+<div class="tool-workspace">
+  <div class="tool-card">
+    <h2>Upload Image</h2>
+    <div class="upload-zone" id="upload-zone">
+      <input type="file" id="file-input" accept="image/*" multiple>
+      <div class="upload-icon">🖼️</div>
+      <h3>Drop your image here or click to browse</h3>
+      <p>Supports JPG, PNG, WEBP, BMP and GIF image files.</p>
+      <span class="upload-limit">Max 20MB per file</span>
+    </div>
+    <div id="file-info" class="stats-row mt-12"></div>
+  </div>
+
+  <div class="tool-card" id="settings-card" style="display:none;">
+    <h2>Conversion Settings</h2>
+    <div class="controls-grid">
+      <div class="control-group">
+        <label for="output-format">Output Format</label>
+        <select id="output-format">
+          <option value="image/png">PNG</option>
+          <option value="image/jpeg">JPG</option>
+          <option value="image/webp">WEBP</option>
+          <option value="image/bmp">BMP</option>
+          <option value="image/gif">GIF</option>
+        </select>
+      </div>
+
+      <div class="control-group" id="quality-group">
+        <label for="quality-slider">Quality: <span class="range-value" id="quality-val">90%</span></label>
+        <input type="range" id="quality-slider" min="10" max="100" value="90">
+      </div>
+    </div>
+
+    <div class="mt-16 btn-group">
+      <button class="btn btn-primary btn-lg" id="convert-btn" type="button">🔄 Convert Image</button>
+      <button class="btn btn-secondary" id="reset-btn" type="button">✕ Reset</button>
+    </div>
+
+    <div class="progress-bar mt-12" id="progress">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="status-msg" id="status-msg" aria-live="polite"></div>
+  </div>
+
+  <p class="privacy-note">We don't store your data.</p>
+
+  <div class="tool-card" id="output-card" style="display:none;">
+    <h2>Converted Image</h2>
+    <div class="output-preview" id="output-preview">
+      <img id="output-img" src="" alt="Converted image preview">
+    </div>
+    <div class="stats-row mt-12" id="output-stats"></div>
+    <div class="btn-group mt-16">
+      <button class="btn btn-success" id="download-btn" type="button">⬇️ Download Image</button>
+      <button class="btn btn-secondary" id="convert-another" type="button">+ Convert Another</button>
+    </div>
+  </div>
+</div>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card">
+      <h2>How to Use This Image Converter</h2>
+      <div class="tool-steps">
+        <div class="tool-step">
+          <strong>1. Upload image</strong>
+          Add one or more image files, or drag and drop them into the tool.
+        </div>
+        <div class="tool-step">
+          <strong>2. Choose output format</strong>
+          Select PNG, JPG, WEBP, BMP or GIF as the target format.
+        </div>
+        <div class="tool-step">
+          <strong>3. Adjust quality</strong>
+          Fine-tune quality for formats that support compression.
+        </div>
+        <div class="tool-step">
+          <strong>4. Convert & download</strong>
+          Process locally in your browser and download the result instantly.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="article-section">
+  <h2>Why Our Image Converter Is Best</h2>
+  <ul class="feature-list">
+    <li><strong>Fast:</strong> Convert image files instantly in your browser without waiting for server processing.</li>
+    <li><strong>Private:</strong> Local processing keeps your images on your own device during conversion.</li>
+    <li><strong>Free:</strong> No signup, no watermark, no login and no hidden limits for normal use.</li>
+    <li><strong>Flexible:</strong> Supports JPG, PNG, WEBP, BMP and GIF output options in one tool.</li>
+    <li><strong>Practical:</strong> Useful for website images, blog uploads, ecommerce product photos, graphics, screenshots and social media assets.</li>
+  </ul>
+</section>
+
+<section class="article-section">
+  <h2>About Image Format Conversion</h2>
+  <p>An image converter helps you change one image format into another so the file works better for your use case. Some people need JPG for smaller photo file sizes, others need PNG for transparency, and many website owners now prefer WEBP because it can reduce image size while keeping good visual quality. That is why a free image converter online is useful for developers, bloggers, designers, students and everyday users who want a quick format change without installing extra software.</p>
+
+  <p>This free Image Converter by Logrith Legacy is built for simple and privacy-friendly browser use. You can convert JPG to PNG, PNG to JPG, PNG to WEBP, WEBP to JPG, BMP to PNG, GIF to JPG and more from one page. Since the processing is done in your browser, the tool feels fast and convenient for regular tasks like preparing images for websites, reducing compatibility issues, or making files easier to upload to apps and platforms that only support specific formats.</p>
+
+  <p>Different image formats solve different problems. JPG is usually best for photographs because it keeps file sizes relatively small. PNG is widely used for sharp graphics, screenshots and transparent backgrounds. WEBP is a modern format designed for the web and is often chosen when you want better compression for site performance. BMP and GIF are still useful in older workflows, design exports and compatibility-based situations. With the right image format converter, you can quickly switch between these formats depending on quality, transparency and file size needs.</p>
+
+  <p>This online image converter also supports batch-style workflow by allowing you to select multiple images together. That makes it useful when you are preparing product photos, blog assets, portfolio images, ad creatives or social media visuals. Whether you need a JPG to PNG converter, a PNG to WEBP converter, a WEBP to JPG tool or a simple browser-based image format converter with no upload, this page is designed to stay easy, fast and reliable.</p>
+</section>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item-box">
+          <h3>How do I convert JPG to PNG online for free?</h3>
+          <p>Simply upload your JPG image, select PNG as the output format, and click Convert Image. The tool processes the image in your browser and gives you an instant PNG download.</p>
+        </div>
+        <div class="faq-item-box">
+          <h3>Is my image data safe when using this converter?</h3>
+          <p>Yes. All conversion happens locally in your browser, so your image is not uploaded to a remote server during the normal conversion process.</p>
+        </div>
+        <div class="faq-item-box">
+          <h3>What is the difference between JPG and PNG?</h3>
+          <p>JPG is usually better for photos and smaller file sizes, while PNG is better for transparency, logos, screenshots and graphics with sharp edges.</p>
+        </div>
+        <div class="faq-item-box">
+          <h3>Why should I use WEBP format?</h3>
+          <p>WEBP is a modern web image format that is often used to reduce file size while maintaining good quality, which makes it useful for website performance and faster image loading.</p>
+        </div>
+        <div class="faq-item-box">
+          <h3>Can I convert multiple images at once?</h3>
+          <p>Yes. You can upload multiple images together, convert them in one action, and then download the converted outputs one by one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content-card related-tools">
+  <h2>Related Image Tools</h2>
+  <div class="related-grid">
+    <a href="/tools/image-compressor" class="tool-item"><div class="ti-text"><h4>Image Compressor</h4><p>Reduce image file size for websites, blogs and faster uploads.</p></div></a>
+    <a href="/tools/image-resize" class="tool-item"><div class="ti-text"><h4>Image Resize</h4><p>Resize images to custom width and height in seconds.</p></div></a>
+    <a href="/tools/image-crop" class="tool-item"><div class="ti-text"><h4>Image Crop</h4><p>Crop photos and graphics to the exact area you need.</p></div></a>
+    <a href="/tools/image-rotate" class="tool-item"><div class="ti-text"><h4>Rotate & Flip</h4><p>Rotate, flip and correct image orientation easily.</p></div></a>
+  </div>
+</div>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card keyword-section">
+      <h2>Popular Searches</h2>
+      <div class="keyword-box">
+        <span class="keyword-tag">image converter online</span>
+        <span class="keyword-tag">free image converter</span>
+        <span class="keyword-tag">jpg to png converter</span>
+        <span class="keyword-tag">png to jpg converter</span>
+        <span class="keyword-tag">png to webp converter</span>
+        <span class="keyword-tag">webp to jpg converter</span>
+        <span class="keyword-tag">convert image to webp</span>
+        <span class="keyword-tag">browser image converter</span>
+        <span class="keyword-tag">batch image converter online</span>
+        <span class="keyword-tag">image format converter free</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+
+<script>
+const fileInput = document.getElementById('file-input');
+const uploadZone = document.getElementById('upload-zone');
+const settingsCard = document.getElementById('settings-card');
+const outputCard = document.getElementById('output-card');
+const convertBtn = document.getElementById('convert-btn');
+const downloadBtn = document.getElementById('download-btn');
+const outputImg = document.getElementById('output-img');
+const outputStats = document.getElementById('output-stats');
+const fileInfo = document.getElementById('file-info');
+const qualitySlider = document.getElementById('quality-slider');
+const qualityVal = document.getElementById('quality-val');
+const formatSelect = document.getElementById('output-format');
+const statusMsg = document.getElementById('status-msg');
+const progress = document.getElementById('progress');
+const progressFill = document.getElementById('progress-fill');
+
+let files = [];
+let currentBlobs = [];
+let previewUrl = null;
+
+qualitySlider.addEventListener('input', () => {
+  qualityVal.textContent = qualitySlider.value + '%';
+});
+
+formatSelect.addEventListener('change', () => {
+  const noQualityFormats = ['image/png', 'image/gif', 'image/bmp'];
+  document.getElementById('quality-group').style.display = noQualityFormats.includes(formatSelect.value) ? 'none' : 'block';
+});
+
+function setStatus(type, message) {
+  if (typeof showStatus === 'function') {
+    showStatus(statusMsg, type, message);
+    return;
+  }
+  statusMsg.textContent = message;
+  statusMsg.className = 'status-msg ' + type;
+}
+
+function formatBytes(bytes) {
+  if (typeof formatSize === 'function') return formatSize(bytes);
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+function downloadBlob(blob, filename) {
+  if (typeof window.downloadBlob === 'function') {
+    window.downloadBlob(blob, filename);
+    return;
+  }
+  const a = document.createElement('a');
+  const url = URL.createObjectURL(blob);
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+
+function handleFiles(fileList) {
+  files = Array.from(fileList).filter(file => {
+    if (!file.type.startsWith('image/')) {
+      alert('Please upload image files only.');
+      return false;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      alert(file.name + ' is too large. Max 20MB per file.');
+      return false;
+    }
+    return true;
+  });
+
+  if (!files.length) return;
+
+  fileInfo.innerHTML = files.map(file =>
+    `<span class="stat-chip"><strong>${file.name}</strong> — ${formatBytes(file.size)}</span>`
+  ).join('');
+
+  settingsCard.style.display = 'block';
+  outputCard.style.display = 'none';
+  setStatus('info', files.length + ' image(s) ready for conversion.');
+}
+
+fileInput.addEventListener('change', e => handleFiles(e.target.files));
+
+if (typeof initDragDrop === 'function') {
+  initDragDrop(uploadZone, handleFiles);
+} else {
+  uploadZone.addEventListener('click', () => fileInput.click());
+  uploadZone.addEventListener('dragover', e => {
+    e.preventDefault();
+    uploadZone.classList.add('dragover');
+  });
+  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+  uploadZone.addEventListener('drop', e => {
+    e.preventDefault();
+    uploadZone.classList.remove('dragover');
+    if (e.dataTransfer.files?.length) handleFiles(e.dataTransfer.files);
+  });
+}
+
+function getOutputExtension(mime) {
+  const map = {
+    'image/png': 'png',
+    'image/jpeg': 'jpg',
+    'image/webp': 'webp',
+    'image/bmp': 'bmp',
+    'image/gif': 'gif'
+  };
+  return map[mime] || 'png';
+}
+
+function canvasToBlob(canvas, type, quality) {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(blob => {
+      if (!blob) reject(new Error('Conversion failed.'));
+      else resolve(blob);
+    }, type, quality);
+  });
+}
+
+async function convertImage(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+
+    img.onload = async () => {
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext('2d');
+
+        if (formatSelect.value === 'image/jpeg') {
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        ctx.drawImage(img, 0, 0);
+        URL.revokeObjectURL(objectUrl);
+
+        if (formatSelect.value === 'image/bmp' || formatSelect.value === 'image/gif') {
+          const pngBlob = await canvasToBlob(canvas, 'image/png', 1);
+          resolve(pngBlob);
+          return;
+        }
+
+        const quality = parseInt(qualitySlider.value, 10) / 100;
+        const blob = await canvasToBlob(canvas, formatSelect.value, quality);
+        resolve(blob);
+      } catch (error) {
+        reject(error);
+      }
+    };
+
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      reject(new Error('Could not load image.'));
+    };
+
+    img.src = objectUrl;
+  });
+}
+
+convertBtn.addEventListener('click', async () => {
+  if (!files.length) {
+    setStatus('error', 'Please upload at least one image.');
+    return;
+  }
+
+  convertBtn.disabled = true;
+  progress.classList.add('active');
+  progressFill.style.width = '10%';
+  outputCard.style.display = 'none';
+  currentBlobs = [];
+
+  try {
+    for (let i = 0; i < files.length; i++) {
+      const blob = await convertImage(files[i]);
+      currentBlobs.push({ blob, name: files[i].name });
+      const percentage = 20 + ((i + 1) / files.length) * 80;
+      progressFill.style.width = percentage + '%';
+    }
+
+    const first = currentBlobs[0];
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    previewUrl = URL.createObjectURL(first.blob);
+    outputImg.src = previewUrl;
+
+    const ext = getOutputExtension(formatSelect.value === 'image/bmp' || formatSelect.value === 'image/gif' ? 'image/png' : formatSelect.value);
+
+    outputStats.innerHTML = `
+      <span class="stat-chip">Original: <strong>${formatBytes(files[0].size)}</strong></span>
+      <span class="stat-chip">Converted: <strong>${formatBytes(first.blob.size)}</strong></span>
+      <span class="stat-chip">Format: <strong>${ext.toUpperCase()}</strong></span>
+      <span class="stat-chip">Files: <strong>${currentBlobs.length}</strong></span>
+    `;
+
+    outputCard.style.display = 'block';
+    setStatus('success', currentBlobs.length + ' image(s) converted successfully.');
+  } catch (error) {
+    setStatus('error', 'Conversion failed: ' + error.message);
+  }
+
+  progress.classList.remove('active');
+  convertBtn.disabled = false;
+});
+
+downloadBtn.addEventListener('click', () => {
+  if (!currentBlobs.length) return;
+
+  currentBlobs.forEach(({ blob, name }) => {
+    const selectedType = (formatSelect.value === 'image/bmp' || formatSelect.value === 'image/gif') ? 'image/png' : formatSelect.value;
+    const ext = getOutputExtension(selectedType);
+    const newName = name.replace(/\.[^.]+$/, '') + '.' + ext;
+    downloadBlob(blob, newName);
+  });
+});
+
+document.getElementById('reset-btn').addEventListener('click', () => {
+  files = [];
+  currentBlobs = [];
+  fileInput.value = '';
+  fileInfo.innerHTML = '';
+  outputStats.innerHTML = '';
+  settingsCard.style.display = 'none';
+  outputCard.style.display = 'none';
+  progress.classList.remove('active');
+  progressFill.style.width = '0%';
+  statusMsg.textContent = '';
+  if (previewUrl) {
+    URL.revokeObjectURL(previewUrl);
+    previewUrl = null;
+  }
+  outputImg.removeAttribute('src');
+});
+
+document.getElementById('convert-another').addEventListener('click', () => {
+  outputCard.style.display = 'none';
+  fileInput.click();
+});
+</script>
+</body>
+</html>

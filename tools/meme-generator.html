@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Meme Generator Online — Add Text to Images | Logrith Legacy</title>
+  <meta name="description" content="Create memes online for free. Add classic top and bottom text captions to any image with the Impact font, then download instantly. No signup required.">
+  <meta name="keywords" content="meme generator, meme maker online, create meme free, meme creator, add text to image meme, impact font meme">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Legacy">
+  <link rel="canonical" href="https://logrith.in/tools/meme-generator">
+  <meta property="og:title" content="Free Meme Generator Online | Logrith Legacy">
+  <meta property="og:description" content="Create memes instantly with classic top/bottom text. Free, browser-based, no signup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/meme-generator">
+  <meta property="og:site_name" content="Logrith Legacy">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Meme Generator | Logrith Legacy">
+  <meta name="twitter:description" content="Create memes instantly with classic top/bottom text, free and private.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://logrith.in/#organization","name":"Logrith Legacy","url":"https://logrith.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Meme Generator","url":"https://logrith.in/tools/meme-generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","description":"Free online meme generator with classic top and bottom text captions.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://logrith.in/#organization"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://logrith.in/"},{"@type":"ListItem","position":2,"name":"Image & PDF Tools","item":"https://logrith.in/categories/image-pdf-tools"},{"@type":"ListItem","position":3,"name":"Meme Generator","item":"https://logrith.in/tools/meme-generator"}]}
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/image-pdf-tools">Image & PDF Tools</a> › Meme Generator</div>
+  <h1>Free Meme Generator</h1>
+  <p>Add classic top and bottom text captions to any image and download your meme instantly — no signup, no watermark.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">😂 Classic Style</span><span class="tool-tag">⚡ Instant</span></div>
+</div></div>
+
+<div class="tool-workspace" style="max-width:820px;">
+  <div class="tool-card">
+    <h2>Upload Image</h2>
+    <div class="upload-zone" id="upload-zone">
+      <input type="file" id="file-input" accept="image/*">
+      <div class="upload-icon">😂</div>
+      <h3>Drop an image here or click to browse</h3>
+      <p>PNG, JPG, WEBP — max 10MB</p>
+    </div>
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+
+  <div class="tool-card" id="controls-card" style="display:none;">
+    <h2>Meme Text</h2>
+    <div class="controls-grid">
+      <div class="control-group">
+        <label>Top Text</label>
+        <input type="text" id="top-text" class="field-input" placeholder="TOP TEXT">
+      </div>
+      <div class="control-group">
+        <label>Bottom Text</label>
+        <input type="text" id="bottom-text" class="field-input" placeholder="BOTTOM TEXT">
+      </div>
+      <div class="control-group">
+        <label>Font Size: <span id="size-val">42</span>px</label>
+        <input type="range" id="font-size" min="20" max="90" value="42">
+      </div>
+      <div class="control-group">
+        <label>Text Color</label>
+        <input type="color" id="text-color" value="#ffffff" style="width:100%;height:42px;border-radius:8px;border:1.5px solid var(--gray-200);cursor:pointer;">
+      </div>
+    </div>
+  </div>
+
+  <div class="tool-card" id="result-card" style="display:none;">
+    <h2>Your Meme</h2>
+    <canvas id="meme-canvas" style="max-width:100%;border-radius:10px;border:1.5px solid var(--gray-200);"></canvas>
+    <div class="btn-group mt-16">
+      <a href="#" id="download-btn" class="btn btn-primary" download="meme.png">⬇️ Download Meme</a>
+    </div>
+  </div>
+</div>
+
+<div class="content-card faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item-box"><h3>Can I use any image to make a meme?</h3><p>Yes, upload any PNG, JPG, or WEBP image and add your own top and bottom text captions.</p></div>
+    <div class="faq-item-box"><h3>Does the meme have a watermark?</h3><p>No, downloaded memes are clean with no watermark or branding added.</p></div>
+    <div class="faq-item-box"><h3>Is my image uploaded to a server?</h3><p>No, everything is rendered locally using the Canvas API — your image never leaves your browser.</p></div>
+  </div>
+</div>
+
+<section class="article-section">
+  <h2>Free Online Meme Generator</h2>
+  <p>This tool recreates the classic internet meme format — bold white text with a black outline, positioned at the top and bottom of an image — using nothing but your browser's Canvas API. Upload any image, type your captions, adjust the size and color, and download the finished meme instantly.</p>
+
+  <h3>The Classic Meme Text Style</h3>
+  <p>The bold, outlined, all-caps text style associated with early internet memes traces back to image macro culture from sites like Something Awful and later Reddit and Imgur, where a heavy sans-serif font (often Impact) with a thick black outline was used to ensure captions stayed readable over any background image, light or dark. This tool replicates that same high-contrast look using canvas text rendering with a stroked outline, so your captions stay legible regardless of what's happening in the photo underneath.</p>
+
+  <h3>Tips for Good Meme Text</h3>
+  <ul class="feature-list">
+    <li><strong>Keep it short.</strong> Classic memes work best with punchy, brief captions rather than long sentences.</li>
+    <li><strong>Use ALL CAPS</strong> for the traditional meme aesthetic — it's part of what makes the format instantly recognizable.</li>
+    <li><strong>Watch your image's busy areas</strong> — position text over relatively plain parts of the image so it doesn't compete visually with important details.</li>
+    <li><strong>Adjust font size to fit</strong> — very long captions may need a smaller size to avoid running off the edges.</li>
+  </ul>
+
+  <h3>Privacy and Local Processing</h3>
+  <p>Your image and text are processed entirely in your browser using the Canvas API — nothing is uploaded to a server, and no watermark is added to your finished meme.</p>
+</section>
+
+<div class="content-card related-tools">
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="/tools/image-watermark" class="tool-item"><div class="ti-text"><h4>Image Watermark</h4><p>Add a branded text watermark to your images.</p></div></a>
+    <a href="/tools/image-crop" class="tool-item"><div class="ti-text"><h4>Image Crop</h4><p>Crop images to the perfect meme format.</p></div></a>
+    <a href="/tools/image-compressor" class="tool-item"><div class="ti-text"><h4>Image Compressor</h4><p>Compress your meme for faster sharing.</p></div></a>
+    <a href="/tools/image-resize" class="tool-item"><div class="ti-text"><h4>Image Resize</h4><p>Resize your meme for different platforms.</p></div></a>
+  </div>
+</div>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card keyword-section">
+      <h2>Popular Searches</h2>
+      <div class="keyword-box">
+        <span class="keyword-tag">meme generator</span>
+        <span class="keyword-tag">meme maker online</span>
+        <span class="keyword-tag">create meme free</span>
+        <span class="keyword-tag">meme creator</span>
+        <span class="keyword-tag">add text to image meme</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+<script>
+const uploadZone = document.getElementById('upload-zone');
+const fileInput = document.getElementById('file-input');
+let uploadedImg = null;
+
+document.getElementById('font-size').addEventListener('input', e => { document.getElementById('size-val').textContent = e.target.value; renderMeme(); });
+
+function handleFile(file) {
+  const statusEl = document.getElementById('status-msg');
+  if (!file || !file.type.startsWith('image/')) { showStatus(statusEl,'error','Please select a valid image file.'); return; }
+  if (file.size > 10*1024*1024) { showStatus(statusEl,'error','File too large. Max 10MB.'); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      uploadedImg = img;
+      document.getElementById('controls-card').style.display = 'block';
+      document.getElementById('top-text').value = 'TOP TEXT';
+      document.getElementById('bottom-text').value = 'BOTTOM TEXT';
+      renderMeme();
+      showStatus(statusEl, 'success', 'Image loaded! Edit your captions.');
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function wrapText(ctx, text, maxWidth) {
+  const words = text.split(' ');
+  const lines = [];
+  let current = '';
+  for (const word of words) {
+    const test = current ? current + ' ' + word : word;
+    if (ctx.measureText(test).width > maxWidth && current) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = test;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+function renderMeme() {
+  if (!uploadedImg) return;
+  const canvas = document.getElementById('meme-canvas');
+  canvas.width = uploadedImg.width;
+  canvas.height = uploadedImg.height;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(uploadedImg, 0, 0);
+
+  const fontSize = parseInt(document.getElementById('font-size').value);
+  const color = document.getElementById('text-color').value;
+  const topText = (document.getElementById('top-text').value || '').toUpperCase();
+  const bottomText = (document.getElementById('bottom-text').value || '').toUpperCase();
+
+  ctx.font = `bold ${fontSize}px Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.fillStyle = color;
+  ctx.strokeStyle = '#000000';
+  ctx.lineWidth = fontSize / 12;
+  ctx.lineJoin = 'round';
+
+  const maxWidth = canvas.width * 0.92;
+
+  if (topText) {
+    const lines = wrapText(ctx, topText, maxWidth);
+    lines.forEach((line, i) => {
+      const y = fontSize + (i * fontSize * 1.1) + 10;
+      ctx.strokeText(line, canvas.width / 2, y);
+      ctx.fillText(line, canvas.width / 2, y);
+    });
+  }
+
+  if (bottomText) {
+    const lines = wrapText(ctx, bottomText, maxWidth);
+    lines.reverse().forEach((line, i) => {
+      const y = canvas.height - 20 - (i * fontSize * 1.1);
+      ctx.strokeText(line, canvas.width / 2, y);
+      ctx.fillText(line, canvas.width / 2, y);
+    });
+  }
+
+  document.getElementById('result-card').style.display = 'block';
+  document.getElementById('download-btn').href = canvas.toDataURL('image/png');
+}
+
+['top-text','bottom-text','text-color'].forEach(id => {
+  document.getElementById(id).addEventListener('input', renderMeme);
+});
+
+fileInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+uploadZone.addEventListener('drop', e => { e.preventDefault(); uploadZone.classList.remove('dragover'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
+</script>
+</body>
+</html>
