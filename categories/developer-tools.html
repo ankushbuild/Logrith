@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Developer Tools Online — JSON, Base64, Hash, Password, Regex | Logrith Legacy</title>
+  <title>Free Developer Tools Online — JSON, Base64, Hash, Password, Regex | Logrith</title>
   <meta name="description" content="17+ free online developer tools — format & validate JSON, encode Base64, generate SHA-256 hashes, create UUIDs, test regex patterns, generate strong passwords. No install, 100% in-browser.">
   <meta name="keywords" content="free developer tools online, json formatter, base64 encoder, hash generator, uuid generator, regex tester, password generator, url encoder, developer utilities">
   <link rel="canonical" href="https://logrith.in/categories/developer-tools">
-  <meta property="og:title" content="Free Developer Tools Online — Logrith Legacy">
+  <meta property="og:title" content="Free Developer Tools Online — Logrith">
   <meta property="og:description" content="JSON formatter, Base64, SHA-256 hash, UUID generator, Regex tester and 17+ dev tools. Free, instant, no login.">
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -180,17 +180,17 @@
 </div>
 
 <div class="seo-text">
-  <h2>About Logrith Legacy Developer Tools</h2>
-  <p>Developer tools are utilities that programmers, DevOps engineers, and technical users need constantly — but shouldn't have to install software or sign up for services to access. Logrith Legacy's developer tool collection covers the most frequently needed utilities, all running in the browser with zero setup.</p>
+  <h2>About Logrith Developer Tools</h2>
+  <p>Developer tools are utilities that programmers, DevOps engineers, and technical users need constantly — but shouldn't have to install software or sign up for services to access. Logrith's developer tool collection covers the most frequently needed utilities, all running in the browser with zero setup.</p>
   <p>The <a href="/tools/json-formatter">JSON Formatter</a> is one of the most-used tools — it validates JSON with precise error location, beautifies minified JSON for readability, and minifies formatted JSON for production. The key sorting feature is particularly useful for standardizing API response formats and configuration files.</p>
-  <p>For security-sensitive tasks, Logrith Legacy uses the browser's built-in <strong>Web Crypto API</strong> — the same cryptographic primitives used by the operating system itself. The <a href="/tools/hash-generator">Hash Generator</a> uses SubtleCrypto.digest() for SHA-256/SHA-512, and the <a href="/tools/password-generator">Password Generator</a> uses crypto.getRandomValues() for cryptographically secure randomness. Neither tool has any external dependencies for their core functionality.</p>
+  <p>For security-sensitive tasks, Logrith uses the browser's built-in <strong>Web Crypto API</strong> — the same cryptographic primitives used by the operating system itself. The <a href="/tools/hash-generator">Hash Generator</a> uses SubtleCrypto.digest() for SHA-256/SHA-512, and the <a href="/tools/password-generator">Password Generator</a> uses crypto.getRandomValues() for cryptographically secure randomness. Neither tool has any external dependencies for their core functionality.</p>
   <p>The <a href="/tools/regex-tester">Regex Tester</a> uses the browser's native RegExp engine — the same one your Node.js or frontend JavaScript will use — so test results here match exactly what you'd get in production JavaScript code. This is a key advantage over server-based regex testers that may use different regex flavors (PCRE, Python re, etc.).</p>
 
   <h2>Frequently Asked Questions</h2>
   <div class="faq-item"><div class="faq-q">Which hash algorithm should I use for password storage?</div><div class="faq-a">None of the hashes in this tool (SHA-256, SHA-512) are appropriate for password storage — they're too fast, which makes brute-force attacks easy. For password hashing, use bcrypt, Argon2id, or scrypt with a high cost factor. These tools are for checksums, data integrity verification, and non-security uses.</div></div>
   <div class="faq-item"><div class="faq-q">Is the JSON formatter safe for sensitive API data?</div><div class="faq-a">Yes. All JSON processing happens in browser memory only — no data is sent to any server. You can even disconnect from the internet after loading the page and the formatter will continue to work perfectly.</div></div>
   <div class="faq-item"><div class="faq-q">What's the difference between encodeURIComponent and encodeURI?</div><div class="faq-a">encodeURI encodes a complete URL, preserving characters like /, ?, &, =, # that have structural meaning. encodeURIComponent encodes everything except unreserved characters — use it for values inside query parameters. For query string values, always use encodeURIComponent.</div></div>
-  <div class="faq-item"><div class="faq-q">Can I use these tools in a CI/CD pipeline?</div><div class="faq-a">These tools are web-based and interactive — they're designed for manual use. For CI/CD pipelines, use command-line tools like jq (JSON), openssl (hashing), or uuidgen. Logrith Legacy is designed for developer convenience in the browser, not scripted automation.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I use these tools in a CI/CD pipeline?</div><div class="faq-a">These tools are web-based and interactive — they're designed for manual use. For CI/CD pipelines, use command-line tools like jq (JSON), openssl (hashing), or uuidgen. Logrith is designed for developer convenience in the browser, not scripted automation.</div></div>
   <div class="faq-item"><div class="faq-q">How do I test a regex that should match email addresses?</div><div class="faq-a">Open the Regex Tester and click the "📧 Email" button in the common patterns section to load a standard email regex. Then modify your test string. You can adjust the regex directly — all matches are highlighted in real-time as you type.</div></div>
   <div class="faq-item"><div class="faq-q">What Base64 variant should I use for JWT tokens?</div><div class="faq-a">JWT tokens use URL-safe Base64 (Base64url) — which replaces + with - and / with _, and omits padding = characters. Select "URL-safe Base64" in the encoding mode dropdown of the Base64 tool. The standard variant (+/=) should not be used directly in URLs or HTTP headers.</div></div>
   <div class="faq-item"><div class="faq-q">What is UUID v4 and when should I use it?</div><div class="faq-a">UUID v4 is a randomly generated 128-bit identifier in the format xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx. Use it as database primary keys, session tokens, file upload names, or any identifier that needs to be unique without central coordination. The collision probability is negligible — about 1 in 5.3 × 10^36.</div></div>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free CSS Clamp() Calculator Online — Fluid Typography Generator | Logrith</title>
+  <meta name="description" content="Generate CSS clamp() values for fluid, responsive typography online for free. Set min/max size and viewport range, get instant CSS code. No signup.">
+  <meta name="keywords" content="css clamp calculator, fluid typography generator, responsive font size calculator, css clamp generator, fluid type scale">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith">
+  <link rel="canonical" href="https://logrith.in/tools/css-clamp-calculator">
+  <meta property="og:title" content="Free CSS Clamp() Calculator | Logrith">
+  <meta property="og:description" content="Generate fluid, responsive CSS clamp() values instantly. Free and browser-based.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/css-clamp-calculator">
+  <meta property="og:site_name" content="Logrith">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free CSS Clamp() Calculator | Logrith">
+  <meta name="twitter:description" content="Generate fluid CSS clamp() values instantly, free and private.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    #clamp-preview { padding:30px 16px;background:var(--gray-50);border-radius:var(--radius-lg);text-align:center;overflow:hidden; }
+    #clamp-preview-text { font-weight:800;color:var(--primary);transition:font-size .1s; }
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://logrith.in/#organization","name":"Logrith","url":"https://logrith.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"CSS Clamp Calculator","url":"https://logrith.in/tools/css-clamp-calculator","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Free online CSS clamp() value generator for fluid, responsive typography and spacing.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://logrith.in/#organization"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://logrith.in/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://logrith.in/categories/developer-tools"},{"@type":"ListItem","position":3,"name":"CSS Clamp Calculator","item":"https://logrith.in/tools/css-clamp-calculator"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What does the CSS clamp() function do?","acceptedAnswer":{"@type":"Answer","text":"clamp() takes a minimum, preferred, and maximum value, letting a property (like font-size) scale fluidly with the viewport while never going below the minimum or above the maximum."}},
+    {"@type":"Question","name":"Why use clamp() instead of media queries for font sizes?","acceptedAnswer":{"@type":"Answer","text":"clamp() scales smoothly and continuously with viewport width, avoiding the abrupt jumps in size that occur at media query breakpoints, and requires far less CSS code."}}
+  ]}
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/developer-tools">Developer Tools</a> › CSS Clamp Calculator</div>
+  <h1>Free CSS Clamp() Calculator</h1>
+  <p>Generate a fluid, responsive CSS clamp() value that scales smoothly between a minimum and maximum size across any viewport range.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">📐 Fluid Typography</span><span class="tool-tag">⚡ Instant Code</span></div>
+</div></div>
+
+<div class="tool-workspace" style="max-width:820px;">
+  <div class="tool-card">
+    <h2>Live Preview</h2>
+    <div id="clamp-preview">
+      <span id="clamp-preview-text">Resize your browser to see this text scale fluidly</span>
+    </div>
+
+    <div class="controls-grid mt-16">
+      <div class="control-group">
+        <label>Min Size (px)</label>
+        <input type="number" id="min-size" class="field-input" value="16" min="1">
+      </div>
+      <div class="control-group">
+        <label>Max Size (px)</label>
+        <input type="number" id="max-size" class="field-input" value="32" min="1">
+      </div>
+      <div class="control-group">
+        <label>Min Viewport (px)</label>
+        <input type="number" id="min-vw" class="field-input" value="375" min="1">
+      </div>
+      <div class="control-group">
+        <label>Max Viewport (px)</label>
+        <input type="number" id="max-vw" class="field-input" value="1440" min="1">
+      </div>
+    </div>
+
+    <div class="control-group mt-16" style="position:relative;">
+      <label>CSS Code</label>
+      <textarea class="tool-textarea mono" id="css-output" rows="2" readonly></textarea>
+      <button class="copy-btn" id="copy-btn">📋 Copy</button>
+    </div>
+  </div>
+</div>
+
+<div class="content-card faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item-box"><h3>What does CSS clamp() do?</h3><p>clamp() takes a minimum, preferred, and maximum value, letting a property (like font-size) scale fluidly with the viewport while never going below the minimum or above the maximum.</p></div>
+    <div class="faq-item-box"><h3>Why use clamp() instead of media queries?</h3><p>clamp() scales smoothly and continuously with viewport width, avoiding the abrupt jumps that occur at media query breakpoints, and requires far less CSS code.</p></div>
+    <div class="faq-item-box"><h3>Is clamp() supported in all browsers?</h3><p>Yes, clamp() has excellent support in all modern browsers (Chrome, Firefox, Safari, Edge) released since 2020.</p></div>
+    <div class="faq-item-box"><h3>Can I use this for spacing, not just font size?</h3><p>Yes, the same clamp() value works for any CSS length property — padding, margin, gap, and width all benefit from fluid scaling too.</p></div>
+  </div>
+</div>
+
+<section class="article-section">
+  <h2>Fluid Typography with CSS clamp()</h2>
+  <p>This tool calculates a CSS clamp() value that smoothly scales a font size (or any length property) between a minimum and maximum, based on the viewport width — creating fluid, responsive typography without needing multiple media query breakpoints.</p>
+
+  <h3>How clamp() Works</h3>
+  <p>The clamp() function takes three values: a minimum, a preferred value (usually involving a viewport-relative unit like vw), and a maximum. The browser evaluates the preferred value and clamps it — capping it at the minimum if it would go lower, or the maximum if it would go higher. The preferred value is calculated using linear interpolation between your two size/viewport pairs, meaning the value changes smoothly and proportionally as the viewport resizes, rather than jumping between fixed sizes at breakpoints.</p>
+
+  <h3>The Math Behind the Calculation</h3>
+  <p>This tool calculates the linear equation connecting your minimum size at your minimum viewport, and maximum size at your maximum viewport, then expresses that equation using rem and vw units — the standard, accessible approach for fluid typography that respects user font-size preferences (since rem scales with the user's base font size) while still responding to viewport width.</p>
+
+  <h3>Why Fluid Typography Matters</h3>
+  <ul class="feature-list">
+    <li><strong>Smoother scaling</strong> — text size changes gradually as the viewport resizes, rather than jumping at specific breakpoints.</li>
+    <li><strong>Less CSS code</strong> — one clamp() declaration replaces multiple media query overrides for the same property.</li>
+    <li><strong>Better in-between experience</strong> — devices and window sizes between your defined breakpoints still get an appropriately-scaled size.</li>
+  </ul>
+
+  <h3>Privacy and Local Processing</h3>
+  <p>All calculations happen directly in your browser — nothing is sent to a server.</p>
+</section>
+
+<div class="content-card related-tools">
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="/tools/css-gradient-generator" class="tool-item"><div class="ti-text"><h4>CSS Gradient Generator</h4><p>Build linear and radial gradients visually.</p></div></a>
+    <a href="/tools/css-box-shadow-generator" class="tool-item"><div class="ti-text"><h4>CSS Box Shadow Generator</h4><p>Build box shadows visually with CSS output.</p></div></a>
+    <a href="/tools/css-minifier" class="tool-item"><div class="ti-text"><h4>CSS Minifier</h4><p>Minify or beautify your CSS code.</p></div></a>
+    <a href="/tools/unit-converter" class="tool-item"><div class="ti-text"><h4>Unit Converter</h4><p>Convert between px, rem, and other units.</p></div></a>
+  </div>
+</div>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card keyword-section">
+      <h2>Popular Searches</h2>
+      <div class="keyword-box">
+        <span class="keyword-tag">css clamp calculator</span>
+        <span class="keyword-tag">fluid typography generator</span>
+        <span class="keyword-tag">responsive font size calculator</span>
+        <span class="keyword-tag">css clamp generator</span>
+        <span class="keyword-tag">fluid type scale</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+<script>
+function calcClamp(minPx, maxPx, minVw, maxVw) {
+  const slope = (maxPx - minPx) / (maxVw - minVw);
+  const yIntersection = -minVw * slope + minPx;
+  const slopeVw = (slope * 100).toFixed(4);
+  const yRem = (yIntersection / 16).toFixed(4);
+  const minRem = (minPx / 16).toFixed(4);
+  const maxRem = (maxPx / 16).toFixed(4);
+  return `clamp(${minRem}rem, ${yRem}rem + ${slopeVw}vw, ${maxRem}rem)`;
+}
+
+function update() {
+  const minSize = parseFloat(document.getElementById('min-size').value) || 16;
+  const maxSize = parseFloat(document.getElementById('max-size').value) || 32;
+  const minVw = parseFloat(document.getElementById('min-vw').value) || 375;
+  const maxVw = parseFloat(document.getElementById('max-vw').value) || 1440;
+
+  const clampValue = calcClamp(minSize, maxSize, minVw, maxVw);
+  document.getElementById('css-output').value = `font-size: ${clampValue};`;
+
+  // Live preview: approximate current preview container width as viewport for demo purposes
+  const previewWidth = document.getElementById('clamp-preview').offsetWidth;
+  const t = Math.max(0, Math.min(1, (previewWidth - minVw) / (maxVw - minVw)));
+  const previewSize = minSize + t * (maxSize - minSize);
+  document.getElementById('clamp-preview-text').style.fontSize = previewSize + 'px';
+}
+
+['min-size','max-size','min-vw','max-vw'].forEach(id => {
+  document.getElementById(id).addEventListener('input', update);
+});
+window.addEventListener('resize', update);
+
+document.getElementById('copy-btn').addEventListener('click', function() {
+  const v = document.getElementById('css-output').value;
+  if (v) copyText(v, this);
+});
+
+update();
+</script>
+</body>
+</html>

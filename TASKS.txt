@@ -1,173 +1,57 @@
 =====================================================================
-LOGRITH LEGACY — NEW TOOLS EXPANSION PLAN (50 tools, 5 categories)
+LOGRITH — PHASE 2 COMPLETE: 100/100 TOOLS TOTAL
 =====================================================================
-Rule: AI Tools category is EXCLUDED from this batch (per instruction).
-Each tool must be:
-  - Fully working frontend-only JS (no fake/broken external deps)
-  - Powerful (real functionality, not a toy demo)
-  - Proper SEO (title, meta, canonical, schema, 2000+ word content)
-  - Uses shared style.css classes (no duplicate inline CSS unless a
-    tool genuinely needs a new one-off component, in which case it
-    gets added to style.css as a reusable class)
-  - Linked into: navbar (if space), footer column, homepage section,
-    category page tool-list, sitemap-tools.xml, all-tools.html
+Baseline before Phase 2: 84 tools
+Phase 2: +16 new, high-traffic, market-researched, globally applicable
+tools, zero duplication with existing 84. ALL 16 COMPLETE.
 
-Process per tool:
-  1. Build the tool file in /tools/
-  2. Verify JS logic (test formulas/logic in node before finalizing)
-  3. Verify tag balance + word count 2000+
-  4. Mark DONE in this file
-  5. After ALL 10 in a category are built -> do category linking pass
-     (category page, footer, homepage, sitemap, all-tools)
+FINAL LIST (16 tools, all built + verified):
 
-=====================================================================
-CATEGORY 1: IMAGE & PDF TOOLS (target: 10 new, total 20)
-=====================================================================
-[x] 1. image-to-base64        - DONE
-[x] 2. favicon-generator       - DONE
-[x] 3. image-watermark         - DONE
-[x] 4. meme-generator          - DONE
-[x] 5. pdf-to-text             - DONE
-[x] 6. pdf-page-remover        - DONE
-[x] 7. pdf-watermark           - DONE
-[x] 8. pdf-password-protect    - DONE (uses @pdfsmaller/pdf-encrypt-lite via jsDelivr ESM, real RC4-128 encryption, verified library)
-[x] 9. image-color-picker      - DONE
-[x] 10. svg-to-png             - DONE
-STATUS: CATEGORY 1 COMPLETE (10/10) — linking pass pending
+TEXT & GENERATORS (+5)
+[x] words-to-pages-converter
+[x] number-to-words-converter
+[x] morse-code-translator
+[x] nato-phonetic-alphabet-translator
+[x] fancy-text-generator
+
+CALCULATE & CONVERT (+4)
+[x] wpm-typing-speed-calculator
+[x] roman-numeral-converter
+[x] body-fat-percentage-calculator
+[x] salary-hourly-converter
+
+DEVELOPER TOOLS (+3)
+[x] xml-formatter
+[x] yaml-json-converter
+[x] css-clamp-calculator
+
+IMAGE & PDF TOOLS (+2)
+[x] photo-resizer-kb
+[x] pdf-compressor
+
+UTILITIES (+2)
+[x] random-color-palette-generator
+[x] text-expander-snippet-tool
 
 =====================================================================
-CATEGORY 2: CALCULATE & CONVERT (target: 10 new, total 16)
-=====================================================================
-[x] 1. bmi-calculator          - DONE (formula verified: BMI=kg/m², imperial 703×lb/in²)
-[x] 2. loan-affordability-calc - DONE (reverse-EMI formula verified via round-trip test)
-[x] 3. compound-interest-calc  - DONE (compound+contribution formula verified)
-[x] 4. simple-interest-calc    - DONE (SI=PRT/100 verified)
-[x] 5. currency-converter      - DONE (manual rate entry, offline-safe, no external API)
-[x] 6. discount-stacking-calc  - DONE (sequential discount math verified)
-[x] 7. tip-split-calculator    - DONE (equal + uneven split verified)
-[x] 8. date-difference-calc    - DONE (calendar-aware date math verified)
-[x] 9. time-zone-converter     - DONE (Intl.DateTimeFormat native API, DST-aware, verified)
-[x] 10. number-base-converter  - DONE (bin/oct/dec/hex round-trip verified)
-STATUS: CATEGORY 2 COMPLETE (10/10) — linking pass pending
-
-=====================================================================
-CATEGORY 3: TEXT & GENERATORS (target: 10 new, total 17)
-=====================================================================
-[ ] 1. random-name-generator   - generate random person names (male/female/business) with filters
-[ ] 2. random-number-generator - generate random numbers/lists with range, uniqueness, seed
-[ ] 3. text-to-speech          - browser SpeechSynthesis based text reader w/ voice, rate, pitch controls
-[ ] 4. speech-to-text          - browser SpeechRecognition based dictation tool
-[ ] 5. markdown-previewer       - live markdown editor + rendered HTML preview
-[ ] 6. text-reverser            - reverse text/words/lines with multiple modes
-[ ] 7. acronym-generator        - generate acronym from a phrase + find expansions
-[ ] 8. text-summarizer-basic    - extractive summarizer (sentence scoring, no external API)
-[ ] 9. citation-generator       - generate APA/MLA/Chicago citations from manual fields
-[ ] 10. random-quote-generator  - curated quote database w/ category filter, copy/share
-
-=====================================================================
-CATEGORY 4: DEVELOPER TOOLS (target: 10 new, total 17)
-=====================================================================
-[ ] 1. css-minifier             - minify/beautify CSS
-[ ] 2. js-minifier              - minify/beautify JS (basic, safe regex-based, not full AST)
-[ ] 3. html-minifier            - minify/beautify HTML
-[ ] 4. html-entity-converter    - encode/decode HTML entities
-[ ] 5. cron-expression-builder  - build + explain cron expressions in plain English
-[ ] 6. jwt-decoder              - decode JWT header/payload (no verification, client-side only)
-[ ] 7. sql-formatter            - format/beautify SQL queries
-[ ] 8. css-gradient-generator   - visual linear/radial gradient builder w/ CSS output
-[ ] 9. css-box-shadow-generator - visual box-shadow builder w/ CSS output
-[ ] 10. http-status-code-lookup - searchable reference of HTTP status codes w/ explanations
-
-=====================================================================
-CATEGORY 5: UTILITIES (target: 10 new, total 12)
-=====================================================================
-[x] 1. barcode-generator         - DONE (real CODE128B encoding w/ checksum, verified, Canvas rendered)
-[x] 2. passphrase-generator      - DONE (diceware-style, crypto-secure Web Crypto API randomness)
-[x] 3. browser-info-lookup       - DONE (clearly labeled as browser-detected info, NOT IP geolocation)
-[x] 4. unit-price-comparator     - DONE (currency made globally neutral, no INR)
-[x] 5. percentage-fee-splitter   - DONE (global payment/platform fee calculator, no country tax logic)
-[x] 6. countdown-timer-tool      - DONE
-[x] 7. world-clock               - DONE
-[x] 8. flip-coin-dice-roller     - DONE
-[x] 9. random-team-generator     - DONE
-[x] 10. file-size-converter      - DONE
-STATUS: CATEGORY 5 COMPLETE (10/10) — linking pass pending
-
-=====================================================================
-ALL 5 CATEGORIES COMPLETE: 50/50 NEW TOOLS BUILT (84 total tools)
+STATUS: 100/100 TOOLS BUILT. Zero HTML tag-balance issues confirmed
+across all files. All 16 new tools individually validated (tag
+balance + JS syntax check) at creation time.
 =====================================================================
 
-=====================================================================
-LINKING CHECKLIST (per category, after all 10 tools built)
-=====================================================================
-[ ] Add entries to /categories/<category>.html tool-list
-[ ] Update category badge count (e.g. "6 Tools" -> "16 Tools")
-[ ] Add entries to /components/footer.html matching column
-[ ] Add entries to /index.html matching homepage section
-[ ] Add entries to /categories/all-tools.html
-[ ] Add <url> entries to /sitemap-tools.xml
-[ ] Update category meta description tool count
+NEXT STEP REQUIRED: FULL LINKING PASS (not yet done)
+For all 16 new tools, still need to:
+- Add to respective category page tool-list (categories/*.html)
+- Add to categories/all-tools.html compact-grid + update badge counts
+- Add to homepage (index.html) respective section
+- Add to sitemap-tools.xml (currently at 84 entries, needs +16 = 100)
+- Update category badge counts everywhere:
+  Text & Generators: 17 -> 22
+  Calculate & Convert: 16 -> 20
+  Developer Tools: 17 -> 20
+  Image & PDF Tools: 20 -> 22
+  Utilities: 12 -> 14
+- Update tools.txt master inventory to 100
+- Final full-project validation + zip backup
 
-=====================================================================
-PROGRESS LOG
-=====================================================================
-OVERALL STATUS (as of this update):
-- Total tools in project: 78
-- Original tools (pre-expansion): 34
-- New tools built this expansion: 44
-
-CATEGORY 1: IMAGE & PDF TOOLS — ✅ COMPLETE (10/10 new, 20 total)
-  Linking done: category page ✅, all-tools.html ✅, homepage ✅, sitemap ✅
-
-CATEGORY 2: CALCULATE & CONVERT — ✅ COMPLETE (10/10 new, 16 total)
-  Linking done: category page ✅, all-tools.html ✅, homepage ✅, sitemap ✅
-
-CATEGORY 3: TEXT & GENERATORS — ✅ COMPLETE (10/10 new, 17 total)
-  Linking done: category page ✅, all-tools.html ✅, homepage ✅, sitemap ✅
-  Note: 3 "Coming Soon" placeholders remain intentionally (Keyword Density
-  Checker, Email Extractor, Barcode Generator listing here was removed
-  since barcode-generator now lives in Utilities category where it was built)
-
-CATEGORY 4: DEVELOPER TOOLS — ✅ COMPLETE (10/10 new, 17 total)
-  Linking done: category page ✅, all-tools.html ✅, homepage ✅, sitemap ✅
-  Replaced 5 pre-existing "Coming Soon" placeholders with real working tools
-  (css-minifier, js-minifier, html-minifier, html-entity-converter took the
-  slots originally reserved for CSS/JS Minifier, HTML Formatter/Previewer,
-  Markdown converter placeholders)
-
-CATEGORY 5: UTILITIES — 🔶 IN PROGRESS (4/10 new done, 6/12 total)
-  Done: barcode-generator, passphrase-generator, browser-info-lookup,
-        unit-price-comparator
-  Remaining: tax-bracket-estimator, countdown-timer-tool, world-clock,
-             flip-coin-dice-roller, random-team-generator, file-size-converter
-  Linking: NOT YET DONE for this category (pending remaining 6 tools first)
-
-BONUS FIXES MADE ALONG THE WAY (not originally in scope, found during work):
-- Fixed broken /#anchor breadcrumb links across 21 pre-existing tool pages
-- Fixed missing SEO meta tags (robots, author, og:*, twitter:*) on 20 tools
-- Fixed off-brand navy CSS colors in resume-analyzer.html to match blue theme
-- Flagged website-speed-analyzer.html's dependency on an external personal
-  Cloudflare Worker (speed.ankushmaur4.workers.dev) with no fallback — this
-  is a real reliability risk the site owner should be aware of
-- Fixed mobile menu completely broken (checkbox was nested inside <nav>,
-  breaking the CSS ~ sibling selector needed for the overlay/drawer to work)
-- Fixed footer's 6 columns being mismatched against the real category
-  structure (tools were listed under wrong categories)
-- Extracted footer/navbar CSS out of style.css into their own component
-  files for cleaner separation of concerns
-- Split sitemap.xml into sitemap-pages.xml + sitemap-tools.xml (both
-  referenced from a sitemap.xml index) per site owner's request
-- Fixed broken #base64 icon reference (icons.svg has no such icon; mapped
-  to #code instead) across 3 files
-- Fixed duplicate/conflicting filter buttons in all-tools.html pointing to
-  the same data-cat value
-- Removed qr-generator and password-generator duplicate listings that
-  appeared in the wrong category sections on homepage and all-tools.html
-
-NEXT STEPS:
-1. Build remaining 6 Utilities tools (tax-bracket-estimator through
-   file-size-converter)
-2. Run Category 5 linking pass (category page, all-tools.html, homepage,
-   sitemap-tools.xml) once all 10 new Utilities tools exist
-3. Final full-project validation pass
-4. Final zip backup
+Updated tools.txt reflects the current 100-tool inventory already.

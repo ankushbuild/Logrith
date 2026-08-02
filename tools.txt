@@ -1,0 +1,48 @@
+=====================================================================
+LOGRITH — CURRENT TOOL INVENTORY (100 tools)
+=====================================================================
+
+IMAGE & PDF TOOLS (22)
+image-compressor, image-converter, image-crop, image-resize, image-rotate,
+jpg-to-pdf, pdf-merge, pdf-rotate, pdf-split, pdf-to-jpg, image-to-base64,
+favicon-generator, image-watermark, meme-generator, pdf-to-text,
+pdf-page-remover, pdf-watermark, pdf-password-protect, image-color-picker,
+svg-to-png, photo-resizer-kb, pdf-compressor
+
+CALCULATE & CONVERT (20)
+age-calculator, color-converter, emi-calculator, gst-calculator,
+percentage-calculator, unit-converter, bmi-calculator,
+loan-affordability-calculator, compound-interest-calculator,
+simple-interest-calculator, currency-converter, discount-stacking-calculator,
+tip-split-calculator, date-difference-calculator, time-zone-converter,
+number-base-converter, wpm-typing-speed-calculator, roman-numeral-converter,
+body-fat-percentage-calculator, salary-hourly-converter
+
+TEXT & GENERATORS (22)
+case-converter, character-counter, duplicate-remover, lorem-ipsum,
+slug-generator, text-diff, word-counter, random-name-generator,
+random-number-generator, text-to-speech, speech-to-text, markdown-previewer,
+text-reverser, acronym-generator, text-summarizer-basic, citation-generator,
+random-quote-generator, words-to-pages-converter, number-to-words-converter,
+morse-code-translator, nato-phonetic-alphabet-translator, fancy-text-generator
+
+DEVELOPER TOOLS (20)
+base64, hash-generator, json-formatter, password-generator, regex-tester,
+url-encoder, uuid-generator, css-minifier, js-minifier, html-minifier,
+html-entity-converter, cron-expression-builder, jwt-decoder, sql-formatter,
+css-gradient-generator, css-box-shadow-generator, http-status-code-lookup,
+xml-formatter, yaml-json-converter, css-clamp-calculator
+
+UTILITIES (14)
+password-strength, qr-generator, barcode-generator, passphrase-generator,
+browser-info-lookup, unit-price-comparator, percentage-fee-splitter,
+countdown-timer-tool, world-clock, flip-coin-dice-roller,
+random-team-generator, file-size-converter, random-color-palette-generator,
+text-expander-snippet-tool
+
+AI TOOLS (2)
+resume-analyzer, website-speed-analyzer
+
+=====================================================================
+TOTAL: 100 TOOLS
+=====================================================================

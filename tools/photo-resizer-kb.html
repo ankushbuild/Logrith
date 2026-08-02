@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Photo Resizer to KB Online — Resize Image to Target File Size | Logrith</title>
+  <meta name="description" content="Resize a photo to a specific file size in KB online for free — perfect for exam forms, government forms, and job applications with strict upload limits.">
+  <meta name="keywords" content="resize image to 50kb, photo resizer kb, reduce photo size to kb, image compressor target size, resize photo for exam form">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith">
+  <link rel="canonical" href="https://logrith.in/tools/photo-resizer-kb">
+  <meta property="og:title" content="Free Photo Resizer to KB | Logrith">
+  <meta property="og:description" content="Resize a photo to an exact target file size in KB instantly. Free and browser-based.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/photo-resizer-kb">
+  <meta property="og:site_name" content="Logrith">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Photo Resizer to KB | Logrith">
+  <meta name="twitter:description" content="Resize a photo to a target file size instantly, free and private.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://logrith.in/#organization","name":"Logrith","url":"https://logrith.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Photo Resizer to KB","url":"https://logrith.in/tools/photo-resizer-kb","applicationCategory":"MultimediaApplication","operatingSystem":"Any","description":"Free online tool to resize a photo to a specific target file size in KB.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://logrith.in/#organization"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://logrith.in/"},{"@type":"ListItem","position":2,"name":"Image & PDF Tools","item":"https://logrith.in/categories/image-pdf-tools"},{"@type":"ListItem","position":3,"name":"Photo Resizer to KB","item":"https://logrith.in/tools/photo-resizer-kb"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Why do forms require a specific photo file size?","acceptedAnswer":{"@type":"Answer","text":"Many exam, visa, and government application forms enforce strict file size limits (like 20-50KB) to keep upload systems fast and storage manageable, especially for high-volume application processing."}},
+    {"@type":"Question","name":"Will resizing to a smaller file size reduce image quality?","acceptedAnswer":{"@type":"Answer","text":"Yes, hitting a much smaller target size requires more compression, which does reduce quality somewhat. This tool finds the best quality achievable within your target size."}}
+  ]}
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/image-pdf-tools">Image & PDF Tools</a> › Photo Resizer to KB</div>
+  <h1>Free Photo Resizer to KB</h1>
+  <p>Resize a photo to a specific target file size in KB — perfect for exam forms, job applications, and government portals with strict upload limits.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">🎯 Exact Target Size</span><span class="tool-tag">⚡ Instant</span></div>
+</div></div>
+
+<div class="tool-workspace" style="max-width:700px;">
+  <div class="tool-card">
+    <h2>Upload Photo</h2>
+    <div class="upload-zone" id="upload-zone">
+      <input type="file" id="file-input" accept="image/*" style="display:none;">
+      <p>📤 Click or drag an image here</p>
+    </div>
+    <div id="preview-wrap" style="display:none;text-align:center;margin-top:12px;">
+      <img id="preview-img" style="max-width:100%;max-height:240px;border-radius:var(--radius);">
+    </div>
+
+    <div class="controls-grid mt-16">
+      <div class="control-group">
+        <label>Target Size</label>
+        <input type="number" id="target-kb" class="field-input" value="50" min="1">
+      </div>
+      <div class="control-group">
+        <label>Unit</label>
+        <select id="target-unit">
+          <option value="KB">KB</option>
+          <option value="MB">MB</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="btn-group mt-12">
+      <button class="btn btn-primary btn-lg" id="resize-btn" disabled>🎯 Resize to Target</button>
+    </div>
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+
+  <div class="tool-card" id="result-card" style="display:none;">
+    <h2>Result</h2>
+    <div class="stats-row" id="result-stats"></div>
+    <div class="btn-group mt-12">
+      <a href="#" id="download-btn" class="btn btn-primary" download="resized-photo.jpg">⬇️ Download</a>
+    </div>
+  </div>
+</div>
+
+<div class="content-card faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item-box"><h3>Why do forms require a specific file size?</h3><p>Many exam, visa, and government application forms enforce strict size limits (like 20-50KB) to keep upload systems fast and storage manageable at high volume.</p></div>
+    <div class="faq-item-box"><h3>Will this reduce image quality?</h3><p>Yes, hitting a much smaller target size requires more compression, which does reduce quality somewhat. This tool finds the best quality achievable within your target size.</p></div>
+    <div class="faq-item-box"><h3>What if the target size can't be reached?</h3><p>If the target is extremely small relative to the image dimensions, the tool will also reduce the image's pixel dimensions to help reach the target while preserving as much clarity as possible.</p></div>
+  </div>
+</div>
+
+<section class="article-section">
+  <h2>Resize a Photo to an Exact File Size</h2>
+  <p>This tool resizes a photo to hit a specific target file size, such as 50KB or 200KB — a common requirement for exam registration forms, visa applications, government portals, and job application systems that enforce strict upload size limits.</p>
+
+  <h3>How This Tool Finds the Target Size</h3>
+  <p>Rather than using a single fixed compression level, this tool performs an automated search: it repeatedly compresses your image at different JPEG quality levels, checking the resulting file size against your target each time, and converges on the highest quality setting that still fits within your specified size limit. If quality reduction alone can't reach a very small target, the tool also reduces the image's pixel dimensions to help hit the target while keeping the image as clear as possible.</p>
+
+  <h3>Why Forms Enforce File Size Limits</h3>
+  <ul class="feature-list">
+    <li><strong>Upload system performance</strong> — smaller required file sizes keep high-volume application portals fast and responsive.</li>
+    <li><strong>Storage constraints</strong> — government and institutional systems processing millions of applications need to manage total storage.</li>
+    <li><strong>Print consistency</strong> — many forms print photos at a fixed small size, so extremely high resolution isn't necessary.</li>
+  </ul>
+
+  <h3>Common Uses</h3>
+  <ul class="feature-list">
+    <li><strong>Exam registration forms</strong> — many exams require photo uploads under a specific KB limit.</li>
+    <li><strong>Visa and passport applications</strong> — government portals frequently enforce strict photo size requirements.</li>
+    <li><strong>Job application portals</strong> — some hiring systems cap profile photo upload sizes.</li>
+    <li><strong>Any form with an upload size limit</strong> — quickly meeting a size requirement without manual trial and error.</li>
+  </ul>
+
+  <h3>Privacy and Local Processing</h3>
+  <p>All resizing and compression happens directly in your browser using the Canvas API — your photo is never uploaded to a server.</p>
+</section>
+
+<div class="content-card related-tools">
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="/tools/image-compressor" class="tool-item"><div class="ti-text"><h4>Image Compressor</h4><p>Compress images by quality percentage.</p></div></a>
+    <a href="/tools/image-resize" class="tool-item"><div class="ti-text"><h4>Image Resize</h4><p>Resize images to specific pixel dimensions.</p></div></a>
+    <a href="/tools/image-crop" class="tool-item"><div class="ti-text"><h4>Image Crop</h4><p>Crop images to a specific area or aspect ratio.</p></div></a>
+    <a href="/tools/file-size-converter" class="tool-item"><div class="ti-text"><h4>File Size Converter</h4><p>Convert between bytes, KB, MB, GB.</p></div></a>
+  </div>
+</div>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card keyword-section">
+      <h2>Popular Searches</h2>
+      <div class="keyword-box">
+        <span class="keyword-tag">resize image to 50kb</span>
+        <span class="keyword-tag">photo resizer kb</span>
+        <span class="keyword-tag">reduce photo size to kb</span>
+        <span class="keyword-tag">image compressor target size</span>
+        <span class="keyword-tag">resize photo for exam form</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+<script>
+let uploadedImage = null;
+let resultBlob = null;
+
+const uploadZone = document.getElementById('upload-zone');
+const fileInput = document.getElementById('file-input');
+
+uploadZone.addEventListener('click', () => fileInput.click());
+initDragDrop(uploadZone, handleFile);
+
+fileInput.addEventListener('change', e => {
+  if (e.target.files[0]) handleFile(e.target.files[0]);
+});
+
+function handleFile(file) {
+  if (!file.type.startsWith('image/')) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      uploadedImage = img;
+      document.getElementById('preview-img').src = e.target.result;
+      document.getElementById('preview-wrap').style.display = 'block';
+      document.getElementById('resize-btn').disabled = false;
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function canvasToBlob(canvas, quality) {
+  return new Promise(resolve => {
+    canvas.toBlob(blob => resolve(blob), 'image/jpeg', quality);
+  });
+}
+
+async function resizeToTarget(img, targetBytes) {
+  let canvas = document.createElement('canvas');
+  let width = img.width;
+  let height = img.height;
+  canvas.width = width;
+  canvas.height = height;
+  let ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0, width, height);
+
+  let quality = 0.92;
+  let blob = await canvasToBlob(canvas, quality);
+
+  // Binary search on quality first
+  let low = 0.02, high = 0.98;
+  for (let i = 0; i < 8; i++) {
+    quality = (low + high) / 2;
+    blob = await canvasToBlob(canvas, quality);
+    if (blob.size > targetBytes) high = quality;
+    else low = quality;
+  }
+
+  // If still too big even at lowest quality, reduce dimensions
+  let attempts = 0;
+  while (blob.size > targetBytes && attempts < 6) {
+    width = Math.round(width * 0.85);
+    height = Math.round(height * 0.85);
+    canvas.width = width;
+    canvas.height = height;
+    ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, width, height);
+    blob = await canvasToBlob(canvas, 0.7);
+    attempts++;
+  }
+
+  return { blob, width, height };
+}
+
+document.getElementById('resize-btn').addEventListener('click', async () => {
+  if (!uploadedImage) return;
+  const statusEl = document.getElementById('status-msg');
+  const targetVal = parseFloat(document.getElementById('target-kb').value);
+  const unit = document.getElementById('target-unit').value;
+  const targetBytes = unit === 'MB' ? targetVal * 1024 * 1024 : targetVal * 1024;
+
+  showStatus(statusEl, 'info', 'Resizing... this may take a moment.');
+  document.getElementById('resize-btn').disabled = true;
+
+  const { blob, width, height } = await resizeToTarget(uploadedImage, targetBytes);
+  resultBlob = blob;
+
+  const finalKB = (blob.size / 1024).toFixed(1);
+  document.getElementById('result-stats').innerHTML = `
+    <span class="stat-chip">Final Size: <strong>${finalKB} KB</strong></span>
+    <span class="stat-chip">Dimensions: <strong>${width} × ${height}</strong></span>`;
+
+  const url = URL.createObjectURL(blob);
+  document.getElementById('download-btn').href = url;
+  document.getElementById('result-card').style.display = 'block';
+  document.getElementById('resize-btn').disabled = false;
+
+  const withinTarget = blob.size <= targetBytes * 1.1;
+  showStatus(statusEl, withinTarget ? 'success' : 'error',
+    withinTarget ? 'Resized successfully!' : 'Could not reach exact target — reduced as much as possible while keeping the image usable.');
+});
+</script>
+</body>
+</html>

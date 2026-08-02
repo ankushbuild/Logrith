@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Salary to Hourly Converter Online — Annual, Monthly, Weekly Pay | Logrith</title>
+  <meta name="description" content="Convert annual salary to hourly rate or hourly rate to annual salary online for free. See monthly, weekly, and daily pay too. No signup required.">
+  <meta name="keywords" content="salary to hourly converter, annual salary to hourly, hourly to salary calculator, salary converter online, hourly rate calculator">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith">
+  <link rel="canonical" href="https://logrith.in/tools/salary-hourly-converter">
+  <meta property="og:title" content="Free Salary to Hourly Converter | Logrith">
+  <meta property="og:description" content="Convert between annual salary and hourly rate instantly. Free and accurate.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://logrith.in/tools/salary-hourly-converter">
+  <meta property="og:site_name" content="Logrith">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Salary to Hourly Converter | Logrith">
+  <meta name="twitter:description" content="Convert salary and hourly pay instantly, free and private.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://logrith.in/#organization","name":"Logrith","url":"https://logrith.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Salary to Hourly Converter","url":"https://logrith.in/tools/salary-hourly-converter","applicationCategory":"FinanceApplication","operatingSystem":"Any","description":"Free online converter between annual salary, monthly, weekly, daily, and hourly pay rates.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://logrith.in/#organization"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://logrith.in/"},{"@type":"ListItem","position":2,"name":"Calculate & Convert","item":"https://logrith.in/categories/calculate-convert"},{"@type":"ListItem","position":3,"name":"Salary to Hourly Converter","item":"https://logrith.in/tools/salary-hourly-converter"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"How do I convert annual salary to hourly rate?","acceptedAnswer":{"@type":"Answer","text":"Divide the annual salary by the total number of hours worked per year — typically calculated as hours per week multiplied by weeks worked per year (commonly 40 hours x 52 weeks = 2,080 hours)."}},
+    {"@type":"Question","name":"Does this account for taxes?","acceptedAnswer":{"@type":"Answer","text":"No, this calculator converts between gross pay periods only. Actual take-home pay after taxes and deductions will be lower and varies by jurisdiction."}}
+  ]}
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="tool-hero"><div class="tool-hero-inner">
+  <div class="tool-breadcrumb"><a href="/">Home</a> › <a href="/categories/calculate-convert">Calculate & Convert</a> › Salary to Hourly Converter</div>
+  <h1>Free Salary to Hourly Converter</h1>
+  <p>Convert between annual salary, monthly, weekly, daily, and hourly pay — enter any one value to see all the others.</p>
+  <div class="tool-tags"><span class="tool-tag">✅ Free</span><span class="tool-tag">💰 All Pay Periods</span><span class="tool-tag">⚡ Instant</span></div>
+</div></div>
+
+<div class="tool-workspace" style="max-width:700px;">
+  <div class="tool-card">
+    <h2>Enter Your Pay</h2>
+    <div class="controls-grid">
+      <div class="control-group">
+        <label>Pay Period</label>
+        <select id="pay-period">
+          <option value="annual">Annual Salary</option>
+          <option value="monthly">Monthly Pay</option>
+          <option value="weekly">Weekly Pay</option>
+          <option value="daily">Daily Pay</option>
+          <option value="hourly">Hourly Rate</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Amount</label>
+        <input type="number" id="pay-amount" class="field-input" value="60000" min="0">
+      </div>
+      <div class="control-group">
+        <label>Hours per Week</label>
+        <input type="number" id="hours-week" class="field-input" value="40" min="1" max="168">
+      </div>
+      <div class="control-group">
+        <label>Weeks Worked per Year</label>
+        <input type="number" id="weeks-year" class="field-input" value="52" min="1" max="52">
+      </div>
+    </div>
+    <div class="mini-note mt-8">Default assumes full-time (40 hrs/week, 52 weeks/year = 2,080 hours/year). Adjust for part-time or unpaid leave.</div>
+  </div>
+
+  <div class="tool-card">
+    <h2>All Pay Periods</h2>
+    <div class="stat-result-grid" id="result-grid"></div>
+  </div>
+</div>
+
+<div class="content-card faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item-box"><h3>How do I convert annual salary to hourly rate?</h3><p>Divide annual salary by total hours worked per year — typically hours per week × weeks per year (commonly 40 × 52 = 2,080 hours).</p></div>
+    <div class="faq-item-box"><h3>Does this account for taxes?</h3><p>No, this converts between gross pay periods only. Actual take-home pay after taxes and deductions will be lower and varies by jurisdiction.</p></div>
+    <div class="faq-item-box"><h3>What if I don't work 52 weeks a year?</h3><p>Adjust the "Weeks Worked per Year" field to reflect actual weeks worked, such as 50 weeks if you take 2 weeks of unpaid leave.</p></div>
+    <div class="faq-item-box"><h3>Can I use this for part-time work?</h3><p>Yes, adjust "Hours per Week" to your actual part-time schedule for accurate conversions.</p></div>
+  </div>
+</div>
+
+<section class="article-section">
+  <h2>Convert Between Salary and Hourly Pay</h2>
+  <p>This tool converts pay between any period — annual, monthly, weekly, daily, or hourly — letting you enter a figure in whichever format you know and instantly see the equivalent in every other period.</p>
+
+  <h3>How the Conversion Works</h3>
+  <p>All conversions are built from a base calculation: total hours worked per year, found by multiplying hours per week by weeks worked per year. A standard full-time schedule of 40 hours per week for 52 weeks yields 2,080 hours per year — the baseline most salary-to-hourly comparisons use. From there, annual salary divided by annual hours gives the hourly rate; that hourly rate multiplied by hours per day, week, or month gives each other period's equivalent pay.</p>
+
+  <h3>Why Convert Between Pay Periods</h3>
+  <ul class="feature-list">
+    <li><strong>Comparing job offers</strong> — one offer quoted as an annual salary and another as an hourly rate can be hard to compare directly without conversion.</li>
+    <li><strong>Freelance and contract pricing</strong> — professionals moving from salaried to hourly (or vice versa) work need an accurate baseline conversion.</li>
+    <li><strong>Budgeting</strong> — breaking an annual salary into monthly or weekly figures makes budgeting more concrete.</li>
+    <li><strong>Overtime and part-time calculations</strong> — understanding your true hourly rate helps evaluate overtime pay or part-time schedule changes.</li>
+  </ul>
+
+  <h3>A Note on Gross vs. Net Pay</h3>
+  <p>This calculator works with gross pay — the amount before taxes, insurance, retirement contributions, and other deductions. Actual take-home (net) pay will be lower and depends heavily on your specific tax situation, benefits elections, and local regulations, which vary too widely to calculate generically.</p>
+
+  <h3>Privacy and Local Processing</h3>
+  <p>All calculations run directly in your browser — your salary information is never sent to a server.</p>
+</section>
+
+<div class="content-card related-tools">
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="/tools/percentage-fee-splitter" class="tool-item"><div class="ti-text"><h4>Payment Fee Calculator</h4><p>Calculate net payout after transaction fees.</p></div></a>
+    <a href="/tools/percentage-calculator" class="tool-item"><div class="ti-text"><h4>Percentage Calculator</h4><p>Calculate percentages, raises, and changes.</p></div></a>
+    <a href="/tools/currency-converter" class="tool-item"><div class="ti-text"><h4>Currency Converter</h4><p>Convert between currencies with your own rate.</p></div></a>
+    <a href="/tools/compound-interest-calculator" class="tool-item"><div class="ti-text"><h4>Compound Interest Calculator</h4><p>Project savings growth over time.</p></div></a>
+  </div>
+</div>
+
+<section class="seo-section">
+  <div class="seo-wrap">
+    <div class="content-card keyword-section">
+      <h2>Popular Searches</h2>
+      <div class="keyword-box">
+        <span class="keyword-tag">salary to hourly converter</span>
+        <span class="keyword-tag">annual salary to hourly</span>
+        <span class="keyword-tag">hourly to salary calculator</span>
+        <span class="keyword-tag">salary converter</span>
+        <span class="keyword-tag">hourly rate calculator</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+<script>
+function calculate() {
+  const period = document.getElementById('pay-period').value;
+  const amount = parseFloat(document.getElementById('pay-amount').value) || 0;
+  const hoursPerWeek = parseFloat(document.getElementById('hours-week').value) || 40;
+  const weeksPerYear = parseFloat(document.getElementById('weeks-year').value) || 52;
+
+  const annualHours = hoursPerWeek * weeksPerYear;
+  let hourly;
+
+  switch (period) {
+    case 'annual': hourly = amount / annualHours; break;
+    case 'monthly': hourly = (amount * 12) / annualHours; break;
+    case 'weekly': hourly = amount / hoursPerWeek; break;
+    case 'daily': hourly = amount / (hoursPerWeek / 5); break;
+    case 'hourly': hourly = amount; break;
+  }
+
+  const annual = hourly * annualHours;
+  const monthly = annual / 12;
+  const weekly = hourly * hoursPerWeek;
+  const daily = hourly * (hoursPerWeek / 5);
+
+  const fmt = v => v.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+  document.getElementById('result-grid').innerHTML = `
+    <div class="stat-box"><span class="sb-num" style="font-size:1.2rem;">${fmt(annual)}</span><span class="sb-lbl">Annual</span></div>
+    <div class="stat-box"><span class="sb-num" style="font-size:1.2rem;">${fmt(monthly)}</span><span class="sb-lbl">Monthly</span></div>
+    <div class="stat-box"><span class="sb-num" style="font-size:1.2rem;">${fmt(weekly)}</span><span class="sb-lbl">Weekly</span></div>
+    <div class="stat-box"><span class="sb-num" style="font-size:1.2rem;">${fmt(daily)}</span><span class="sb-lbl">Daily</span></div>
+    <div class="stat-box" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));border:none;grid-column:span 2;">
+      <span class="sb-num" style="color:white;font-size:1.4rem;">${fmt(hourly)}</span><span class="sb-lbl" style="color:rgba(255,255,255,0.85);">Hourly Rate</span>
+    </div>`;
+}
+
+['pay-period','pay-amount','hours-week','weeks-year'].forEach(id => {
+  document.getElementById(id).addEventListener('input', calculate);
+});
+
+calculate();
+</script>
+</body>
+</html>
