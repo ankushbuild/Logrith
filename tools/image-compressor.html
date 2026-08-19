@@ -430,293 +430,355 @@
 <script src="/load-components.js"></script>
 
 <script>
-const fileInput = document.getElementById('file-input');
-const uploadZone = document.getElementById('upload-zone');
-const settingsCard = document.getElementById('settings-card');
-const previewCard = document.getElementById('preview-card');
-const outputCard = document.getElementById('output-card');
-const qualitySlider = document.getElementById('quality-slider');
-const qualityVal = document.getElementById('quality-val');
-const statusMsg = document.getElementById('status-msg');
-const progress = document.getElementById('progress');
-const progressFill = document.getElementById('progress-fill');
-const fileList = document.getElementById('file-list');
-const previewGrid = document.getElementById('preview-grid');
-const resultsList = document.getElementById('results-list');
-const summaryStrip = document.getElementById('summary-strip');
+(function () {
+  'use strict';
 
-let files = [];
-let compressedBlobs = [];
-let activeMode = 'quality';
+  const fileInput = document.getElementById('file-input');
+  const uploadZone = document.getElementById('upload-zone');
+  const settingsCard = document.getElementById('settings-card');
+  const previewCard = document.getElementById('preview-card');
+  const outputCard = document.getElementById('output-card');
+  const qualitySlider = document.getElementById('quality-slider');
+  const qualityVal = document.getElementById('quality-val');
+  const statusMsg = document.getElementById('status-msg');
+  const progress = document.getElementById('progress');
+  const progressFill = document.getElementById('progress-fill');
+  const fileList = document.getElementById('file-list');
+  const previewGrid = document.getElementById('preview-grid');
+  const resultsList = document.getElementById('results-list');
+  const summaryStrip = document.getElementById('summary-strip');
+  const compressBtn = document.getElementById('compress-btn');
+  const resetBtn = document.getElementById('reset-btn');
+  const downloadAllBtn = document.getElementById('download-all-btn');
+  const compressMoreBtn = document.getElementById('compress-more-btn');
 
-qualitySlider.addEventListener('input', () => qualityVal.textContent = qualitySlider.value + '%');
+  let files = [];
+  let compressedBlobs = [];
+  let activeMode = 'quality';
 
-document.querySelectorAll('.mode-card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('active'));
-    document.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
-    card.classList.add('active');
-    activeMode = card.dataset.mode;
-    document.getElementById('panel-' + activeMode).classList.add('active');
-  });
-});
-
-function getExt(type) {
-  if (type === 'image/jpeg') return 'jpg';
-  if (type === 'image/png') return 'png';
-  if (type === 'image/webp') return 'webp';
-  return 'img';
-}
-
-function pickAutoFormat(fileType) {
-  if (fileType === 'image/png') return 'image/webp';
-  if (fileType === 'image/webp') return 'image/webp';
-  return 'image/jpeg';
-}
-
-function resolveFormat(fileType) {
-  if (activeMode === 'convert') return document.getElementById('convert-format').value;
-  const selected = document.getElementById('output-format').value;
-  if (selected === 'auto') return pickAutoFormat(fileType);
-  if (selected === 'same') return fileType;
-  return selected;
-}
-
-function handleFiles(f) {
-  const arr = Array.from(f).slice(0, 10);
-  files = arr.filter(file => {
-    if (!['image/jpeg','image/png','image/webp'].includes(file.type)) { showStatus(statusMsg,'error','Only JPG, PNG, WEBP supported.'); return false; }
-    if (file.size > 20 * 1024 * 1024) { showStatus(statusMsg,'error',`${file.name}: max 20MB.`); return false; }
-    return true;
-  });
-  if (!files.length) return;
-  fileList.innerHTML = files.map(f => `<span class="stat-chip">📄 <strong>${f.name}</strong> — ${formatSize(f.size)}</span>`).join('');
-  settingsCard.style.display = 'block';
-  previewCard.style.display = 'none';
-  outputCard.style.display = 'none';
-}
-fileInput.addEventListener('change', e => handleFiles(e.target.files));
-initDragDrop(uploadZone, handleFiles);
-
-function getPresetOptions() {
-  const preset = document.getElementById('preset-mode').value;
-  if (preset === 'web') return { scale: 0.7, quality: 0.72, format: 'image/webp' };
-  if (preset === 'email') return { scale: 0.55, quality: 0.6, format: 'image/jpeg' };
-  if (preset === 'whatsapp') return { scale: 0.5, quality: 0.58, format: 'image/jpeg' };
-  if (preset === 'document') return { scale: 0.65, quality: 0.68, format: 'image/jpeg' };
-  return { scale: 0.85, quality: 0.82, format: 'image/webp' };
-}
-
-function drawToCanvas(img, canvas, width, height) {
-  const ctx = canvas.getContext('2d');
-  canvas.width = width;
-  canvas.height = height;
-  ctx.imageSmoothingEnabled = true;
-  ctx.imageSmoothingQuality = document.getElementById('smooth-mode').value;
-  ctx.clearRect(0, 0, width, height);
-  return ctx;
-}
-
-function exportBlob(canvas, mime, quality) {
-  return new Promise((resolve, reject) => {
-    canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('Compression failed')), mime, quality);
-  });
-}
-
-async function compressToTarget(canvas, mime, targetBytes) {
-  let low = 0.1, high = 0.95, bestBlob = null;
-
-  for (let i = 0; i < 8; i++) {
-    const mid = (low + high) / 2;
-    const blob = await exportBlob(canvas, mime, mid);
-    bestBlob = blob;
-    if (blob.size > targetBytes) high = mid - 0.05;
-    else low = mid + 0.05;
-  }
-  return bestBlob;
-}
-
-function getExactSize(origW, origH) {
-  const w = parseInt(document.getElementById('exact-width').value, 10);
-  const h = parseInt(document.getElementById('exact-height').value, 10);
-  const keepRatio = document.getElementById('keep-ratio').checked;
-
-  if (!w && !h) return { width: origW, height: origH };
-
-  if (keepRatio) {
-    if (w && !h) return { width: w, height: Math.round(origH * (w / origW)) };
-    if (!w && h) return { width: Math.round(origW * (h / origH)), height: h };
+  if (qualitySlider && qualityVal) {
+    qualitySlider.addEventListener('input', () => {
+      qualityVal.textContent = qualitySlider.value + '%';
+    });
   }
 
-  return {
-    width: w || origW,
-    height: h || origH
-  };
-}
-
-async function processFile(file) {
-  const img = new Image();
-  const url = URL.createObjectURL(file);
-
-  return new Promise((resolve, reject) => {
-    img.onload = async () => {
-      try {
-        let width = img.naturalWidth;
-        let height = img.naturalHeight;
-        let quality = parseInt(qualitySlider.value, 10) / 100;
-        let mime = resolveFormat(file.type);
-
-        if (activeMode === 'percent') {
-          const scale = parseInt(document.getElementById('resize-percent').value, 10) / 100;
-          width = Math.max(1, Math.round(width * scale));
-          height = Math.max(1, Math.round(height * scale));
-        }
-
-        if (activeMode === 'exact') {
-          const exact = getExactSize(width, height);
-          width = Math.max(1, exact.width);
-          height = Math.max(1, exact.height);
-        }
-
-        if (activeMode === 'preset') {
-          const preset = getPresetOptions();
-          width = Math.max(1, Math.round(width * preset.scale));
-          height = Math.max(1, Math.round(height * preset.scale));
-          quality = preset.quality;
-          mime = preset.format;
-        }
-
-        const canvas = document.createElement('canvas');
-        const ctx = drawToCanvas(img, canvas, width, height);
-
-        if (mime === 'image/jpeg') {
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(0, 0, width, height);
-        }
-
-        ctx.drawImage(img, 0, 0, width, height);
-
-        let blob;
-        if (activeMode === 'target') {
-          const targetKB = parseInt(document.getElementById('target-kb').value, 10) || 150;
-          blob = await compressToTarget(canvas, mime === 'image/png' ? 'image/jpeg' : mime, targetKB * 1024);
-          mime = blob.type;
-        } else {
-          blob = await exportBlob(canvas, mime, quality);
-        }
-
-        URL.revokeObjectURL(url);
-        resolve({ blob, width, height, outType: mime });
-      } catch (e) {
-        URL.revokeObjectURL(url);
-        reject(e);
-      }
-    };
-
-    img.onerror = () => {
-      URL.revokeObjectURL(url);
-      reject(new Error('Image load failed'));
-    };
-
-    img.src = url;
+  document.querySelectorAll('.mode-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
+      card.classList.add('active');
+      activeMode = card.dataset.mode;
+      const panel = document.getElementById('panel-' + activeMode);
+      if (panel) panel.classList.add('active');
+    });
   });
-}
 
-document.getElementById('compress-btn').addEventListener('click', async () => {
-  if (!files.length) return;
+  function getExt(type) {
+    if (type === 'image/jpeg') return 'jpg';
+    if (type === 'image/png') return 'png';
+    if (type === 'image/webp') return 'webp';
+    return 'img';
+  }
 
-  document.getElementById('compress-btn').disabled = true;
-  progress.classList.add('active');
-  progressFill.style.width = '0%';
-  previewGrid.innerHTML = '';
-  resultsList.innerHTML = '';
-  summaryStrip.innerHTML = '';
-  compressedBlobs = [];
+  function pickAutoFormat(fileType) {
+    if (fileType === 'image/png') return 'image/webp';
+    if (fileType === 'image/webp') return 'image/webp';
+    return 'image/jpeg';
+  }
 
-  let totalOriginal = 0;
-  let totalCompressed = 0;
-
-  for (let i = 0; i < files.length; i++) {
-    totalOriginal += files[i].size;
-    progressFill.style.width = (((i + 1) / files.length) * 100) + '%';
-
-    try {
-      const result = await processFile(files[i]);
-      compressedBlobs.push({ ...result, orig: files[i] });
-
-      totalCompressed += result.blob.size;
-      const savePct = Math.round((1 - result.blob.size / files[i].size) * 100);
-      const ext = getExt(result.outType);
-      const previewUrl = URL.createObjectURL(result.blob);
-      const badgeClass = savePct > 0 ? 'save-badge' : 'save-badge warn-badge';
-
-      previewGrid.innerHTML += `
-        <div class="preview-card">
-          <img src="${previewUrl}" alt="Compressed preview of ${files[i].name}" class="preview-img" width="320" height="240">
-          <div class="result-title">${files[i].name}</div>
-          <div class="result-meta">${result.width} × ${result.height} • ${ext.toUpperCase()}</div>
-        </div>
-      `;
-
-      resultsList.innerHTML += `
-        <div class="result-card">
-          <img src="${previewUrl}" alt="Compressed result preview for ${files[i].name}" class="result-img" width="320" height="240">
-          <div class="result-title">${files[i].name}</div>
-          <div class="result-meta">
-            ${formatSize(files[i].size)} → ${formatSize(result.blob.size)}<br>
-            Output: ${ext.toUpperCase()} • ${result.width} × ${result.height}
-          </div>
-          <div class="badge-row">
-            <span class="${badgeClass}">${savePct > 0 ? `↓ ${savePct}% saved` : 'Low savings'}</span>
-          </div>
-          <div class="btn-group mt-12">
-            <button class="btn btn-success btn-sm" onclick="downloadBlob(compressedBlobs[${i}].blob, '${files[i].name.replace(/\.[^.]+$/,'')}_compressed.${ext}')">⬇️ Download</button>
-          </div>
-        </div>
-      `;
-    } catch (e) {
-      resultsList.innerHTML += `<div class="result-card" style="color:var(--error);">✗ ${files[i].name}: ${e.message}</div>`;
+  function resolveFormat(fileType) {
+    if (activeMode === 'convert') {
+      const el = document.getElementById('convert-format');
+      return el ? el.value : 'image/jpeg';
     }
+    const selectedEl = document.getElementById('output-format');
+    const selected = selectedEl ? selectedEl.value : 'auto';
+    if (selected === 'auto') return pickAutoFormat(fileType);
+    if (selected === 'same') return fileType;
+    return selected;
   }
 
-  previewCard.style.display = 'block';
-  outputCard.style.display = 'block';
-  progress.classList.remove('active');
-  document.getElementById('compress-btn').disabled = false;
-  showStatus(statusMsg, 'success', `${files.length} image(s) processed successfully.`);
+  function handleFiles(fList) {
+    const arr = Array.from(fList).slice(0, 10);
+    const accepted = arr.filter(file => {
+      if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+        showStatus(statusMsg, 'error', 'Only JPG, PNG, WEBP supported.');
+        return false;
+      }
+      if (file.size > 20 * 1024 * 1024) {
+        showStatus(statusMsg, 'error', file.name + ': max 20MB.');
+        return false;
+      }
+      return true;
+    });
+    if (!accepted.length) return;
+    files = accepted;
+    fileList.innerHTML = files.map(f =>
+      '<span class="stat-chip">📄 <strong>' + f.name + '</strong> — ' + formatSize(f.size) + '</span>'
+    ).join('');
+    settingsCard.style.display = 'block';
+    previewCard.style.display = 'none';
+    outputCard.style.display = 'none';
+  }
 
-  const totalSaved = Math.max(0, totalOriginal - totalCompressed);
-  const totalPct = totalOriginal ? Math.round((totalSaved / totalOriginal) * 100) : 0;
-  summaryStrip.innerHTML = `
-    <span class="stat-chip">Images: <strong>${files.length}</strong></span>
-    <span class="stat-chip">Original: <strong>${formatSize(totalOriginal)}</strong></span>
-    <span class="stat-chip">Compressed: <strong>${formatSize(totalCompressed)}</strong></span>
-    <span class="stat-chip">Saved: <strong>${formatSize(totalSaved)} (${totalPct}%)</strong></span>
-    <span class="stat-chip">Mode: <strong>${activeMode}</strong></span>
-  `;
-});
+  if (fileInput) fileInput.addEventListener('change', e => handleFiles(e.target.files));
+  if (uploadZone) initDragDrop(uploadZone, handleFiles);
 
-document.getElementById('download-all-btn').addEventListener('click', () => {
-  compressedBlobs.forEach(({ blob, orig, outType }) => {
-    downloadBlob(blob, orig.name.replace(/\.[^.]+$/, '') + '_compressed.' + getExt(outType));
-  });
-});
+  function getPresetOptions() {
+    const el = document.getElementById('preset-mode');
+    const preset = el ? el.value : 'hd';
+    if (preset === 'web') return { scale: 0.7, quality: 0.72, format: 'image/webp' };
+    if (preset === 'email') return { scale: 0.55, quality: 0.6, format: 'image/jpeg' };
+    if (preset === 'whatsapp') return { scale: 0.5, quality: 0.58, format: 'image/jpeg' };
+    if (preset === 'document') return { scale: 0.65, quality: 0.68, format: 'image/jpeg' };
+    return { scale: 0.85, quality: 0.82, format: 'image/webp' };
+  }
 
-document.getElementById('reset-btn').addEventListener('click', () => {
-  files = [];
-  compressedBlobs = [];
-  fileList.innerHTML = '';
-  previewGrid.innerHTML = '';
-  resultsList.innerHTML = '';
-  summaryStrip.innerHTML = '';
-  settingsCard.style.display = 'none';
-  previewCard.style.display = 'none';
-  outputCard.style.display = 'none';
-  fileInput.value = '';
-  progressFill.style.width = '0%';
-});
+  function drawToCanvas(img, canvas, width, height) {
+    const ctx = canvas.getContext('2d');
+    canvas.width = width;
+    canvas.height = height;
+    ctx.imageSmoothingEnabled = true;
+    const smoothEl = document.getElementById('smooth-mode');
+    ctx.imageSmoothingQuality = smoothEl ? smoothEl.value : 'high';
+    ctx.clearRect(0, 0, width, height);
+    return ctx;
+  }
 
-document.getElementById('compress-more-btn').addEventListener('click', () => fileInput.click());
+  function exportBlob(canvas, mime, quality) {
+    return new Promise((resolve, reject) => {
+      canvas.toBlob(blob => {
+        if (blob) resolve(blob); else reject(new Error('Compression failed'));
+      }, mime, quality);
+    });
+  }
+
+  async function compressToTarget(canvas, mime, targetBytes) {
+    let low = 0.1, high = 0.95, bestBlob = null;
+    for (let i = 0; i < 8; i++) {
+      const mid = (low + high) / 2;
+      const blob = await exportBlob(canvas, mime, mid);
+      bestBlob = blob;
+      if (blob.size > targetBytes) high = mid - 0.05;
+      else low = mid + 0.05;
+    }
+    return bestBlob;
+  }
+
+  function getExactSize(origW, origH) {
+    const wEl = document.getElementById('exact-width');
+    const hEl = document.getElementById('exact-height');
+    const keepRatioEl = document.getElementById('keep-ratio');
+    const w = wEl ? parseInt(wEl.value, 10) : NaN;
+    const h = hEl ? parseInt(hEl.value, 10) : NaN;
+    const keepRatio = keepRatioEl ? keepRatioEl.checked : true;
+
+    if (!w && !h) return { width: origW, height: origH };
+
+    if (keepRatio) {
+      if (w && !h) return { width: w, height: Math.round(origH * (w / origW)) };
+      if (!w && h) return { width: Math.round(origW * (h / origH)), height: h };
+    }
+
+    return {
+      width: w || origW,
+      height: h || origH
+    };
+  }
+
+  function processFile(file) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+
+      img.onload = async () => {
+        try {
+          let width = img.naturalWidth;
+          let height = img.naturalHeight;
+          let quality = qualitySlider ? parseInt(qualitySlider.value, 10) / 100 : 0.75;
+          let mime = resolveFormat(file.type);
+
+          if (activeMode === 'percent') {
+            const pctEl = document.getElementById('resize-percent');
+            const scale = (pctEl ? parseInt(pctEl.value, 10) : 100) / 100;
+            width = Math.max(1, Math.round(width * scale));
+            height = Math.max(1, Math.round(height * scale));
+          }
+
+          if (activeMode === 'exact') {
+            const exact = getExactSize(width, height);
+            width = Math.max(1, exact.width);
+            height = Math.max(1, exact.height);
+          }
+
+          if (activeMode === 'preset') {
+            const preset = getPresetOptions();
+            width = Math.max(1, Math.round(width * preset.scale));
+            height = Math.max(1, Math.round(height * preset.scale));
+            quality = preset.quality;
+            mime = preset.format;
+          }
+
+          const canvas = document.createElement('canvas');
+          const ctx = drawToCanvas(img, canvas, width, height);
+
+          if (mime === 'image/jpeg') {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, width, height);
+          }
+
+          ctx.drawImage(img, 0, 0, width, height);
+
+          let blob;
+          if (activeMode === 'target') {
+            const targetKBEl = document.getElementById('target-kb');
+            const targetKB = targetKBEl ? (parseInt(targetKBEl.value, 10) || 150) : 150;
+            blob = await compressToTarget(canvas, mime === 'image/png' ? 'image/jpeg' : mime, targetKB * 1024);
+            mime = blob.type;
+          } else {
+            blob = await exportBlob(canvas, mime, quality);
+          }
+
+          URL.revokeObjectURL(url);
+          resolve({ blob: blob, width: width, height: height, outType: mime });
+        } catch (err) {
+          URL.revokeObjectURL(url);
+          reject(err);
+        }
+      };
+
+      img.onerror = () => {
+        URL.revokeObjectURL(url);
+        reject(new Error('Image load failed'));
+      };
+
+      img.src = url;
+    });
+  }
+
+  async function runCompression() {
+    if (!files.length) {
+      showStatus(statusMsg, 'error', 'Please upload at least one image first.');
+      return;
+    }
+
+    compressBtn.disabled = true;
+    progress.classList.add('active');
+    progressFill.style.width = '0%';
+    previewGrid.innerHTML = '';
+    resultsList.innerHTML = '';
+    summaryStrip.innerHTML = '';
+    compressedBlobs = [];
+
+    let totalOriginal = 0;
+    let totalCompressed = 0;
+
+    for (let i = 0; i < files.length; i++) {
+      totalOriginal += files[i].size;
+      progressFill.style.width = (((i + 1) / files.length) * 100) + '%';
+
+      try {
+        const result = await processFile(files[i]);
+        compressedBlobs.push(Object.assign({}, result, { orig: files[i] }));
+
+        totalCompressed += result.blob.size;
+        const savePct = Math.round((1 - result.blob.size / files[i].size) * 100);
+        const ext = getExt(result.outType);
+        const previewUrl = URL.createObjectURL(result.blob);
+        const badgeClass = savePct > 0 ? 'save-badge' : 'save-badge warn-badge';
+
+        previewGrid.innerHTML += '' +
+          '<div class="preview-card">' +
+            '<img src="' + previewUrl + '" alt="Compressed preview of ' + files[i].name + '" class="preview-img" width="320" height="240">' +
+            '<div class="result-title">' + files[i].name + '</div>' +
+            '<div class="result-meta">' + result.width + ' × ' + result.height + ' • ' + ext.toUpperCase() + '</div>' +
+          '</div>';
+
+        resultsList.innerHTML += '' +
+          '<div class="result-card">' +
+            '<img src="' + previewUrl + '" alt="Compressed result preview for ' + files[i].name + '" class="result-img" width="320" height="240">' +
+            '<div class="result-title">' + files[i].name + '</div>' +
+            '<div class="result-meta">' +
+              formatSize(files[i].size) + ' → ' + formatSize(result.blob.size) + '<br>' +
+              'Output: ' + ext.toUpperCase() + ' • ' + result.width + ' × ' + result.height +
+            '</div>' +
+            '<div class="badge-row">' +
+              '<span class="' + badgeClass + '">' + (savePct > 0 ? ('↓ ' + savePct + '% saved') : 'Low savings') + '</span>' +
+            '</div>' +
+            '<div class="btn-group mt-12">' +
+              '<button class="btn btn-success btn-sm" data-idx="' + i + '">⬇️ Download</button>' +
+            '</div>' +
+          '</div>';
+      } catch (e) {
+        resultsList.innerHTML += '<div class="result-card" style="color:var(--error);">✗ ' + files[i].name + ': ' + e.message + '</div>';
+      }
+    }
+
+    // Wire up per-item download buttons (event delegation-safe, avoids inline handler issues)
+    resultsList.querySelectorAll('button[data-idx]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-idx'), 10);
+        const item = compressedBlobs[idx];
+        if (!item) return;
+        const ext = getExt(item.outType);
+        downloadBlob(item.blob, item.orig.name.replace(/\.[^.]+$/, '') + '_compressed.' + ext);
+      });
+    });
+
+    previewCard.style.display = 'block';
+    outputCard.style.display = 'block';
+    progress.classList.remove('active');
+    compressBtn.disabled = false;
+    showStatus(statusMsg, 'success', files.length + ' image(s) processed successfully.');
+
+    const totalSaved = Math.max(0, totalOriginal - totalCompressed);
+    const totalPct = totalOriginal ? Math.round((totalSaved / totalOriginal) * 100) : 0;
+    summaryStrip.innerHTML =
+      '<span class="stat-chip">Images: <strong>' + files.length + '</strong></span>' +
+      '<span class="stat-chip">Original: <strong>' + formatSize(totalOriginal) + '</strong></span>' +
+      '<span class="stat-chip">Compressed: <strong>' + formatSize(totalCompressed) + '</strong></span>' +
+      '<span class="stat-chip">Saved: <strong>' + formatSize(totalSaved) + ' (' + totalPct + '%)</strong></span>' +
+      '<span class="stat-chip">Mode: <strong>' + activeMode + '</strong></span>';
+  }
+
+  if (compressBtn) {
+    compressBtn.addEventListener('click', function () {
+      runCompression().catch(function (err) {
+        compressBtn.disabled = false;
+        progress.classList.remove('active');
+        showStatus(statusMsg, 'error', 'Something went wrong: ' + err.message);
+      });
+    });
+  }
+
+  if (downloadAllBtn) {
+    downloadAllBtn.addEventListener('click', () => {
+      compressedBlobs.forEach(item => {
+        downloadBlob(item.blob, item.orig.name.replace(/\.[^.]+$/, '') + '_compressed.' + getExt(item.outType));
+      });
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      files = [];
+      compressedBlobs = [];
+      fileList.innerHTML = '';
+      previewGrid.innerHTML = '';
+      resultsList.innerHTML = '';
+      summaryStrip.innerHTML = '';
+      settingsCard.style.display = 'none';
+      previewCard.style.display = 'none';
+      outputCard.style.display = 'none';
+      fileInput.value = '';
+      progressFill.style.width = '0%';
+    });
+  }
+
+  if (compressMoreBtn) {
+    compressMoreBtn.addEventListener('click', () => fileInput.click());
+  }
+})();
 </script>
 </body>
 </html>

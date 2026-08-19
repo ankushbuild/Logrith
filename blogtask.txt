@@ -1,0 +1,371 @@
+=====================================================================
+LOGRITH — BLOG PROJECT (blogtask.txt)
+=====================================================================
+Total scope: 100 per-tool blog posts + 1 blog index/entry page + 6
+category blog pages = 107 blog pages total.
+
+=====================================================================
+CONFIRMED EXECUTION ORDER (locked)
+=====================================================================
+1. Blog index page first
+2. Then all 6 category blog pages
+3. Then all 100 tool blog posts (batched by category)
+
+SITEMAP: sitemap-blog.xml — a NEW, separate sitemap file containing
+ONLY blog URLs (index + 6 category pages + 100 tool posts = 107
+entries). Do not mix blog URLs into sitemap-pages.xml or
+sitemap-tools.xml. Reference sitemap-blog.xml from the main
+sitemap.xml index alongside the existing two.
+
+ICONS, NOT EMOJI: Blog pages must use the site's existing SVG icon
+sprite (/assets/svg/icons.svg via <svg class="icon"><use href="..."></use></svg>)
+for all visual markers — matching the rest of the site's design
+system. Do NOT use emoji characters (checkmarks, lightning bolts, etc.)
+in blog page content, buttons, or headings. This differs from the
+tool pages (which do use some emoji) — blog pages should look more
+editorial/professional.
+
+=====================================================================
+UPDATED STRUCTURE (v2 — supersedes the earlier simpler section list
+below). GOAL: beat competitors like SmallSEOTools, iLovePDF,
+FreeFormatter, Convertio, TinyWow — each tool page must be a complete
+authority resource on that tool/topic, not a short tool-description
+page. This is now the MANDATORY structure for every one of the 100
+tool blog posts. Do not skip sections listed here for any tool.
+
+IMAGES/SCREENSHOTS: EXPLICITLY SKIPPED. No screenshots, no example
+images, no visual demos requiring image assets — too time-consuming
+and not needed. All "rich content" and "live example" items below
+are implemented as TEXT/HTML/live tool embeds only, never as images.
+
+-------------------------------------------------------------
+IDEAL STRUCTURE PER TOOL (in order):
+-------------------------------------------------------------
+1. H1 Title
+2. Short Introduction (what is this tool?)
+3. Tool CTA/interface link at top (hero button — no embedded iframe,
+   just a prominent styled link/button to the live tool, per the
+   earlier hero-button verb-matching rule)
+4. How to Use (step-by-step)
+5. Key Features
+6. Benefits
+7. Use Cases
+8. Examples (text-based worked examples, no images)
+9. Supported Formats (where applicable)
+10. Best Practices / Tips
+11. Common Mistakes
+12. Privacy & Security
+13. Performance / Limits
+14. Comparison (vs named competitor alternatives + vs manual method)
+15. FAQ (8-15 genuine questions, not filler)
+16. Related Tools
+17. Conclusion
+18. Call to Action (try another tool)
+
+-------------------------------------------------------------
+SEO SECTIONS (weave into the structure above, not necessarily as
+separate headers if they'd be redundant — but the substance of each
+must be present):
+-------------------------------------------------------------
+- What is [Tool Name]?
+- Why use this tool?
+- Who should use it?
+- When should you use it?
+- How does it work? (technical explanation, developer-friendly where relevant)
+- Advantages
+- Disadvantages (honest — genuine limitations, not fake ones)
+- Online vs Offline methods
+- History / Background (where genuinely relevant, e.g. Morse code,
+  Roman numerals, hashing algorithms — skip if not applicable)
+
+-------------------------------------------------------------
+TRUST SECTIONS (fold into Privacy & Security section):
+-------------------------------------------------------------
+- No data stored
+- Browser-only processing (state accurately per tool — true for
+  nearly all Logrith tools since they're client-side JS)
+- Encryption / Privacy specifics where relevant (e.g. PDF password
+  protect's real RC4-128, JWT decoder's no-signature-verification note)
+- Accuracy information (what the tool guarantees vs doesn't)
+- Processing speed (client-side = instant, no server round-trip)
+
+-------------------------------------------------------------
+RICH CONTENT (text/table-based only, NO images):
+-------------------------------------------------------------
+- Table of features
+- Pros & Cons table
+- Supported browser list (modern evergreen browsers — Chrome,
+  Firefox, Safari, Edge; note any known limitations e.g. Speech
+  Recognition being Chrome/Edge-only)
+- Mobile compatibility note
+- Keyboard shortcuts (only if the actual tool has any — most don't,
+  skip if not applicable rather than inventing fake ones)
+
+-------------------------------------------------------------
+INTERNAL SEO:
+-------------------------------------------------------------
+- Breadcrumb (already standard on every blog page)
+- Table of Contents (add for long posts — anchor-linked jump list
+  near the top, after the intro)
+- Related Articles (other blog posts, not just tools)
+- Related Tools (already standard)
+- Previous / Next Tool navigation (sequential nav within the same
+  category's tool list, where a sensible order exists)
+
+-------------------------------------------------------------
+SCHEMA (JSON-LD — expand from the earlier 4-block minimum):
+-------------------------------------------------------------
+- Organization (existing)
+- BreadcrumbList (existing)
+- FAQPage (existing, expand to 8-15 Q&As per the length below)
+- SoftwareApplication (NEW — add in addition to/alongside Article,
+  describing the underlying tool itself: name, applicationCategory,
+  operatingSystem "Any", offers price 0)
+- WebPage (NEW — wraps the article page itself)
+Article/BlogPosting schema from v1 stays as well.
+
+-------------------------------------------------------------
+ON-PAGE SEO (already covered by existing per-post pattern, confirmed
+still required):
+-------------------------------------------------------------
+- Optimized meta title
+- Meta description
+- SEO-friendly URL (matches tool slug — already the convention)
+- Open Graph tags
+- Twitter Card tags
+- Canonical URL
+- Proper H2/H3 hierarchy
+- Image alt text — N/A since no images are used per the skip-images
+  decision above
+- Internal links (tool page, related tools, related blog posts)
+- External authoritative links only when genuinely useful (e.g.
+  linking to an official spec/RFC for something like JWT, Morse
+  code, or a standards body) — sparingly, not required on every post
+
+-------------------------------------------------------------
+E-E-A-T:
+-------------------------------------------------------------
+- Author byline: "Logrith Editorial Team" (consistent across posts)
+- Last updated / version note where relevant
+- Editorial review note (short standard line, e.g. "Reviewed for
+  accuracy by the Logrith team")
+- Sources/References where applicable (e.g. citing the standard
+  behind Morse code, NATO alphabet, US Navy body fat formula, RFC
+  numbers for technical formats) — only where a real authoritative
+  source exists, never fabricated
+
+-------------------------------------------------------------
+EXTRA / COMPETITIVE EDGE (text-based only, no images):
+-------------------------------------------------------------
+- Live example (worked text example within the article, not a live
+  embedded tool — the actual tool stays on its own page)
+- Copy/paste demo text where relevant (e.g. showing sample input/output)
+- Download sample file — SKIP (out of scope, no asset generation)
+- Keyboard accessibility note (brief, honest)
+- Dark mode support — SKIP (site doesn't currently have dark mode;
+  don't claim a feature that doesn't exist)
+- API availability — SKIP (no API exists; don't fabricate)
+- Batch processing note — only mention where a tool genuinely
+  supports it (e.g. some image tools), otherwise skip
+- Recent updates/changelog — SKIP (not tracked per-tool; don't invent)
+- User feedback/ratings — SKIP (no real review system exists yet)
+- "Why Choose Logrith?" section — YES, include this on every post
+
+-------------------------------------------------------------
+KEYWORD STRATEGY (NEW REQUIREMENT):
+-------------------------------------------------------------
+Every tool post must target LOW-COMPETITION keyword variants, not
+just the obvious high-volume head term. Competitors (SmallSEOTools,
+iLovePDF, FreeFormatter, Convertio, TinyWow, etc.) already dominate
+the broad head terms — ranking against them directly on something
+like "image compressor" alone is unrealistic early on. Instead, each
+post's title, headers, and meta should incorporate specific,
+longer-tail, lower-competition phrasings alongside the head term:
+- "[tool] without sign up" / "[tool] no email required"
+- "[tool] for [specific file type/use case]" (e.g. "compress PNG
+  for WordPress", "resize photo for passport")
+- "how to [task] without [common friction point]" (e.g. "without
+  losing quality", "without installing software")
+- "[tool] vs [specific competitor]" comparison-intent phrasing
+- Question-form long-tail ("how many pages is 1500 words", "what is
+  a good typing speed")
+- "free [tool] no watermark" / "free [tool] unlimited" where
+  genuinely true and relevant
+Choose these per-tool based on realistic search intent for that
+specific tool, not a generic template applied blindly. Weave
+naturally into meta title/description, H2/H3 headers, and the
+comparison section — never keyword-stuff unnaturally.
+
+-------------------------------------------------------------
+IDEAL CONTENT LENGTH (revised from flat 3,000-4,000 target):
+-------------------------------------------------------------
+- Simple tools (e.g. word counter, case converter, character
+  counter, text reverser): 1,200-2,000 words
+- Medium tools (e.g. JSON formatter, QR generator, hash generator,
+  most calculators/converters): 2,000-3,000 words
+- Competitive/high-search tools (e.g. image compressor, PDF tools,
+  major converters, password generator, password strength): 3,000+
+  words
+
+Use judgment per tool based on which bucket it realistically falls
+into — the goal is a genuinely complete resource, not padding a
+simple tool to hit an arbitrary word count. The FIRST tool post
+(image-compressor, already built at ~3,046 words) correctly falls
+into the "competitive/high-search" bucket and its length stands.
+
+=====================================================================
+ORIGINAL (v1) CORE RULES — STILL APPLY, NOW AUGMENTED BY THE ABOVE
+=====================================================================
+
+1. LENGTH: SUPERSEDED by the tiered length system above (simple:
+   1,200-2,000 / medium: 2,000-3,000 / competitive: 3,000+). Use the
+   tier matching each specific tool rather than a flat target. Every
+   post must still be genuinely substantive, useful, long-form
+   content — never padded filler — regardless of which tier it falls
+   into.
+
+2. SEO LEVEL: Proper SEO on every single post:
+   - Optimized <title> tag
+   - Meta description
+   - Meta keywords
+   - Canonical URL
+   - Open Graph + Twitter Card tags
+   - JSON-LD structured data (Organization, BlogPosting/Article,
+     BreadcrumbList, FAQPage where a Q&A section exists)
+   - Proper heading hierarchy (H1 once, H2/H3 structured sections)
+   - Internal linking to the actual tool + related tools/blogs
+
+3. COMPETITOR RESEARCH PER TOOL: For each tool's blog post, research
+   what competitor tools/sites offer for that same tool category
+   (e.g., for "word counter" blog — look at how other word-counter
+   tools/sites position themselves). Use this to inform a genuine
+   comparison section — what Logrith's tool does well vs typical
+   alternatives. Do NOT skip this step for any tool.
+
+4. REQUIRED SECTIONS PER BLOG POST (in reasonable order):
+   a. Hero section with tool name, compelling intro, and a hero
+      action button (see button logic below)
+   b. Full description of what the tool does and why it matters
+   c. "How to Use" step-by-step section (numbered steps)
+   d. Comparison section — Logrith's tool vs typical competitor
+      tools in that space (honest, specific, not just marketing fluff)
+   e. FAQ / Q&A section (genuine common questions, not filler)
+   f. Article/deep-dive section with real substance (this is where
+      most of the 3-4k word count comes from — real explanations,
+      use cases, background, technical or practical depth depending
+      on tool type)
+   g. Related tools section (internal links to other relevant tools)
+   h. Standard footer/nav (same site-wide components)
+
+5. HERO BUTTON LOGIC — CRITICAL, TOOL-SPECIFIC:
+   The hero section's call-to-action button text and behavior must
+   match what the underlying tool actually does:
+   - If the tool is an UPLOAD-based tool (e.g., image compressor,
+     PDF merge, photo resizer) → button says "Upload" (or similar,
+     e.g. "Upload Image", "Upload PDF") and clicking it redirects
+     straight to the actual tool page.
+   - If the tool is a GENERATE-based tool (e.g., password generator,
+     QR generator, barcode generator, random quote generator) →
+     button says "Generate" (or similar, e.g. "Generate Password")
+     and clicking it redirects straight to the actual tool page.
+   - If the tool is a CONVERT-based tool (e.g., YAML to JSON, unit
+     converter, currency converter) → button says "Convert" (or
+     similar, e.g. "Convert Now") and redirects to the tool page.
+   - For other tool types (calculators, checkers, formatters,
+     translators, lookups) → use the most natural matching verb
+     for that tool's actual primary action (e.g. "Calculate",
+     "Check", "Format", "Translate", "Look Up") — always redirecting
+     directly to the real tool page on click.
+   RULE OF THUMB: the button's verb must always match the tool's
+   real primary action, and it must always link directly to the
+   live tool (not just to another blog or generic page).
+
+6. NO SKIPPING CONTENT: Every element the person asked for (SEO,
+   title, description, competitor comparison, FAQ, article, how-to,
+   hero button logic) must appear on every single one of the 100
+   tool posts — not just a sample of them. Consistency across all
+   100 is mandatory.
+
+=====================================================================
+SITE STRUCTURE FOR BLOG SECTION
+=====================================================================
+
+/blog/index.html                  — main blog entry/listing page
+/blog/categories/<category>.html  — 6 category blog landing pages:
+    1. image-pdf-tools.html
+    2. calculate-convert.html
+    3. text-generators.html
+    4. developer-tools.html
+    5. utilities.html
+    6. ai-tools.html
+/blog/<tool-slug>.html            — 100 individual tool blog posts
+    (slug matches the tool's own slug, e.g. /blog/word-counter.html
+    for the word-counter tool)
+
+Total new files: 100 (tool posts) + 1 (index) + 6 (category pages) = 107
+
+=====================================================================
+LINKING REQUIREMENTS (once posts are built)
+=====================================================================
+- Each blog post links to its live tool (hero button + inline CTAs)
+- Each blog post links to 3-4 related tool blog posts
+- Each category blog page lists all blog posts in that category
+- Blog index page links to all 6 category pages + highlights posts
+- Add /blog/ entry point to main navbar and/or footer
+- Add all 107 blog URLs to a new sitemap-blog.xml (blog URLs ONLY,
+  kept separate from sitemap-pages.xml and sitemap-tools.xml),
+  referenced from the main sitemap.xml index
+- Cross-link from each tool's actual tool page back to its blog post
+  (e.g., "Read the full guide" link on the tool page itself)
+
+=====================================================================
+EXECUTION PLAN / TRACKING
+=====================================================================
+Given the volume (107 long-form pages, tiered 1,200-4,000+ words
+depending on tool complexity per the v2 length system above), this
+is built in batches by category, tracked here as progress is made.
+
+[x] Blog index page (/blog/index.html)
+[x] Category blog page 1: Image & PDF Tools
+[x] Category blog page 2: Calculate & Convert
+[x] Category blog page 3: Text & Generators
+[x] Category blog page 4: Developer Tools
+[x] Category blog page 5: Utilities
+[x] Category blog page 6: AI Tools
+
+[ ] Image & PDF Tools — 22 tool blog posts (5/22)
+    [x] image-compressor (3046 words)
+    [x] photo-resizer-kb (2521 words, low-competition exam-niche keywords)
+    [x] pdf-compressor (2219 words, low-competition "no server upload" angle) [RECREATED after container reset]
+    [x] image-converter (2035 words, low-competition "one tool for all pairs" angle) [RECREATED after container reset]
+    [x] image-crop (2000 words) [RECREATED after container reset]
+NOTE: Container reset occurred, wiping unsaved work. 11 previously-built
+posts were lost (only in conversation memory, not yet zipped) and are
+being recreated one at a time. NEW POLICY: zip backup taken after EVERY
+single tool post completion from now on, no exceptions, to prevent this
+class of loss recurring. Still to recreate: resize-image-without-losing-
+quality-online, rotate-flip-image-online-free, combine-jpg-images-into-
+one-pdf-free, merge-multiple-pdf-files-into-one-free, rotate-pdf-pages-
+fix-sideways-scan, extract-pages-from-pdf-online-free, convert-pdf-to-
+jpg-choose-right-dpi, convert-image-to-base64-data-uri-online,
+generate-favicon-all-sizes-online-free (was in-progress, unfinished).
+[ ] Calculate & Convert — 20 tool blog posts (0/20)
+[ ] Text & Generators — 22 tool blog posts (0/22)
+[ ] Developer Tools — 20 tool blog posts (0/20)
+[ ] Utilities — 14 tool blog posts (0/14)
+[ ] AI Tools — 2 tool blog posts (0/2)
+
+[ ] Final linking pass: navbar/footer blog entry point
+[ ] Final linking pass: sitemap-blog.xml created + linked from sitemap.xml
+[ ] Final linking pass: cross-links from tool pages back to blog posts
+[ ] Final full validation (tag balance, JSON-LD, all links resolve)
+[ ] Final zip backup
+
+STATUS: v2 comprehensive template locked (images/screenshots
+explicitly excluded per instruction). 7/107 structural pages done
+(index + 6 categories). 1/100 tool posts done under v1 pattern
+(image-compressor — acceptable as-is, falls correctly into the
+"competitive" tier). All remaining 99 tool posts to follow the full
+v2 structure above (SoftwareApplication + WebPage schema added,
+8-15 FAQs, table of contents, pros/cons table, "Why Choose Logrith"
+section, E-E-A-T byline, etc.) going forward.

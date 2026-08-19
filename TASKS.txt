@@ -32,3 +32,24 @@ FINAL VALIDATION — ALL PASS:
 [x] Sitemap: exactly 100 tool entries, fully cross-verified
 
 See tools.txt for the complete categorized tool inventory.
+
+=====================================================================
+TOOL BUG FIXES (post-100-tools, during blog phase)
+=====================================================================
+[x] image-compressor.html — Compress button click had no effect (JS
+    rewritten fully: wrapped in IIFE, defensive null-checks on all
+    DOM lookups, replaced inline onclick handlers with proper
+    addEventListener event delegation for per-item download buttons,
+    added try/catch around the async click handler so any error
+    surfaces via status message instead of silently failing).
+[x] image-converter.html — Convert button click had no effect (same
+    JS rewrite pattern applied). ALSO FIXED: BMP/GIF output was
+    silently mislabeling a PNG blob as .bmp/.gif (corrupt file on
+    download) — now clearly treated as PNG output internally.
+    ADDED FEATURES: real binary ICO encoding (single-size 256x256
+    .ico, spec-correct ICONDIR/ICONDIRENTRY structure verified),
+    and Multi-Size ICO Pack — generates 16/32/48/64/128/256 sizes,
+    packages one combined .ico + all individual PNGs into a .zip
+    (via JSZip 3.10.1 from cdnjs) for full favicon-generation-style
+    site icon sets. Format dropdown now includes "ICO (Single Size)"
+    and "Multi-Size ICO Pack (ZIP)".

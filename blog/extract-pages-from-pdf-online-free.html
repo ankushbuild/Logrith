@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extract Specific Pages from a PDF Without Losing Quality | Logrith Blog</title>
+  <meta name="description" content="How to split a PDF or extract a specific page range into a new file, entirely in your browser. No signup, no server upload, zero quality loss.">
+  <meta name="keywords" content="extract pages from pdf online, split pdf into pages free, pdf page range extractor, split pdf no upload, pull specific pages from pdf">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Editorial Team">
+  <link rel="canonical" href="https://logrith.in/blog/extract-pages-from-pdf-online-free">
+  <meta property="og:title" content="Extract Specific Pages from a PDF | Logrith Blog">
+  <meta property="og:description" content="Split a PDF or pull out a specific page range, entirely in your browser.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://logrith.in/blog/extract-pages-from-pdf-online-free">
+  <meta property="og:site_name" content="Logrith">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Extract PDF Pages Free | Logrith Blog">
+  <meta name="twitter:description" content="Split a PDF or extract specific pages, free and private.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .bp-hero { max-width:820px;margin:0 auto;padding:48px 20px 8px; }
+    .bp-crumb { font-size:.85rem;color:var(--gray-500);margin-bottom:16px; }
+    .bp-crumb a { color:var(--primary);text-decoration:none; }
+    .bp-hero h1 { font-family:var(--font-display);font-size:2rem;line-height:1.25;color:var(--gray-900);margin-bottom:14px; }
+    .bp-hero .bp-dek { font-size:1.05rem;color:var(--gray-700);line-height:1.7;margin-bottom:20px; }
+    .bp-cta { display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:white;padding:13px 26px;border-radius:var(--radius);font-weight:700;text-decoration:none;font-size:.95rem; }
+    .bp-cta svg { width:17px;height:17px; }
+    .bp-cta:hover { background:var(--primary-dark); }
+    .bp-body { max-width:760px;margin:0 auto;padding:28px 20px 20px; }
+    .bp-body h2 { font-family:var(--font-display);font-size:1.5rem;color:var(--gray-900);margin:38px 0 14px; }
+    .bp-body h3 { font-family:var(--font-display);font-size:1.15rem;color:var(--gray-900);margin:26px 0 10px; }
+    .bp-body p { color:var(--gray-700);line-height:1.8;margin-bottom:16px;font-size:1rem; }
+    .bp-body ul, .bp-body ol { color:var(--gray-700);line-height:1.8;margin:0 0 16px 22px; }
+    .bp-body li { margin-bottom:8px; }
+    .bp-body strong { color:var(--gray-900); }
+    .bp-toc { background:var(--gray-50);border-radius:var(--radius-lg);padding:20px 24px;margin:24px 0; }
+    .bp-toc h2 { margin:0 0 10px;font-size:1.05rem; }
+    .bp-toc ol { margin:0 0 0 20px; }
+    .bp-toc a { color:var(--primary);text-decoration:none; }
+    .bp-table { width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:.92rem; }
+    .bp-table th, .bp-table td { border:1px solid var(--gray-200);padding:10px 12px;text-align:left; }
+    .bp-table th { background:var(--gray-50);font-weight:700;color:var(--gray-900); }
+    .bp-howto { counter-reset:step; list-style:none;margin-left:0; }
+    .bp-howto li { position:relative;padding-left:42px;margin-bottom:18px; }
+    .bp-howto li::before { counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:28px;height:28px;background:var(--primary);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem; }
+    .bp-faq-item { border-bottom:1px solid var(--gray-200);padding:16px 0; }
+    .bp-faq-item h3 { margin:0 0 8px; font-size:1.02rem; }
+    .bp-byline { font-size:.82rem;color:var(--gray-500);margin-top:10px; }
+    .bp-related { max-width:1000px;margin:0 auto;padding:20px 20px 60px; }
+    .bp-related h2 { font-family:var(--font-display);font-size:1.4rem;color:var(--gray-900);margin-bottom:18px;text-align:center; }
+    .bp-related-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px; }
+    .bp-related-card { border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);padding:18px;text-decoration:none;color:inherit;background:var(--white); }
+    .bp-related-card h4 { font-size:.95rem;color:var(--gray-900);margin-bottom:6px; }
+    .bp-related-card p { font-size:.82rem;color:var(--gray-700);line-height:1.5; }
+    .bp-prevnext { display:flex;justify-content:space-between;gap:16px;max-width:760px;margin:0 auto;padding:0 20px 20px; }
+    .bp-prevnext a { flex:1;border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:12px 16px;text-decoration:none;color:var(--gray-700);font-size:.85rem; }
+    .bp-prevnext a strong { display:block;color:var(--gray-900);font-size:.92rem; }
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://logrith.in/#organization","name":"Logrith","url":"https://logrith.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Extract Specific Pages from a PDF Without Losing Quality","description":"How to split a PDF or extract a specific page range into a new file.","author":{"@type":"Organization","name":"Logrith Editorial Team"},"publisher":{"@id":"https://logrith.in/#organization"},"mainEntityOfPage":"https://logrith.in/blog/extract-pages-from-pdf-online-free"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"Extract Pages from a PDF","url":"https://logrith.in/blog/extract-pages-from-pdf-online-free","isPartOf":{"@type":"Blog","name":"Logrith Blog","url":"https://logrith.in/blog/"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDF Split","url":"https://logrith.in/tools/pdf-split","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://logrith.in/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://logrith.in/blog/"},{"@type":"ListItem","position":3,"name":"Image & PDF Tools","item":"https://logrith.in/blog/categories/image-pdf-tools"},{"@type":"ListItem","position":4,"name":"PDF Split","item":"https://logrith.in/blog/extract-pages-from-pdf-online-free"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"How do I extract specific pages from a PDF?","acceptedAnswer":{"@type":"Answer","text":"Upload the PDF and enter a page range like '1-3, 5, 7-10' using comma-separated values. The tool extracts exactly those pages into a new PDF file, in the order specified."}},
+    {"@type":"Question","name":"Does splitting a PDF reduce its quality?","acceptedAnswer":{"@type":"Answer","text":"No, page extraction copies the original page objects directly into the new file without re-rendering or re-encoding, so quality is fully preserved."}},
+    {"@type":"Question","name":"Can I extract non-consecutive pages, like pages 2, 5, and 9?","acceptedAnswer":{"@type":"Answer","text":"Yes, list them individually separated by commas, such as '2, 5, 9', and they'll all be included in the extracted result in that order."}},
+    {"@type":"Question","name":"What's the difference between splitting a PDF and removing pages from it?","acceptedAnswer":{"@type":"Answer","text":"Splitting extracts a specified range into a new file, keeping the original intact. Removing pages deletes specific pages from the existing file, keeping everything else in place — these are complementary but distinct operations."}}
+  ]}
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="bp-hero">
+  <div class="bp-crumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; <a href="/blog/categories/image-pdf-tools">Image & PDF Tools</a> &rsaquo; PDF Split</div>
+  <h1>How to Pull Out Just the Pages You Need from a Large PDF</h1>
+  <p class="bp-dek">A 40-page report where only pages 12 through 15 actually matter for what you're sharing, or a scanned packet where you only need one specific form buried in the middle — extracting exactly the pages you need, rather than sending the whole document, is often the cleaner and more professional choice, and it's a genuinely lossless operation once you understand how it actually works at the internal document-structure level rather than a visual, rendering-based level.</p>
+  <a href="/tools/pdf-split" class="bp-cta">
+    <svg class="icon"><use href="/assets/svg/icons.svg#pdf-split"></use></svg>
+    Extract PDF Pages
+  </a>
+  <p class="bp-byline">By the Logrith Editorial Team &middot; Reviewed for accuracy</p>
+</div>
+
+<div class="bp-body">
+
+  <div class="bp-toc">
+    <h2>On This Page</h2>
+    <ol>
+      <li><a href="#how-to-use">How to Extract Pages from a PDF</a></li>
+      <li><a href="#syntax">Understanding Page Range Syntax</a></li>
+      <li><a href="#quality">Why Extracted Pages Keep Full Quality</a></li>
+      <li><a href="#comparison">Comparison vs. Other PDF Splitters</a></li>
+      <li><a href="#mistakes">Common Mistakes</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="how-to-use">How to Extract Pages from a PDF</h2>
+  <ol class="bp-howto">
+    <li>Open the <a href="/tools/pdf-split">PDF Split tool</a> and upload your PDF.</li>
+    <li>Enter the page range you want to extract, using the format "1-3, 5, 7-10" for a mix of consecutive ranges and individual pages.</li>
+    <li>Review the range carefully before proceeding — this is the step most worth double-checking, since a mistyped range produces an unintended result.</li>
+    <li>Click Split to generate a new PDF containing only the specified pages.</li>
+    <li>Download the result — the original file remains untouched, and nothing was uploaded to a server.</li>
+  </ol>
+
+  <h2 id="syntax">Understanding Page Range Syntax</h2>
+  <table class="bp-table">
+    <tr><th>Input</th><th>Result</th></tr>
+    <tr><td>1-5</td><td>Pages 1 through 5, inclusive</td></tr>
+    <tr><td>3</td><td>Just page 3</td></tr>
+    <tr><td>1-3, 7</td><td>Pages 1, 2, 3, and 7</td></tr>
+    <tr><td>1-3, 5, 7-10</td><td>Pages 1, 2, 3, 5, 7, 8, 9, 10</td></tr>
+  </table>
+  <p>Page numbers always start from 1, matching the page numbers you'd see displayed in any standard PDF viewer — there's no zero-indexing to account for. Ranges and individual pages can be freely mixed in any combination and order, and the extracted result preserves the sequence you specify, so listing "5, 1-3" would produce page 5 first, followed by pages 1 through 3, rather than automatically sorting into ascending order. This flexibility is particularly useful when the order you want in the final document doesn't match the order those pages appear in the original.</p>
+
+  <h2 id="quality">Why Extracted Pages Keep Full Quality</h2>
+  <p>Page extraction, like PDF merging, works by copying the actual internal page objects from the source document directly into a new PDF, rather than rendering pages as images and reassembling them. This means any live text stays searchable and selectable, embedded fonts carry over intact, and image content within extracted pages keeps its original resolution and compression — nothing is re-encoded or degraded as part of the extraction process. The only thing that changes is which pages exist in the resulting document; the pages that are included are byte-for-byte faithful to how they appeared in the source file.</p>
+  <p>This is a meaningfully different guarantee than what you'd get from, say, taking screenshots of specific pages and combining those into a new document — a process that would degrade both text sharpness and searchability noticeably. Because extraction works at the PDF's own internal object level rather than a visual/rendering level, the operation is essentially "surgical" — pulling out exactly the requested content with nothing added or altered along the way.</p>
+
+  <h2>Extraction vs. Page Removal: Two Sides of the Same Coin</h2>
+  <p>It's worth being precise about the distinction between these two related operations, since they solve opposite versions of a similar problem. Extraction (splitting) creates a brand new file containing only the pages you specify — the original document remains completely untouched on your device. Page removal instead deletes specified pages from the existing document, keeping everything else and modifying that file directly. If your goal is "I want a new, smaller file containing just this section," extraction is the right tool. If your goal is "I want to permanently remove certain pages from this document while keeping the rest," page removal is the more direct route, even though the two operations can sometimes achieve overlapping practical outcomes depending on how the task is framed.</p>
+
+  <h2>How This Tool Determines Page Boundaries</h2>
+  <p>Behind the range input, pdf-lib parses your entered range string, resolves it into a concrete list of page indices, validates that each requested page actually exists in the source document, and then copies exactly those page objects — in the order listed — into a freshly created PDF document. Because this happens against the document's actual internal page count rather than an assumption, requesting a page number beyond the document's length (like page 50 in a 30-page file) is caught and handled rather than silently producing an unexpected result. This validation step matters in everyday use, since it's easy to miscount pages in a long document, and catching an out-of-range request early avoids a confusing empty or malformed output.</p>
+
+  <h2 id="comparison">Comparison vs. Other PDF Splitters</h2>
+  <table class="bp-table">
+    <tr><th>Feature</th><th>Logrith PDF Split</th><th>iLovePDF</th><th>Smallpdf</th></tr>
+    <tr><td>Processing location</td><td>Entirely in-browser</td><td>Server upload</td><td>Server upload</td></tr>
+    <tr><td>Page range extraction</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Split into individual single-page files</td><td>No — extracts one combined range as one file</td><td>Yes, can split every page into its own file</td><td>Yes, can split every page into its own file</td></tr>
+    <tr><td>Free usage limit</td><td>Unlimited</td><td>Unlimited, file size caps apply</td><td>2 tasks/day (free tier)</td></tr>
+    <tr><td>Account required</td><td>No</td><td>No</td><td>No</td></tr>
+  </table>
+  <p>Both major competitors offer an additional splitting mode Logrith's current version doesn't: breaking every single page of a PDF out into its own separate file automatically, useful for batch-processing a document where each page needs to become an independent file. Logrith's tool is focused specifically on extracting a chosen range into one new combined file — the more common everyday need (pulling out a section to share, rather than atomizing an entire document into individual pages).</p>
+
+  <h2>Real-World Scenarios</h2>
+  <ul>
+    <li><strong>"I only need to share the signature page from a long contract."</strong> Extract just that page number, producing a small, focused file instead of sending the entire document.</li>
+    <li><strong>"My scanned packet has one specific form I need, buried in the middle."</strong> Identify the page number visually in a PDF viewer first, then extract just that page or range.</li>
+    <li><strong>"I need to pull out a chapter from a longer report for a separate audience."</strong> Extract the relevant consecutive page range as its own standalone document.</li>
+    <li><strong>"I have a mixed document and need pages 1, 4, and 9 specifically."</strong> List them individually as "1, 4, 9" — non-consecutive pages combine cleanly into one extracted result.</li>
+    <li><strong>"I received a huge onboarding packet but only need the tax form section."</strong> Skim the document once to note the page range, then extract just that section rather than asking whoever needs it to sift through the whole packet themselves.</li>
+  </ul>
+
+  <h2>Tips for Identifying the Right Page Numbers Before Extracting</h2>
+  <p>Most PDF viewers display a page counter (often something like "12 / 45") in the toolbar or sidebar, which reflects the document's actual internal page numbering — this is the number to use when entering a range, not any page number printed as part of the document's own content, which can differ due to cover pages, tables of contents, or appendices with independent numbering. For longer documents, using your viewer's thumbnail or page-preview sidebar to visually scan and note down the exact pages you need before switching to the extraction tool saves the back-and-forth of guessing a range and adjusting, especially on documents running to fifty or more pages.</p>
+
+  <h2>Extracting Multiple Separate Sections from the Same Document</h2>
+  <p>Sometimes a single extraction isn't enough — you might need two or three different, non-adjacent sections of the same source document turned into separate standalone files, rather than one combined extraction. Since each run of the tool produces one new file from one range specification, achieving this means running the extraction multiple times against the same original source PDF, once per desired output file, rather than trying to specify multiple independent outputs in a single pass. This keeps the workflow simple and predictable — each extraction is a clean, single operation — at the cost of a bit of repetition if you genuinely need several separate extracted files from the same source.</p>
+
+  <h2 id="mistakes">Common Mistakes</h2>
+  <p>A handful of avoidable errors account for most extraction mistakes people run into, and being aware of them ahead of time makes the whole process faster:</p>
+  <ul>
+    <li><strong>Off-by-one errors in page numbers.</strong> Double-check the page number displayed in your PDF viewer matches what you're entering — most viewers number from 1, matching this tool's convention, but always verify for documents with unusual front matter or cover pages.</li>
+    <li><strong>Forgetting the original file stays unchanged.</strong> Splitting/extracting creates a new file; it doesn't modify the source PDF. If you also need to remove those pages from the original, use a separate page remover tool.</li>
+    <li><strong>Using overlapping or contradictory ranges.</strong> Entering something like "1-5, 3-8" produces overlapping content — keep ranges non-overlapping and in the order you actually want them to appear in the result.</li>
+    <li><strong>Extracting from a password-protected PDF without removing the password first.</strong> The tool needs to read the actual page content, which requires the file to be unencrypted first.</li>
+    <li><strong>Assuming page numbers in the document text match PDF page numbers.</strong> A document with a numbered cover page, table of contents, or appendix can have its printed page numbers offset from the PDF's actual page count.</li>
+    <li><strong>Not reviewing the extracted result before using it.</strong> Always open the extracted PDF and confirm it contains exactly what you intended before sending or submitting it.</li>
+  </ul>
+
+  <h3>Why Choose Logrith</h3>
+  <p>Extraction pairs naturally with Logrith's other PDF tools — merge extracted pages into a different document, or compress the result if it's still larger than needed, all under the same no-upload, no-account approach throughout. Because your document never leaves your device at any stage of this workflow, sensitive multi-page documents can be trimmed, reorganized, and shared without a third-party server ever handling the complete file.</p>
+
+</div>
+
+<div class="bp-body">
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div class="bp-faq-item"><h3>How do I extract specific pages from a PDF?</h3><p>Upload the PDF and enter a page range like "1-3, 5, 7-10" using comma-separated values. The tool extracts exactly those pages into a new PDF, in the order specified.</p></div>
+  <div class="bp-faq-item"><h3>Does splitting a PDF reduce its quality?</h3><p>No, page extraction copies the original page objects directly into the new file without re-rendering or re-encoding, so quality is fully preserved.</p></div>
+  <div class="bp-faq-item"><h3>Can I extract non-consecutive pages, like pages 2, 5, and 9?</h3><p>Yes, list them individually separated by commas, such as "2, 5, 9", and they'll all be included in the extracted result in that order.</p></div>
+  <div class="bp-faq-item"><h3>What's the difference between splitting and removing pages?</h3><p>Splitting extracts a specified range into a new file, keeping the original intact. Removing pages deletes specific pages from the existing file, keeping everything else in place.</p></div>
+  <div class="bp-faq-item"><h3>Can I extract pages from a very large PDF?</h3><p>Yes, since processing happens using your browser's own memory and processing power rather than a server-side upload limit, the practical constraint is your device's available resources rather than a fixed file size cap.</p></div>
+  <div class="bp-faq-item"><h3>Will extracted pages keep their original page numbers displayed?</h3><p>If page numbers are part of the printed page content itself (as text), yes, they carry over unchanged. The PDF's internal page count restarts from 1 in the new extracted file regardless of what numbers were printed on the original pages.</p></div>
+
+  <h2>Conclusion</h2>
+  <p>Sharing exactly the pages that matter, rather than an entire document, is both more considerate to the recipient and often more appropriate when the rest of the document contains information they don't need. Page extraction handles this precisely and losslessly, keeping the original document intact while producing a clean, focused new file from whatever range you specify — whether that's a single signature page, a specific chapter, or a scattered set of individually chosen pages combined into one coherent, ready-to-share result that took seconds to produce rather than requiring a manual page-by-page workaround.</p>
+</div>
+
+<div class="bp-prevnext">
+  <a href="/blog/rotate-pdf-pages-fix-sideways-scan">&larr; Previous: <strong>PDF Rotate Guide</strong></a>
+  <a href="/blog/convert-pdf-to-jpg-choose-right-dpi">Next: <strong>PDF to JPG Guide</strong> &rarr;</a>
+</div>
+
+<div class="bp-related">
+  <h2>Related Tools</h2>
+  <div class="bp-related-grid">
+    <a href="/blog/merge-multiple-pdf-files-into-one-free" class="bp-related-card"><h4>PDF Merge</h4><p>Combine extracted pages with other documents.</p></a>
+    <a href="/blog/pdf-page-remover" class="bp-related-card"><h4>PDF Page Remover</h4><p>Delete specific pages from the original file directly.</p></a>
+    <a href="/blog/pdf-compressor" class="bp-related-card"><h4>PDF Compressor</h4><p>Reduce the extracted file's size if needed.</p></a>
+    <a href="/blog/rotate-pdf-pages-fix-sideways-scan" class="bp-related-card"><h4>PDF Rotate</h4><p>Fix page orientation before or after extraction.</p></a>
+  </div>
+</div>
+
+<div id="footer"></div>
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+</body>
+</html>

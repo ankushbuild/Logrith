@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert PDF Pages to JPG Images, Choose the Right DPI | Logrith Blog</title>
+  <meta name="description" content="How to convert PDF pages into JPG or PNG images at the right resolution for web, print, or sharing. Free, browser-based, no signup required.">
+  <meta name="keywords" content="convert pdf to jpg online free, pdf page to image high resolution, pdf to png no upload, extract pdf pages as images, pdf to jpg dpi settings">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Logrith Editorial Team">
+  <link rel="canonical" href="https://logrith.in/blog/convert-pdf-to-jpg-choose-right-dpi">
+  <meta property="og:title" content="Convert PDF Pages to JPG Images | Logrith Blog">
+  <meta property="og:description" content="Convert PDF pages to JPG or PNG at the right resolution, entirely in your browser.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://logrith.in/blog/convert-pdf-to-jpg-choose-right-dpi">
+  <meta property="og:site_name" content="Logrith">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Convert PDF to JPG Free | Logrith Blog">
+  <meta name="twitter:description" content="Convert PDF pages to images, free and private.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .bp-hero { max-width:820px;margin:0 auto;padding:48px 20px 8px; }
+    .bp-crumb { font-size:.85rem;color:var(--gray-500);margin-bottom:16px; }
+    .bp-crumb a { color:var(--primary);text-decoration:none; }
+    .bp-hero h1 { font-family:var(--font-display);font-size:2rem;line-height:1.25;color:var(--gray-900);margin-bottom:14px; }
+    .bp-hero .bp-dek { font-size:1.05rem;color:var(--gray-700);line-height:1.7;margin-bottom:20px; }
+    .bp-cta { display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:white;padding:13px 26px;border-radius:var(--radius);font-weight:700;text-decoration:none;font-size:.95rem; }
+    .bp-cta svg { width:17px;height:17px; }
+    .bp-cta:hover { background:var(--primary-dark); }
+    .bp-body { max-width:760px;margin:0 auto;padding:28px 20px 20px; }
+    .bp-body h2 { font-family:var(--font-display);font-size:1.5rem;color:var(--gray-900);margin:38px 0 14px; }
+    .bp-body h3 { font-family:var(--font-display);font-size:1.15rem;color:var(--gray-900);margin:26px 0 10px; }
+    .bp-body p { color:var(--gray-700);line-height:1.8;margin-bottom:16px;font-size:1rem; }
+    .bp-body ul, .bp-body ol { color:var(--gray-700);line-height:1.8;margin:0 0 16px 22px; }
+    .bp-body li { margin-bottom:8px; }
+    .bp-body strong { color:var(--gray-900); }
+    .bp-toc { background:var(--gray-50);border-radius:var(--radius-lg);padding:20px 24px;margin:24px 0; }
+    .bp-toc h2 { margin:0 0 10px;font-size:1.05rem; }
+    .bp-toc ol { margin:0 0 0 20px; }
+    .bp-toc a { color:var(--primary);text-decoration:none; }
+    .bp-table { width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:.92rem; }
+    .bp-table th, .bp-table td { border:1px solid var(--gray-200);padding:10px 12px;text-align:left; }
+    .bp-table th { background:var(--gray-50);font-weight:700;color:var(--gray-900); }
+    .bp-howto { counter-reset:step; list-style:none;margin-left:0; }
+    .bp-howto li { position:relative;padding-left:42px;margin-bottom:18px; }
+    .bp-howto li::before { counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:28px;height:28px;background:var(--primary);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem; }
+    .bp-faq-item { border-bottom:1px solid var(--gray-200);padding:16px 0; }
+    .bp-faq-item h3 { margin:0 0 8px; font-size:1.02rem; }
+    .bp-byline { font-size:.82rem;color:var(--gray-500);margin-top:10px; }
+    .bp-related { max-width:1000px;margin:0 auto;padding:20px 20px 60px; }
+    .bp-related h2 { font-family:var(--font-display);font-size:1.4rem;color:var(--gray-900);margin-bottom:18px;text-align:center; }
+    .bp-related-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px; }
+    .bp-related-card { border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);padding:18px;text-decoration:none;color:inherit;background:var(--white); }
+    .bp-related-card h4 { font-size:.95rem;color:var(--gray-900);margin-bottom:6px; }
+    .bp-related-card p { font-size:.82rem;color:var(--gray-700);line-height:1.5; }
+    .bp-prevnext { display:flex;justify-content:space-between;gap:16px;max-width:760px;margin:0 auto;padding:0 20px 20px; }
+    .bp-prevnext a { flex:1;border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:12px 16px;text-decoration:none;color:var(--gray-700);font-size:.85rem; }
+    .bp-prevnext a strong { display:block;color:var(--gray-900);font-size:.92rem; }
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","@id":"https://logrith.in/#organization","name":"Logrith","url":"https://logrith.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Convert PDF Pages to JPG Images, Choose the Right DPI","description":"How to convert PDF pages into JPG or PNG images at the right resolution.","author":{"@type":"Organization","name":"Logrith Editorial Team"},"publisher":{"@id":"https://logrith.in/#organization"},"mainEntityOfPage":"https://logrith.in/blog/convert-pdf-to-jpg-choose-right-dpi"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"Convert PDF to JPG","url":"https://logrith.in/blog/convert-pdf-to-jpg-choose-right-dpi","isPartOf":{"@type":"Blog","name":"Logrith Blog","url":"https://logrith.in/blog/"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDF to JPG","url":"https://logrith.in/tools/pdf-to-jpg","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://logrith.in/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://logrith.in/blog/"},{"@type":"ListItem","position":3,"name":"Image & PDF Tools","item":"https://logrith.in/blog/categories/image-pdf-tools"},{"@type":"ListItem","position":4,"name":"PDF to JPG","item":"https://logrith.in/blog/convert-pdf-to-jpg-choose-right-dpi"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What DPI should I use when converting a PDF to JPG?","acceptedAnswer":{"@type":"Answer","text":"72 DPI (Standard) is sufficient for web use or screen viewing. 144 DPI (High) is a good balance for general use. 216 DPI (Ultra) is best for print or when maximum detail is needed, at the cost of larger file sizes."}},
+    {"@type":"Question","name":"Should I choose JPG or PNG when converting a PDF page?","acceptedAnswer":{"@type":"Answer","text":"Choose PNG for pages with transparency, sharp text, or diagrams needing pixel-perfect clarity. Choose JPG for pages that are mostly photographic content, since it produces smaller files for that kind of content."}},
+    {"@type":"Question","name":"Will converting a PDF to JPG make the text blurry?","acceptedAnswer":{"@type":"Answer","text":"At low DPI settings, small text can appear soft when converted to a rendered image, since it's no longer live, scalable text. Using a higher DPI setting or choosing PNG preserves sharper text edges."}},
+    {"@type":"Question","name":"Can I extract just one page from a PDF as an image, not the whole document?","acceptedAnswer":{"@type":"Answer","text":"The tool converts every page by default, giving you an image per page. If you only need one specific page, extract that page first with a PDF split tool, then convert the resulting single-page PDF to an image."}}
+  ]}
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPJ4332XJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPJ4332XJH');
+  </script>
+</head>
+<body>
+<div id="navbar"></div>
+
+<div class="bp-hero">
+  <div class="bp-crumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; <a href="/blog/categories/image-pdf-tools">Image & PDF Tools</a> &rsaquo; PDF to JPG</div>
+  <h1>How to Convert PDF Pages into JPG Images at the Resolution You Actually Need</h1>
+  <p class="bp-dek">Some platforms only accept image uploads, not PDFs — a common wall when trying to share a document page on a platform that was never built with PDF viewing in mind. Converting each page to an image solves this, but the DPI setting you choose matters more than most people realize for how the result actually looks, and the difference between a soft, unusable print and a crisp one often comes down to a single setting most people never think to check, along with the equally important choice between JPG and PNG output for the specific kind of page content you're converting.</p>
+  <a href="/tools/pdf-to-jpg" class="bp-cta">
+    <svg class="icon"><use href="/assets/svg/icons.svg#image"></use></svg>
+    Convert PDF to JPG
+  </a>
+  <p class="bp-byline">By the Logrith Editorial Team &middot; Reviewed for accuracy</p>
+</div>
+
+<div class="bp-body">
+
+  <div class="bp-toc">
+    <h2>On This Page</h2>
+    <ol>
+      <li><a href="#how-to-use">How to Convert PDF Pages to Images</a></li>
+      <li><a href="#dpi">Understanding DPI and Choosing the Right Setting</a></li>
+      <li><a href="#jpg-vs-png">JPG or PNG: Which Output Format to Choose</a></li>
+      <li><a href="#how-it-works">How This Conversion Actually Works</a></li>
+      <li><a href="#comparison">Comparison vs. Other PDF-to-Image Converters</a></li>
+      <li><a href="#mistakes">Common Mistakes</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="how-to-use">How to Convert PDF Pages to Images</h2>
+  <ol class="bp-howto">
+    <li>Open the <a href="/tools/pdf-to-jpg">PDF to JPG tool</a> and upload your PDF.</li>
+    <li>Choose your DPI setting — Standard (72), High (144), or Ultra (216).</li>
+    <li>Choose your output format — JPG or PNG.</li>
+    <li>Click Convert. The tool renders each page using PDF.js and produces one image per page.</li>
+    <li>Download the images — no upload to a server occurred at any point.</li>
+  </ol>
+
+  <h2 id="dpi">Understanding DPI and Choosing the Right Setting</h2>
+  <p>Picking the right resolution setting up front avoids both disappointing print results and unnecessarily large files for simple screen use:</p>
+  <table class="bp-table">
+    <tr><th>DPI Setting</th><th>Best For</th><th>Tradeoff</th></tr>
+    <tr><td>Standard (72 DPI)</td><td>Web display, screen viewing, quick sharing</td><td>Smallest file size, but text and fine detail can look soft if viewed larger than screen size</td></tr>
+    <tr><td>High (144 DPI)</td><td>General-purpose use — a solid default balancing quality and file size</td><td>Moderate file size increase over Standard</td></tr>
+    <tr><td>Ultra (216 DPI)</td><td>Printing, archival, or anything requiring maximum visible detail</td><td>Largest file size of the three options</td></tr>
+  </table>
+  <p>DPI (dots per inch) determines how many pixels are rendered per inch of the original page, which directly controls both visual sharpness and file size. Screens generally display content at a much lower effective resolution than print, which is why 72 DPI — a legacy standard originally tied to old screen resolutions — remains adequate for on-screen viewing despite sounding low. Print, by contrast, genuinely benefits from higher DPI, since printed output reveals resolution limitations far more readily than a screen does, especially at larger physical sizes.</p>
+
+  <h2 id="jpg-vs-png">JPG or PNG: Which Output Format to Choose</h2>
+  <p>This decision follows the same general logic as image format choice anywhere else: JPG's lossy compression handles photographic or complex-content pages efficiently, producing smaller files, while PNG's lossless nature better serves pages with sharp text, line art, diagrams, or anything requiring transparency. A scanned photograph-heavy page converts well to JPG; a page of dense text or a technical diagram holds up better as PNG, since JPG's compression artifacts are most visible exactly around the sharp edges that text and line art are made of.</p>
+
+  <h2 id="how-it-works">How This Conversion Actually Works</h2>
+  <p>The tool uses PDF.js, the same rendering engine that powers PDF viewing in Chrome and Firefox, to render each page of your PDF onto an in-memory canvas at the resolution implied by your chosen DPI setting. Once rendered, that canvas is exported as either a JPG or PNG file using the browser's native image encoding, producing one image file per page. Because PDF.js is rendering the page the same way a browser would display it natively, the visual result closely mirrors what you'd see if you simply opened the PDF and took a high-quality screenshot of each page — except done programmatically, consistently, and at your exact chosen resolution rather than depending on your screen's own pixel density and zoom level.</p>
+  <p>This entire rendering and export pipeline runs using your device's own processing power, with no file ever transmitted to a server. For typical documents, even multi-page ones, this completes quickly; very long documents or very high DPI settings naturally take somewhat longer, since more pixel data has to be rendered and encoded for each page.</p>
+
+  <h2>How DPI Translates to Actual File Size</h2>
+  <p>Since DPI directly determines how many pixels are rendered per inch of the original page, the relationship to file size isn't linear — doubling the DPI roughly quadruples the total pixel count, which correspondingly increases file size substantially. A standard US Letter or A4 page rendered at 72 DPI produces a relatively modest image, typically well under a megabyte for most content. The same page at 216 DPI can easily produce a file several times larger. For a multi-page document, this difference compounds across every page — a 20-page document converted at Ultra DPI can produce a noticeably larger total download than the same document at Standard DPI.</p>
+
+  <h2 id="comparison">Comparison vs. Other PDF-to-Image Converters</h2>
+  <p>Weighing this tool against the two most commonly used alternatives helps clarify where each fits best for different conversion needs:</p>
+  <table class="bp-table">
+    <tr><th>Feature</th><th>Logrith PDF to JPG</th><th>iLovePDF</th><th>Smallpdf</th></tr>
+    <tr><td>Processing location</td><td>Entirely in-browser</td><td>Server upload</td><td>Server upload</td></tr>
+    <tr><td>DPI/resolution control</td><td>Yes, 3 preset levels</td><td>Yes, with more granular options</td><td>Limited resolution control on free tier</td></tr>
+    <tr><td>Output format choice</td><td>JPG or PNG</td><td>JPG primarily</td><td>JPG primarily</td></tr>
+    <tr><td>Batch download (all pages at once)</td><td>Yes</td><td>Yes, as a zip file</td><td>Yes, as a zip file</td></tr>
+    <tr><td>Free usage limit</td><td>Unlimited</td><td>Unlimited, file size caps apply</td><td>2 tasks/day (free tier)</td></tr>
+  </table>
+  <p>iLovePDF offers somewhat more granular resolution control beyond the three preset levels Logrith provides, useful if you need a very specific DPI value rather than one of the standard presets. For the overwhelming majority of use cases — web sharing, general documents, or print — the three-tier preset system covers the practical range needed without requiring users to understand DPI numerically, while keeping processing entirely local rather than uploading potentially sensitive document pages to a server.</p>
+
+  <h2>Real-World Scenarios</h2>
+  <ul>
+    <li><strong>"I need to post a page from a PDF on a platform that only accepts image uploads."</strong> Convert at Standard or High DPI, since the content will be viewed on a screen rather than printed.</li>
+    <li><strong>"I need to print a page from a PDF at a print shop that only accepts image files."</strong> Convert at Ultra DPI to preserve maximum detail for the printing process.</li>
+    <li><strong>"I want to insert a page from a PDF into a presentation slide."</strong> High DPI generally provides enough sharpness for typical presentation display sizes without unnecessarily large file sizes.</li>
+  </ul>
+
+  <h2>Handling the Resulting Batch of Images</h2>
+  <p>A multi-page PDF converts into multiple separate image files, one per page, which raises a practical question: what to do with a batch of five, ten, or fifty separate images rather than one convenient document. For a small number of pages, downloading and handling each individually is manageable. For larger documents, consider whether you actually need every page as a separate image, or whether extracting just the specific pages you need first (using a PDF split tool) before converting would produce a more manageable result — converting a 50-page document in full when you only need three specific pages as images wastes both processing time and the effort of sorting through the output afterward. Organizing downloaded images with clear sequential filenames also makes it much easier to keep track of which image corresponds to which original page, especially once a batch grows beyond a handful of files.</p>
+
+  <h2>Why 72 DPI Specifically? A Bit of History</h2>
+  <p>The 72 DPI figure that shows up as the "standard" web/screen setting traces back to early Macintosh computers, which used 72-pixel-per-inch displays — a number chosen partly because it matched typographic point measurements conveniently (72 points to an inch), simplifying on-screen layout calculations. Modern screens have far higher actual pixel densities than 72 DPI, but the figure persisted as a practical convention for web and screen-oriented content, since most web images are displayed at a fraction of their source resolution anyway once accounting for typical browser zoom levels and display scaling. This is why 72 DPI remains labeled "Standard" for screen use today, even though it's a legacy figure rather than a reflection of actual modern display capability.</p>
+
+  <h2>Common Mistakes</h2>
+  <ul>
+    <li><strong>Using Standard DPI for something that will be printed.</strong> Low-DPI images look noticeably soft when printed at any reasonable size — always use High or Ultra for anything print-bound.</li>
+    <li><strong>Using Ultra DPI for simple web sharing.</strong> This produces unnecessarily large files for content that will only ever be viewed on a screen, slowing down uploads and page loads for no visible benefit.</li>
+    <li><strong>Choosing JPG for text-heavy pages.</strong> JPG's compression artifacts are most visible around sharp text edges — PNG better preserves text clarity for documents where readability matters most.</li>
+    <li><strong>Expecting the converted image to remain text-searchable.</strong> Once converted to an image, the page's text becomes visual pixel data, not searchable text — if you need to preserve searchability, keep the file as a PDF rather than converting to an image.</li>
+    <li><strong>Not checking file size before sending multiple converted pages.</strong> A multi-page document converted at high DPI can produce a surprisingly large total batch of images — check the combined size before attaching everything to an email with a strict size limit.</li>
+  </ul>
+
+  <h3>Why Choose Logrith</h3>
+  <p>Conversion runs entirely in your browser using PDF.js, with no upload and full control over resolution and format. Once converted, the resulting images are ready for Logrith's other image tools — compression, resizing, or format conversion — all under the same no-account, privacy-respecting standard, so an entire document-to-image-to-optimized-image workflow can happen without ever handing your file to a third-party server.</p>
+
+</div>
+
+<div class="bp-body">
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div class="bp-faq-item"><h3>What DPI should I use?</h3><p>72 DPI (Standard) is sufficient for web use or screen viewing. 144 DPI (High) is a good balance for general use. 216 DPI (Ultra) is best for print or maximum detail, at the cost of larger file sizes.</p></div>
+  <div class="bp-faq-item"><h3>Should I choose JPG or PNG?</h3><p>Choose PNG for pages with transparency, sharp text, or diagrams needing pixel-perfect clarity. Choose JPG for photographic content, since it produces smaller files for that kind of content.</p></div>
+  <div class="bp-faq-item"><h3>Will converting to JPG make text blurry?</h3><p>At low DPI settings, small text can appear soft since it's no longer live, scalable text. Using a higher DPI setting or choosing PNG preserves sharper text edges.</p></div>
+  <div class="bp-faq-item"><h3>Can I extract just one page as an image?</h3><p>The tool converts every page by default. If you only need one specific page, extract that page first with a PDF split tool, then convert the resulting single-page PDF to an image.</p></div>
+  <div class="bp-faq-item"><h3>Does higher DPI always produce a better result?</h3><p>For print or detailed viewing, yes, higher DPI captures more visible detail. For screen-only viewing, DPI beyond what a typical display can show provides no visible benefit while still increasing file size unnecessarily.</p></div>
+  <div class="bp-faq-item"><h3>Can I convert a very long PDF with many pages?</h3><p>Yes, though processing time scales with page count and chosen DPI, since each page is individually rendered. Very long documents at high DPI will take noticeably longer than short documents at standard resolution.</p></div>
+
+  <h2>Conclusion</h2>
+  <p>Converting a PDF page to an image is straightforward, but the DPI and format choices genuinely affect the usability of the result — a print-bound image needs meaningfully more resolution than one destined only for a screen. Matching the setting to the actual destination avoids both disappointing print quality and unnecessarily bloated files for simple web sharing, and understanding why the standard settings exist in the first place makes the choice feel less arbitrary and more like a deliberate decision matched to what the image will actually be used for, whether that's a quick web upload, a printed handout, or a slide in a presentation deck.</p>
+</div>
+
+<div class="bp-prevnext">
+  <a href="/blog/extract-pages-from-pdf-online-free">&larr; Previous: <strong>PDF Split Guide</strong></a>
+  <a href="/blog/convert-image-to-base64-data-uri-online">Next: <strong>Image to Base64 Guide</strong> &rarr;</a>
+</div>
+
+<div class="bp-related">
+  <h2>Related Tools</h2>
+  <div class="bp-related-grid">
+    <a href="/blog/image-compressor" class="bp-related-card"><h4>Image Compressor</h4><p>Compress the converted images further if needed.</p></a>
+    <a href="/blog/image-converter" class="bp-related-card"><h4>Image Converter</h4><p>Convert the output to WebP or another format.</p></a>
+    <a href="/blog/extract-pages-from-pdf-online-free" class="bp-related-card"><h4>PDF Split</h4><p>Extract a specific page before converting to image.</p></a>
+    <a href="/blog/combine-jpg-images-into-one-pdf-free" class="bp-related-card"><h4>JPG to PDF</h4><p>Convert images back into a PDF later if needed.</p></a>
+  </div>
+</div>
+
+<div id="footer"></div>
+<script src="/assets/js/main.js" defer></script>
+<script src="/load-components.js"></script>
+</body>
+</html>
