@@ -53,3 +53,15 @@ TOOL BUG FIXES (post-100-tools, during blog phase)
     (via JSZip 3.10.1 from cdnjs) for full favicon-generation-style
     site icon sets. Format dropdown now includes "ICO (Single Size)"
     and "Multi-Size ICO Pack (ZIP)".
+
+[x] CRITICAL FIX: image-compressor.html and image-converter.html were
+    depending on /assets/js/main.js (loaded with `defer`), but their
+    inline scripts ran synchronously and called main.js's helper
+    functions (showStatus, formatSize, initDragDrop, downloadBlob)
+    BEFORE main.js had finished loading — causing a silent
+    "function not defined" error that made Compress/Convert buttons
+    appear completely unresponsive. Fixed by making both tool pages
+    fully self-contained: removed the main.js script tag entirely
+    from both files, and each file now defines its own local
+    showStatus/formatSize/initDragDrop/downloadBlob implementations
+    inline. Zero dependency on main.js in either file now.
